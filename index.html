@@ -8,8 +8,292 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
-    <!-- Link to External CSS -->
-    <link rel="stylesheet" href="style.css">
+
+    <!-- Embedded CSS -->
+    <style>
+        /* --- Global Styles & Variables --- */
+        :root {
+            --primary-color: #4CAF50; /* Green */
+            --primary-dark: #388E3C;
+            --secondary-color: #f4f4f4; /* Light Gray */
+            --dark-color: #333;
+            --light-color: #fff;
+            --font-primary: 'Lato', sans-serif;
+            --font-headings: 'Poppins', sans-serif;
+            --shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+        }
+
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.7;
+            color: var(--dark-color);
+            background-color: var(--secondary-color);
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-headings);
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 0.75rem;
+        }
+
+        h1 { font-size: 2.8rem; }
+        h2 { font-size: 2rem; color: var(--primary-dark); }
+        h3 { font-size: 1.4rem; }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        img { /* Just in case you add images later */
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* --- Utility Classes --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-family: var(--font-headings);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-decoration: none; /* Ensure no underline */
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-dark);
+            text-decoration: none; /* Ensure no underline on hover */
+            transform: translateY(-2px); /* Slight lift effect */
+        }
+
+        /* --- Header --- */
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        header h1 {
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            font-style: italic;
+            opacity: 0.9;
+            margin-bottom: 0;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            background-color: var(--dark-color);
+            padding: 0.8rem 0;
+            position: sticky; /* Make nav stick to top */
+            top: 0;
+            z-index: 100; /* Ensure it's above other content */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: center; /* Center nav items */
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav a {
+            color: var(--light-color);
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            text-decoration: none; /* Ensure no underline */
+        }
+
+        nav a:hover {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            text-decoration: none; /* Ensure no underline on hover */
+        }
+
+        /* --- Main Content & Sections --- */
+        main {
+            padding-top: 0; /* No padding needed at top of main */
+        }
+
+        .hero {
+            /* Add a real background image URL or remove background rule */
+            background: linear-gradient(rgba(76, 175, 80, 0.8), rgba(56, 142, 60, 0.8)), url('placeholder-study.jpg') no-repeat center center/cover;
+            /* Fallback solid color if image fails or isn't used */
+            /* background-color: var(--primary-dark); */
+            color: var(--light-color);
+            text-align: center;
+            padding: 80px 20px;
+            min-height: 40vh; /* Give it some height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero .cta-button {
+            background-color: var(--light-color);
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+
+        .hero .cta-button:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-dark);
+        }
+
+        .content-area {
+            padding-top: 40px; /* Space below sticky nav/hero */
+            padding-bottom: 40px;
+        }
+
+        section {
+            background-color: var(--light-color);
+            margin-bottom: 30px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--primary-color); /* Accent border */
+        }
+
+        section h2 {
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        section ul {
+            list-style: disc; /* Use standard bullets inside sections */
+            padding-left: 25px;
+        }
+
+        section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--secondary-color);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 30px; /* Space above footer */
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: var(--primary-color);
+        }
+
+        footer a:hover {
+            color: var(--light-color);
+        }
+
+        /* --- Basic Responsiveness --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.7rem; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero { padding: 60px 20px; }
+
+            nav ul {
+                flex-direction: column; /* Stack nav items vertically */
+                align-items: center;
+            }
+            nav ul li {
+                margin: 8px 0; /* Adjust spacing for vertical layout */
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            section {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 { font-size: 2rem; }
+            header p { font-size: 1rem; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            .cta-button { padding: 10px 20px; font-size: 0.9rem;}
+        }
+    </style>
+
 </head>
 <body>
 
