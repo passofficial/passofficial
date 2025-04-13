@@ -47,6 +47,9 @@
             /* Section Backgrounds */
             --section-bg-light: var(--light-gray);
             --section-bg-white: var(--white-color);
+
+            /* Navigation Height */
+            --nav-height: 70px;
         }
 
         * {
@@ -57,7 +60,7 @@
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 70px; /* Adjust based on final nav height */
+            scroll-padding-top: var(--nav-height); /* Adjust based on final nav height */
             font-size: 16px; /* Base font size */
         }
 
@@ -224,7 +227,7 @@
             top: 0;
             z-index: 1000;
             box-shadow: var(--shadow-sm);
-            height: 70px;
+            height: var(--nav-height);
             display: flex;
             align-items: center;
             border-bottom: 1px solid var(--medium-gray);
@@ -297,7 +300,7 @@
 
         /* Mobile Menu Button (Burger) */
         .menu-toggle {
-            display: none;
+            display: none; /* Hidden by default, shown in media query */
             background: none;
             border: none;
             color: var(--primary-dark);
@@ -306,6 +309,7 @@
             padding: 8px; /* Add padding for easier tap */
             line-height: 1;
             margin-right: 5px; /* Space from edge */
+            z-index: 1001; /* Ensure it's above nav */
         }
 
         /* --- Main Content & Sections --- */
@@ -445,7 +449,7 @@
         .carousel-images img {
             display: none;
             width: 100%;
-            border-radius: 0;
+            border-radius: 0; /* Remove radius from image itself */
             aspect-ratio: 16 / 10; /* Maintain aspect ratio */
             object-fit: cover; /* Ensure image covers area */
         }
@@ -474,6 +478,7 @@
             height: 40px;
             line-height: 28px; /* Adjust for vertical centering */
             text-align: center;
+            user-select: none; /* Prevent text selection */
         }
         .carousel-button:hover {
             background-color: rgba(0, 0, 0, 0.8);
@@ -631,18 +636,22 @@
             display: block; /* Remove extra space below iframe */
             margin: 0 auto; /* Center if container is wider */
         }
-        /* Remove placeholder if iframe exists */
-        .google-form-embed iframe + .google-form-placeholder {
+        /* Remove placeholder if iframe exists - JS will handle this better */
+        /* .google-form-embed iframe + .google-form-placeholder {
             display: none;
-        }
-        .google-form-placeholder { /* Style for if iframe fails or isn't added */
+        } */
+        .google-form-placeholder { /* Style for fallback link */
             border: 2px dashed var(--medium-gray);
-            padding: 40px 20px;
+            padding: 20px; /* Reduced padding */
             background-color: var(--light-gray);
             color: var(--dark-gray);
-            font-style: italic;
             border-radius: var(--border-radius);
-            margin-top: 1rem;
+            margin-top: 1.5rem; /* Space above fallback */
+            font-size: 0.95rem;
+            text-align: center;
+        }
+        .google-form-placeholder strong {
+            color: var(--primary-dark);
         }
 
 
@@ -761,7 +770,7 @@
 
         /* --- Responsiveness --- */
         @media (max-width: 992px) {
-            html { scroll-padding-top: 70px; }
+            html { scroll-padding-top: var(--nav-height); }
             .container { max-width: 960px; padding: 0 25px; } /* Adjust padding for tablets */
             section { padding: 45px 30px; }
             h1 { font-size: clamp(2.3rem, 4.8vw, 3.3rem); }
@@ -786,28 +795,28 @@
 
             /* Mobile Menu Logic */
             .menu-toggle {
-                display: block;
+                display: block; /* Show the burger button */
             }
 
             #main-nav {
-                display: none;
+                display: none; /* Hide the nav list by default */
                 flex-direction: column;
                 position: absolute;
-                top: 70px;
+                top: var(--nav-height); /* Position below the nav bar */
                 left: 0;
                 width: 100%;
                 background-color: var(--white-color);
                 padding: 0.5rem 0; /* Reduced padding */
                 box-shadow: var(--shadow-md);
                 border-top: 1px solid var(--medium-gray);
-                max-height: calc(100vh - 70px);
-                overflow-y: auto;
-                height: auto;
+                max-height: calc(100vh - var(--nav-height)); /* Limit height */
+                overflow-y: auto; /* Allow scrolling if needed */
+                height: auto; /* Let content determine height */
                 border-bottom: 3px solid var(--primary-color);
             }
 
             #main-nav.active {
-                display: flex;
+                display: flex; /* Show the nav list when active */
             }
 
             #main-nav li {
@@ -815,28 +824,35 @@
                 text-align: center;
                 width: 100%;
                 height: auto;
-                display: block;
+                display: block; /* Stack list items */
                 border-bottom: 1px solid var(--light-gray); /* Separator lines */
             }
              #main-nav li:last-child {
                  border-bottom: none;
              }
             #main-nav a {
-                display: block;
+                display: block; /* Make links full width */
                 padding: 16px 20px; /* Larger tap target */
                 width: 100%;
                 margin: 0 auto;
                 color: var(--dark-color);
-                border-bottom: none;
+                border-bottom: none; /* Remove desktop border */
                 height: auto;
                 justify-content: center;
                 font-size: 1rem; /* Ensure readable size */
+                border-left: 4px solid transparent; /* Add space for active indicator */
+                border-right: 4px solid transparent;
             }
-            #main-nav a:hover,
+            #main-nav a:hover {
+                 background-color: var(--primary-light); /* Keep hover consistent */
+                 color: var(--primary-dark);
+                 border-bottom: none;
+            }
             #main-nav a.active {
-                 background-color: var(--primary-color);
+                 background-color: var(--primary-color); /* Use primary color for active */
                  color: var(--white-color);
                  border-bottom: none;
+                 border-left-color: var(--accent-color); /* Use accent for indicator */
             }
 
             .content-area { padding-top: 40px; padding-bottom: 40px; }
@@ -886,7 +902,7 @@
     <nav>
         <div class="container">
              <a href="#home" class="nav-brand">PASS</a>
-            <button class="menu-toggle" id="mobile-menu-button" aria-label="Toggle Menu" aria-expanded="false">
+            <button class="menu-toggle" id="mobile-menu-button" aria-label="Toggle Menu" aria-expanded="false" aria-controls="main-nav">
                 <i class="fa-solid fa-bars"></i> <!-- Initial state: Burger -->
             </button>
             <ul id="main-nav">
@@ -910,7 +926,7 @@
                 <p>Welcome to PASS! We're the Progressive Academic Student Society – a <span class="footer-highlight" style="color: var(--primary-dark);">tight-knit, supportive community</span> for motivated students across Plymouth, Canton, and Salem High Schools. Here, we collaborate, grow, achieve our goals, and have fun doing it.</p>
                 <!-- Added Hero Buttons Container -->
                 <div class="hero-buttons">
-                    <a href="#join" class="cta-button cta-button-accent">Apply to Join PASS</a> <!-- Direct link to form -->
+                    <a href="#join" class="cta-button cta-button-accent">Apply to Join PASS</a> <!-- Direct link to form section -->
                     <a href="#about" class="cta-button cta-button-secondary">Learn More About Us</a>
                 </div>
             </div>
@@ -926,11 +942,11 @@
                 <!-- Image Carousel -->
                 <div class="image-carousel">
                     <div class="carousel-images">
-                        <!-- === REPLACE THESE with your actual image paths/URLs === -->
+                        <!-- === Using provided image names === -->
                         <img src="image1.jpeg" alt="PASS PCEP Group Photo 1" class="active">
                         <img src="image2.jpeg" alt="PASS PCEP Activity Photo 2">
                         <img src="image3.jpeg" alt="PASS PCEP Meeting Photo 3">
-                        <!-- === END Image Placeholders === -->
+                        <!-- === END Images === -->
                     </div>
                     <button class="carousel-button prev" aria-label="Previous Image">❮</button>
                     <button class="carousel-button next" aria-label="Next Image">❯</button>
@@ -992,56 +1008,56 @@
             <section id="faq">
                 <h2><i class="fa-solid fa-circle-question"></i>Frequently Asked Questions</h2>
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
                         <span>Who can join PASS?</span>
                         <span class="faq-toggle">+</span>
                     </button>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-answer-1" role="region">
                         <p>PASS welcomes all currently enrolled students at <span class="footer-highlight" style="color: var(--primary-dark);">Plymouth, Canton, or Salem High Schools</span> within PCEP! If you're motivated to grow academically, enjoy collaborating, and want to be part of a supportive community, you'll fit right in.</p>
                     </div>
                 </div>
                  <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
                         <span>What's the time commitment like?</span>
                         <span class="faq-toggle">+</span>
                     </button>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-answer-2" role="region">
                         <p>It's flexible! Attend the meetings and study sessions that fit your schedule and academic needs. We typically have general meetings 1-2 times per month, with study groups meeting more frequently, especially around exams. Participation is encouraged, but we understand you have busy schedules.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
                         <span>Is there a membership fee?</span>
                         <span class="faq-toggle">+</span>
                     </button>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-answer-3" role="region">
                         <p>No mandatory membership fees! Our focus is on building a strong, accessible community. We might occasionally ask for small, optional contributions for specific social events (like pizza!), but core activities are free.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
                         <span>Where do you meet?</span>
                         <span class="faq-toggle">+</span>
                     </button>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-answer-4" role="region">
                         <p>Most of our meetings and study sessions are held at <span class="footer-highlight" style="color: var(--primary-dark);">Plymouth High School</span> (8400 Beck Rd, Canton, MI). Specific room locations are announced before each event via email and our Instagram. Check our announcements for the latest schedule!</p>
                     </div>
                 </div>
                  <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5">
                         <span>How is PASS different from tutoring?</span>
                         <span class="faq-toggle">+</span>
                     </button>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-answer-5" role="region">
                         <p>PASS focuses on <span class="footer-highlight" style="color: var(--primary-dark);">collaborative peer learning and community building</span>. While members definitely help each other understand concepts, it's more about working together, sharing strategies, and motivating each other, rather than a one-on-one expert-to-student model like traditional tutoring. We build study skills and connections.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-6">
                         <span>How do I get involved or join?</span>
                         <span class="faq-toggle">+</span>
                     </button>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-answer-6" role="region">
                         <p>Easy! You can fill out our quick application form (see the "Join Us" section below!), come to an upcoming meeting (check Instagram for dates/times), or simply reach out via email (<a href="mailto:passofficialpcep@gmail.com">passofficialpcep@gmail.com</a>). We welcome new members throughout the school year!</p>
                     </div>
                 </div>
@@ -1064,12 +1080,20 @@
                     <h4>Membership Application</h4>
                     <p>Tell us a bit about yourself! We're excited to welcome you.</p>
                     <!-- === PASTE YOUR GOOGLE FORM EMBED CODE (IFRAME) HERE === -->
-                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScW7NEj9cbmK_XiKMao9xGySNB5QGAdvi-R60xWLdHgKt8kaQ/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                    <iframe
+                        src="https://docs.google.com/forms/d/e/1FAIpQLScW7NEj9cbmK_XiKMao9xGySNB5QGAdvi-R60xWLdHgKt8kaQ/viewform?embedded=true"
+                        frameborder="0"
+                        marginheight="0"
+                        marginwidth="0"
+                        title="PASS PCEP Membership Application Form"
+                        aria-label="PASS PCEP Membership Application Form">
+                        Loading…
+                    </iframe>
                     <!-- === END GOOGLE FORM EMBED CODE === -->
 
-                    <!-- Fallback message if iframe fails -->
-                    <div class="google-form-placeholder" style="display: none;"> <!-- Hidden by default, shown if iframe fails -->
-                         <p><strong>Membership form loading...</strong> If it doesn't appear, please <a href="https://docs.google.com/forms/d/e/1FAIpQLScW7NEj9cbmK_XiKMao9xGySNB5QGAdvi-R60xWLdHgKt8kaQ/viewform" target="_blank" rel="noopener noreferrer">click here to open the form in a new tab</a>.</p>
+                    <!-- Fallback link - always visible but styled subtly -->
+                    <div class="google-form-placeholder">
+                         <p><strong>Having trouble with the form above?</strong> <a href="https://docs.google.com/forms/d/e/1FAIpQLScW7NEj9cbmK_XiKMao9xGySNB5QGAdvi-R60xWLdHgKt8kaQ/viewform" target="_blank" rel="noopener noreferrer">Click here to open the application form in a new tab</a>.</p>
                     </div>
                 </div>
 
@@ -1139,7 +1163,8 @@
             const closeIcon = '<i class="fa-solid fa-times"></i>';
 
             if (menuButton && navMenu) {
-                menuButton.addEventListener('click', () => {
+                menuButton.addEventListener('click', (event) => {
+                    event.stopPropagation(); // Prevent click from bubbling up to document
                     const isExpanded = navMenu.classList.toggle('active');
                     menuButton.setAttribute('aria-expanded', isExpanded);
                     menuButton.innerHTML = isExpanded ? closeIcon : burgerIcon; // Toggle icon
@@ -1160,31 +1185,39 @@
                  document.addEventListener('click', (event) => {
                     const isClickInsideNav = navMenu.contains(event.target);
                     const isClickOnButton = menuButton.contains(event.target);
+
                     if (!isClickInsideNav && !isClickOnButton && navMenu.classList.contains('active')) {
                          navMenu.classList.remove('active');
                          menuButton.setAttribute('aria-expanded', 'false');
                          menuButton.innerHTML = burgerIcon; // Reset icon
                     }
                  });
+            } else {
+                console.error("Mobile menu button or nav menu element not found.");
             }
 
             // --- FAQ Accordion ---
             const faqItems = document.querySelectorAll('.faq-item');
-            faqItems.forEach(item => {
+            faqItems.forEach((item, index) => {
                 const questionButton = item.querySelector('.faq-question');
                 const answer = item.querySelector('.faq-answer');
                 const toggleIcon = item.querySelector('.faq-toggle');
 
                 if (questionButton && answer && toggleIcon) {
+                    // Set unique IDs if they don't exist (improves accessibility)
+                    const answerId = answer.id || `faq-answer-${index + 1}`;
+                    answer.id = answerId;
+                    questionButton.setAttribute('aria-controls', answerId);
+
                     questionButton.addEventListener('click', () => {
                         const isActive = item.classList.contains('active');
 
-                        // Close all others (optional, uncomment if desired)
+                        // Optional: Close others
                         // faqItems.forEach(otherItem => {
                         //     if (otherItem !== item && otherItem.classList.contains('active')) {
                         //         otherItem.classList.remove('active');
                         //         otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-                        //         otherItem.querySelector('.faq-toggle').textContent = '+';
+                        //         otherItem.querySelector('.faq-toggle').style.transform = 'rotate(0deg)';
                         //         const otherAnswer = otherItem.querySelector('.faq-answer');
                         //         otherAnswer.style.maxHeight = null;
                         //         otherAnswer.style.paddingTop = '0';
@@ -1196,28 +1229,27 @@
                         // Toggle current item
                         item.classList.toggle('active');
                         questionButton.setAttribute('aria-expanded', !isActive);
-                        // toggleIcon.textContent = item.classList.contains('active') ? '−' : '+'; // Use text +/-
-                        // Keep FontAwesome icon rotation logic if preferred over text +/-
                         toggleIcon.style.transform = item.classList.contains('active') ? 'rotate(135deg)' : 'rotate(0deg)';
 
-
                         if (item.classList.contains('active')) {
+                            answer.style.opacity = '1'; // Start fade in
                             answer.style.maxHeight = answer.scrollHeight + 40 + "px"; // Add buffer for padding
                             answer.style.paddingTop = '10px';
                             answer.style.paddingBottom = '20px';
-                            answer.style.opacity = '1';
                         } else {
+                            answer.style.opacity = '0'; // Start fade out
                             answer.style.maxHeight = null;
-                            // Delay removing padding/opacity until transition ends for smoother closing
+                            // Delay removing padding until transition ends for smoother closing
                             setTimeout(() => {
                                 if (!item.classList.contains('active')) { // Check again in case it was reopened quickly
                                     answer.style.paddingTop = '0';
                                     answer.style.paddingBottom = '0';
-                                    answer.style.opacity = '0';
                                 }
                             }, 400); // Match transition duration
                         }
                     });
+                } else {
+                     console.warn("FAQ item missing required elements:", item);
                 }
             });
 
@@ -1229,51 +1261,57 @@
                 const nextButton = carousel.querySelector('.next');
                 let currentIndex = 0;
                 let intervalId = null; // For auto-play
+                const autoPlayDelay = 5000; // 5 seconds
 
                 function showImage(index) {
+                    if (index < 0 || index >= images.length) return; // Boundary check
                     images.forEach((img, i) => {
-                        img.classList.remove('active');
-                        if (i === index) {
-                            img.classList.add('active');
-                        }
+                        img.classList.toggle('active', i === index);
                     });
+                    currentIndex = index; // Update current index
                 }
 
                 function nextImage() {
-                    currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
-                    showImage(currentIndex);
+                    const nextIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+                    showImage(nextIndex);
                 }
 
                 function prevImage() {
-                     currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
-                     showImage(currentIndex);
-                }
-
-                function startAutoPlay(delay = 5000) { // Auto-play every 5 seconds
-                    stopAutoPlay(); // Clear existing interval
-                    if (images.length > 1) {
-                        intervalId = setInterval(nextImage, delay);
-                    }
+                     const prevIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+                     showImage(prevIndex);
                 }
 
                 function stopAutoPlay() {
                     clearInterval(intervalId);
+                    intervalId = null; // Explicitly clear the ID
                 }
+
+                function startAutoPlay() {
+                    stopAutoPlay(); // Clear any existing interval first
+                    if (images.length > 1) { // Only autoplay if more than one image
+                        intervalId = setInterval(nextImage, autoPlayDelay);
+                    }
+                }
+
 
                 if (prevButton && nextButton && images.length > 0) {
                     prevButton.addEventListener('click', () => {
+                        stopAutoPlay(); // Stop autoplay on manual interaction
                         prevImage();
-                        startAutoPlay(); // Restart timer on manual navigation
+                        // Optionally restart autoplay after a delay or on mouseleave
+                        // startAutoPlay(); // Restart immediately
                     });
 
                     nextButton.addEventListener('click', () => {
+                        stopAutoPlay(); // Stop autoplay on manual interaction
                         nextImage();
-                        startAutoPlay(); // Restart timer on manual navigation
+                        // Optionally restart autoplay
+                        // startAutoPlay();
                     });
 
-                    // Pause autoplay on hover
+                    // Pause autoplay on hover, restart on mouse leave
                     carousel.addEventListener('mouseenter', stopAutoPlay);
-                    carousel.addEventListener('mouseleave', startAutoPlay);
+                    carousel.addEventListener('mouseleave', startAutoPlay); // Restart when mouse leaves
 
                     // Initialize first image and start autoplay
                     showImage(currentIndex);
@@ -1283,6 +1321,8 @@
                     // If no buttons, just show the first image
                      showImage(0);
                 }
+            } else {
+                console.log("Image carousel element not found.");
             }
 
 
@@ -1291,17 +1331,35 @@
             if (scrollTopBtn) {
                 const scrollThreshold = 300; // Show button after scrolling 300px
 
-                window.addEventListener('scroll', () => {
+                const checkScroll = () => {
                     if (window.scrollY > scrollThreshold) {
-                        scrollTopBtn.classList.add('visible');
+                        if (!scrollTopBtn.classList.contains('visible')) {
+                            scrollTopBtn.style.display = 'block'; // Make it block first
+                            requestAnimationFrame(() => { // Then trigger opacity transition
+                                scrollTopBtn.classList.add('visible');
+                            });
+                        }
                     } else {
-                        scrollTopBtn.classList.remove('visible');
+                        if (scrollTopBtn.classList.contains('visible')) {
+                            scrollTopBtn.classList.remove('visible');
+                            // Wait for transition to finish before setting display none
+                            scrollTopBtn.addEventListener('transitionend', () => {
+                                if (!scrollTopBtn.classList.contains('visible')) { // Check again in case it became visible again quickly
+                                    scrollTopBtn.style.display = 'none';
+                                }
+                            }, { once: true });
+                        }
                     }
-                }, { passive: true }); // Use passive listener for performance
+                };
+
+                window.addEventListener('scroll', checkScroll, { passive: true }); // Use passive listener for performance
+                checkScroll(); // Initial check on load
 
                 scrollTopBtn.addEventListener('click', () => {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
+            } else {
+                console.log("Scroll top button element not found.");
             }
 
             // --- Update Footer Year ---
@@ -1310,11 +1368,11 @@
                 yearSpan.textContent = new Date().getFullYear();
             }
 
-            // --- Active Nav Link Highlighting (Simplified) ---
-            const sections = document.querySelectorAll('main section[id]'); // Select only sections within main with an ID
+            // --- Active Nav Link Highlighting ---
+            const sections = document.querySelectorAll('main section[id]');
             const navLinks = document.querySelectorAll('#main-nav a');
-            const nav = document.querySelector('nav');
-            const navHeight = nav ? nav.offsetHeight : 70;
+            const navElement = document.querySelector('nav');
+            const navHeight = navElement ? navElement.offsetHeight : 70; // Use variable from CSS if possible
 
             const activateLink = (targetId) => {
                  navLinks.forEach(link => {
@@ -1326,10 +1384,11 @@
                 });
             };
 
+            // Adjust rootMargin: top offset slightly below nav, bottom offset to trigger earlier
             const observerOptions = {
-                root: null,
-                rootMargin: `-${navHeight + 10}px 0px -60% 0px`, // Adjust trigger zone: slightly below nav, trigger when section is ~40% visible from top
-                threshold: 0
+                root: null, // viewport
+                rootMargin: `-${navHeight + 20}px 0px -55% 0px`, // Trigger when section top is 20px below nav, or when bottom is 55% from viewport bottom
+                threshold: 0 // Trigger as soon as any part enters/leaves the rootMargin zone
             };
 
             let lastActivatedSectionId = null; // Track the last activated section
@@ -1337,12 +1396,16 @@
             const sectionObserver = new IntersectionObserver((entries, observer) => {
                 let intersectingEntry = null;
 
-                // Find the entry most visible within the trigger zone
+                // Find the entry that is *most* visible within the viewport, prioritizing those lower down
+                let maxRatio = 0;
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Prioritize the entry that is further down the page if multiple are intersecting
-                        if (!intersectingEntry || entry.target.offsetTop > intersectingEntry.target.offsetTop) {
+                        // Use intersectionRatio to find the most visible, break ties by position
+                        if (entry.intersectionRatio > maxRatio) {
+                            maxRatio = entry.intersectionRatio;
                             intersectingEntry = entry;
+                        } else if (entry.intersectionRatio === maxRatio && entry.target.offsetTop > intersectingEntry.target.offsetTop) {
+                            intersectingEntry = entry; // Prioritize lower section if ratios are equal
                         }
                     }
                 });
@@ -1352,57 +1415,71 @@
                     if (currentSectionId !== lastActivatedSectionId) {
                         activateLink(currentSectionId);
                         lastActivatedSectionId = currentSectionId;
+                        // console.log("Activated:", currentSectionId);
                     }
-                } else if (window.scrollY < window.innerHeight * 0.4) {
-                    // If nothing is intersecting and we are near the top, activate 'home'
-                    if ('home' !== lastActivatedSectionId) {
+                } else {
+                    // If no section is actively intersecting according to the observer's adjusted rootMargin,
+                    // check if we are very close to the top of the page.
+                    if (window.scrollY < window.innerHeight * 0.3 && lastActivatedSectionId !== 'home') {
                         activateLink('home');
                         lastActivatedSectionId = 'home';
+                        // console.log("Activated: home (near top)");
                     }
+                    // If scrolled down and nothing is intersecting (e.g., in footer), keep last active link highlighted.
                 }
 
             }, observerOptions);
 
-            sections.forEach(section => {
-                sectionObserver.observe(section);
-            });
+            if (sections.length > 0 && navLinks.length > 0) {
+                sections.forEach(section => {
+                    sectionObserver.observe(section);
+                });
 
-             // Initial check on load
-             setTimeout(() => {
-                 let initialSectionFound = false;
-                 sections.forEach(section => {
-                     const rect = section.getBoundingClientRect();
-                     // Check if section top is within the initial viewport activation zone
-                     if (rect.top >= 0 && rect.top < window.innerHeight * 0.4) {
-                         activateLink(section.id);
-                         lastActivatedSectionId = section.id;
-                         initialSectionFound = true;
-                         return; // Activate the first one found
-                     }
-                 });
-                 // If no section found in the initial zone (e.g., scrolled down on refresh), activate home if at top
-                 if (!initialSectionFound && window.scrollY < window.innerHeight * 0.4) {
-                     activateLink('home');
-                     lastActivatedSectionId = 'home';
-                 } else if (!initialSectionFound) {
-                     // If scrolled down, manually check which section is most prominent
-                     let maxVisibleArea = 0;
-                     let mostVisibleSectionId = 'home'; // Default to home
+                // Initial check on load with a slight delay for accurate layout calculation
+                setTimeout(() => {
+                    let initialSectionFound = false;
+                    let mostVisibleSectionId = 'home'; // Default
+                    let maxVisibleArea = -1; // Use -1 to ensure first section check works
 
-                     sections.forEach(sec => {
-                         const rect = sec.getBoundingClientRect();
-                         const visibleHeight = Math.max(0, Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, navHeight));
-                         const visibleArea = visibleHeight * rect.width; // Simple area calculation
+                    sections.forEach(section => {
+                        const rect = section.getBoundingClientRect();
+                        const viewportHeight = window.innerHeight;
+                        // Calculate visible height within viewport, considering nav height
+                        const visibleTop = Math.max(navHeight, rect.top);
+                        const visibleBottom = Math.min(viewportHeight, rect.bottom);
+                        const visibleHeight = Math.max(0, visibleBottom - visibleTop);
 
-                         if (visibleArea > maxVisibleArea && rect.top < window.innerHeight * 0.6) { // Check if mostly visible
-                             maxVisibleArea = visibleArea;
-                             mostVisibleSectionId = sec.id;
-                         }
-                     });
-                     activateLink(mostVisibleSectionId);
-                     lastActivatedSectionId = mostVisibleSectionId;
-                 }
-             }, 100); // Short delay for layout stability
+                        if (visibleHeight > 0) {
+                            // Check if this section is more visible than the previous max
+                            // Prioritize sections closer to the top activation zone (around navHeight)
+                            const topProximity = Math.abs(rect.top - navHeight);
+                            const currentVisibleArea = visibleHeight; // Use height as proxy for area
+
+                            // Simple check: if a section starts near the top, prioritize it
+                            if (rect.top >= 0 && rect.top < viewportHeight * 0.5) {
+                                if (!initialSectionFound || rect.top < document.getElementById(mostVisibleSectionId).getBoundingClientRect().top) {
+                                     mostVisibleSectionId = section.id;
+                                     initialSectionFound = true;
+                                }
+                            }
+                            // Fallback: find the one with the largest visible area if no top section found
+                            else if (!initialSectionFound && currentVisibleArea > maxVisibleArea) {
+                                maxVisibleArea = currentVisibleArea;
+                                mostVisibleSectionId = section.id;
+                            }
+                        }
+                    });
+
+                    // Activate the determined section
+                    activateLink(mostVisibleSectionId);
+                    lastActivatedSectionId = mostVisibleSectionId;
+                    // console.log("Initial Activation:", mostVisibleSectionId);
+
+                }, 150); // Increased delay slightly
+
+            } else {
+                 console.warn("Active nav highlighting: Sections or nav links not found.");
+            }
 
 
         }); // End DOMContentLoaded
