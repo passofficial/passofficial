@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PASS PCEP - Progressive Academic Student Society</title>
+    <title>PASS PCEP - Progressive Academic Student Society | Plymouth-Canton</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -17,28 +17,29 @@
     <style>
         /* --- Global Styles & Variables --- */
         :root {
-            /* Updated Color Palette */
-            --primary-color: #0077cc; /* Professional Blue */
-            --primary-dark: #005fa3;
-            --primary-light: #e6f2ff; /* Lighter blue for backgrounds/accents */
-            --secondary-color: #ffc107; /* Accent Gold/Yellow (Optional Use) */
-            --secondary-dark: #d39e00;
+            /* --- NEW Red Theme Color Palette --- */
+            --primary-color: #B71C1C; /* Deep Red */
+            --primary-dark: #8a0000; /* Darker Red */
+            --primary-light: #FFEBEE; /* Very Light Red/Pink */
+            --accent-color: #D4AF37; /* Muted Gold (Use sparingly) */
+            --accent-dark: #b38f2d;
+
             --white-color: #FFFFFF;
-            --light-gray: #f8f9fa; /* Very light background */
-            --medium-gray: #dee2e6; /* Borders */
-            --dark-gray: #6c757d;   /* Subdued text */
-            --dark-color: #343a40;   /* Main text color */
-            --black-color: #212529;  /* Headings */
+            --light-gray: #f4f4f4; /* Lighter neutral background */
+            --medium-gray: #cccccc; /* Borders, subtle dividers */
+            --dark-gray: #666666;   /* Subdued text */
+            --dark-color: #333333;   /* Main text color */
+            --black-color: #1a1a1a;  /* Headings */
 
             /* Fonts */
-            --font-primary: 'Lato', sans-serif;
-            --font-headings: 'Poppins', sans-serif;
+            --font-primary: 'Roboto', sans-serif; /* Changed to Roboto for body */
+            --font-headings: 'Montserrat', sans-serif; /* Changed to Montserrat for headings */
 
             /* UI Elements */
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.06);
-            --shadow-md: 0 5px 15px rgba(0,0,0,0.1);
+            --shadow-sm: 0 2px 5px rgba(0,0,0,0.08);
+            --shadow-md: 0 6px 12px rgba(0,0,0,0.12);
             --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
-            --border-radius: 8px;
+            --border-radius: 6px; /* Slightly less rounded */
             --transition-speed: 0.3s;
 
             /* Section Backgrounds */
@@ -54,16 +55,16 @@
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 70px; /* Adjust based on final nav height */
+            scroll-padding-top: 75px; /* Adjust based on final nav height */
         }
 
         body {
             font-family: var(--font-primary);
             line-height: 1.7;
             color: var(--dark-color);
-            background-color: var(--light-gray); /* Fallback */
-            /* Subtle Background Pattern or keep image */
-            background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('https://dt5602vnjxv0c.cloudfront.net/portals/54365/images/about%20us/pcep/hs_pcep_aerial_09-13-2013.jpg');
+            background-color: var(--light-gray);
+            /* Subtle Texture Overlay on PCEP Background */
+            background-image: linear-gradient(rgba(244, 244, 244, 0.88), rgba(244, 244, 244, 0.88)), url('https://dt5602vnjxv0c.cloudfront.net/portals/54365/images/about%20us/pcep/hs_pcep_aerial_09-13-2013.jpg');
             background-size: cover;
             background-position: center center;
             background-attachment: fixed;
@@ -87,93 +88,98 @@
 
         h1, h2, h3, h4 {
             font-family: var(--font-headings);
-            font-weight: 600; /* Slightly lighter than bold */
+            font-weight: 700; /* Bolder headings */
             line-height: 1.3;
             margin-bottom: 1rem;
             color: var(--black-color);
         }
 
-        h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 700; }
-        h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); color: var(--primary-dark); margin-bottom: 1.8rem; font-weight: 600;}
-        h3 { font-size: clamp(1.2rem, 3vw, 1.5rem); font-weight: 500; margin-bottom: 0.8rem; color: var(--primary-color);}
-        h4 { font-size: clamp(1rem, 2.5vw, 1.2rem); font-weight: 500; color: var(--dark-color); margin-bottom: 0.5rem;}
+        h1 { font-size: clamp(2.6rem, 5.5vw, 3.8rem); }
+        h2 { font-size: clamp(2rem, 4.5vw, 2.8rem); color: var(--primary-dark); margin-bottom: 2rem; font-weight: 700;}
+        h3 { font-size: clamp(1.4rem, 3.5vw, 1.7rem); font-weight: 600; margin-bottom: 1rem; color: var(--primary-color);}
+        h4 { font-size: clamp(1.1rem, 3vw, 1.3rem); font-weight: 600; color: var(--dark-color); margin-bottom: 0.6rem;}
 
 
         p {
-            margin-bottom: 1.2rem;
-            color: var(--dark-color); /* Slightly darker than original #555 */
+            margin-bottom: 1.3rem;
+            color: var(--dark-color);
+            font-size: 1.05rem; /* Slightly larger base paragraph size */
         }
 
         img {
             max-width: 100%;
             height: auto;
             display: block;
-            border-radius: var(--border-radius); /* Add subtle rounding to images if needed */
+            border-radius: var(--border-radius);
         }
 
         /* --- Utility Classes --- */
         .container {
-            max-width: 1140px;
+            max-width: 1180px; /* Slightly wider container */
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 25px;
         }
 
         .cta-button {
             display: inline-block;
             background: linear-gradient(to right, var(--primary-color), var(--primary-dark));
             color: var(--white-color);
-            padding: 14px 35px; /* Slightly more padding */
+            padding: 15px 40px; /* Generous padding */
             border: none;
             border-radius: 50px; /* Pill shape */
             font-family: var(--font-headings);
-            font-weight: 500;
-            font-size: 1rem;
+            font-weight: 600; /* Bolder button text */
+            font-size: 1.05rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.2px;
             cursor: pointer;
             transition: all var(--transition-speed) ease;
             text-decoration: none;
-            margin-top: 1rem;
+            margin-top: 1.2rem;
             box-shadow: var(--shadow-sm);
         }
 
         .cta-button:hover {
             background: linear-gradient(to right, var(--primary-dark), var(--primary-color));
             text-decoration: none;
-            transform: translateY(-3px);
+            transform: translateY(-3px) scale(1.02); /* Add subtle scale */
             box-shadow: var(--shadow-md);
             color: var(--white-color);
         }
 
         .section-highlight {
              background-color: var(--primary-light);
-             border-left: 5px solid var(--primary-color);
-             padding: 40px;
+             border-left: 6px solid var(--primary-color);
+             padding: 45px;
              border-radius: var(--border-radius);
-             margin-bottom: 40px;
+             margin-bottom: 50px;
              box-shadow: var(--shadow-md);
         }
 
         /* --- Header --- */
         header {
-            background: linear-gradient(to bottom, rgba(0, 95, 163, 0.8), rgba(0, 119, 204, 0.7)), var(--primary-dark); /* Use primary color gradient */
+            /* Use a solid dark red or a subtle gradient */
+            background: var(--primary-dark);
+            /* background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%); */
             color: var(--white-color);
-            padding: 1.5rem 0; /* More padding */
+            padding: 2rem 0; /* More padding */
             text-align: center;
             box-shadow: var(--shadow-md);
+            border-bottom: 3px solid var(--accent-color); /* Accent border */
         }
 
         header h1 {
             font-weight: 700;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.5rem;
             color: var(--white-color);
-            letter-spacing: 1px;
-            font-size: clamp(2.2rem, 4.5vw, 3rem);
+            letter-spacing: 1.5px;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
         }
 
         header p {
-            font-size: clamp(1rem, 2.5vw, 1.3rem); /* Slightly larger */
-            font-style: normal; /* Remove italic */
+            font-size: clamp(1.1rem, 2.8vw, 1.4rem);
+            font-family: var(--font-primary); /* Use body font */
             font-weight: 400;
             opacity: 0.95;
             margin-bottom: 0;
@@ -182,13 +188,13 @@
 
         /* --- Navigation --- */
         nav {
-            background-color: var(--white-color); /* White background */
-            padding: 0.5rem 0;
+            background-color: var(--white-color);
+            padding: 0; /* Remove padding, use height and flex align */
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: var(--shadow-sm); /* Lighter shadow */
-            height: 65px; /* Adjusted height */
+            box-shadow: var(--shadow-sm);
+            height: 70px; /* Fixed height */
             display: flex;
             align-items: center;
             border-bottom: 1px solid var(--medium-gray);
@@ -204,7 +210,7 @@
         .nav-brand {
             color: var(--primary-dark);
             font-family: var(--font-headings);
-            font-size: 1.7rem; /* Larger brand */
+            font-size: 1.8rem;
             font-weight: 700;
             text-decoration: none;
             transition: color var(--transition-speed) ease;
@@ -219,54 +225,51 @@
             justify-content: flex-end;
             align-items: center;
             flex-grow: 1;
+            height: 100%; /* Ensure links can fill height */
         }
 
         #main-nav li {
-            margin: 0 8px; /* Slightly less margin */
+            margin: 0; /* Remove margin, use padding on links */
+            height: 100%;
+            display: flex; /* Align link vertically */
+            align-items: center;
         }
 
         #main-nav a {
-            color: var(--dark-color); /* Dark text on white bg */
+            color: var(--dark-color);
+            font-family: var(--font-headings); /* Use heading font */
             font-weight: 500;
-            padding: 10px 18px; /* Adjusted padding */
-            border-radius: var(--border-radius);
+            padding: 0 22px; /* Horizontal padding */
+            height: 100%; /* Fill list item height */
+            display: flex;
+            align-items: center;
+            border-bottom: 3px solid transparent; /* Placeholder for active border */
             transition: all var(--transition-speed) ease;
             text-decoration: none;
-            font-size: 0.95rem;
-            position: relative; /* For potential underline effect */
+            font-size: 1rem;
+            position: relative;
         }
 
-        #main-nav a:hover,
-        #main-nav a.active {
-            background-color: var(--primary-light); /* Light blue background */
-            color: var(--primary-dark); /* Dark blue text */
+        #main-nav a:hover {
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
             text-decoration: none;
+            border-bottom-color: var(--primary-color); /* Show border on hover */
         }
-        /* Optional: Add subtle underline on hover/active */
-        #main-nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 5px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--primary-color);
-            transition: width var(--transition-speed) ease;
+        #main-nav a.active {
+            color: var(--primary-dark);
+            font-weight: 600;
+            border-bottom-color: var(--primary-color); /* Persistent border for active */
+            background-color: var(--primary-light);
         }
-        #main-nav a:hover::after,
-        #main-nav a.active::after {
-            width: 60%; /* Adjust width of underline */
-        }
-
 
         /* Mobile Menu Button (Burger) */
         .menu-toggle {
             display: none;
             background: none;
             border: none;
-            color: var(--primary-dark); /* Match nav text */
-            font-size: 2rem; /* Larger icon */
+            color: var(--primary-dark);
+            font-size: 2.2rem; /* Larger icon */
             cursor: pointer;
             padding: 5px;
             line-height: 1;
@@ -274,54 +277,56 @@
 
         /* --- Main Content & Sections --- */
         main {
-            padding-top: 0; /* No extra padding needed */
+            padding-top: 0;
         }
 
         .hero {
-            color: var(--black-color); /* Darker text for better contrast */
+            color: var(--black-color);
             text-align: center;
-            padding: 120px 20px 100px 20px; /* Increased padding */
-            min-height: 65vh; /* Slightly taller */
+            padding: 130px 25px 110px 25px; /* Increased padding */
+            min-height: 70vh; /* Taller */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            /* Use a semi-transparent overlay on the body background */
-            background: rgba(255, 255, 255, 0.6); /* Adjust opacity as needed */
-            backdrop-filter: blur(4px); /* Optional: blur effect */
+            /* Use the body background overlay */
+            background: none; /* Remove specific background */
         }
 
         .hero h1 {
             color: var(--black-color);
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.15);
+            margin-bottom: 1.8rem;
+            font-weight: 700;
         }
 
         .hero p {
-            font-size: clamp(1.1rem, 3vw, 1.4rem); /* Larger hero text */
-            max-width: 800px; /* Wider text block */
-            margin-bottom: 2.5rem; /* More space before button */
+            font-size: clamp(1.2rem, 3.2vw, 1.5rem); /* Larger hero text */
+            max-width: 850px; /* Wider text block */
+            margin-bottom: 2.8rem; /* More space before button */
             color: var(--dark-color);
             font-weight: 400;
+            line-height: 1.6;
         }
 
         .hero .cta-button {
-             margin-top: 1.5rem;
+             margin-top: 1.8rem;
         }
 
 
         .content-area {
-            padding-top: 60px;
-            padding-bottom: 60px;
+            padding-top: 70px;
+            padding-bottom: 70px;
         }
 
         section {
-            margin-bottom: 50px; /* Increased spacing */
-            padding: 50px 40px; /* Increased padding */
+            margin-bottom: 60px; /* Increased spacing */
+            padding: 60px 45px; /* Increased padding */
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-md);
             transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-            /* Alternating Backgrounds */
+            position: relative; /* For potential pseudo-elements */
+            overflow: hidden; /* Contain pseudo-elements */
         }
         section:nth-of-type(odd) {
              background-color: var(--section-bg-white);
@@ -335,37 +340,38 @@
 
 
         section:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px);
             box-shadow: var(--shadow-lg); /* Enhanced hover shadow */
         }
 
         section h2 {
             margin-top: 0;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--primary-light); /* Subtle border */
-            margin-bottom: 30px; /* More space after heading */
+            padding-bottom: 18px;
+            border-bottom: 3px solid var(--primary-light); /* Thicker, lighter border */
+            margin-bottom: 35px; /* More space after heading */
             display: flex;
             align-items: center;
-            gap: 15px; /* Space between icon and text */
+            gap: 18px; /* Space between icon and text */
         }
          /* Font Awesome Icons before H2 */
         section h2 i.fa-solid {
             color: var(--primary-color);
-            font-size: 1.8rem; /* Adjust icon size */
-            width: 30px; /* Ensure alignment */
+            font-size: 2rem; /* Adjust icon size */
+            width: 35px; /* Ensure alignment */
             text-align: center;
+            flex-shrink: 0; /* Prevent icon shrinking */
         }
 
         section ul {
             list-style: none;
-            padding-left: 5px;
+            padding-left: 10px; /* More indent */
         }
 
         section ul li {
-            margin-bottom: 1rem;
-            padding-left: 35px; /* Space for FA icon */
+            margin-bottom: 1.1rem;
+            padding-left: 40px; /* Space for FA icon */
             position: relative;
-            font-size: 1.05rem; /* Slightly larger list item text */
+            font-size: 1.1rem; /* Slightly larger list item text */
         }
         /* Custom bullet point using Font Awesome */
         section ul li::before {
@@ -375,62 +381,113 @@
             color: var(--primary-dark);
             position: absolute;
             left: 5px;
-            top: 4px; /* Adjust vertical alignment */
-            font-size: 1.1em;
+            top: 6px; /* Adjust vertical alignment */
+            font-size: 1.2em;
+            transition: transform 0.2s ease;
+        }
+        section ul li:hover::before {
+            transform: scale(1.1); /* Subtle hover effect on icon */
         }
 
         /* --- Specific Section Styling --- */
 
+        /* Image Carousel */
+        .image-carousel {
+            position: relative;
+            max-width: 600px; /* Adjust max width as needed */
+            margin: 2rem auto 2.5rem auto; /* Center and add space */
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+        }
+        .carousel-images img {
+            display: none; /* Hide all images initially */
+            width: 100%;
+            border-radius: 0; /* Remove radius from image if container has it */
+        }
+        .carousel-images img.active {
+            display: block; /* Show only the active image */
+        }
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            font-size: 1.8rem;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+            z-index: 10;
+            width: 45px;
+            height: 45px;
+            line-height: 30px; /* Adjust for vertical centering */
+            text-align: center;
+        }
+        .carousel-button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .prev { left: 15px; }
+        .next { right: 15px; }
+
+
         /* Why PASS? - Card Layout Example */
         #about .why-pass-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin-top: 2.5rem;
         }
         #about .why-pass-item {
             background-color: var(--white-color);
-            padding: 20px;
+            padding: 25px;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-sm);
-            border-left: 4px solid var(--primary-color);
+            border-bottom: 4px solid var(--primary-color); /* Border on bottom */
             transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-align: center; /* Center content */
         }
          #about .why-pass-item:hover {
-             transform: translateY(-3px);
+             transform: translateY(-5px);
              box-shadow: var(--shadow-md);
          }
         #about .why-pass-item i {
-            font-size: 1.5rem;
+            font-size: 2.2rem; /* Larger icon */
             color: var(--primary-color);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             display: block;
         }
          #about .why-pass-item h4 {
-             margin-bottom: 8px;
-             font-size: 1.1rem;
+             margin-bottom: 10px;
+             font-size: 1.2rem;
              color: var(--primary-dark);
+             font-weight: 600;
          }
          #about .why-pass-item p {
-             font-size: 0.95rem;
+             font-size: 1rem;
              margin-bottom: 0;
              color: var(--dark-gray);
+             line-height: 1.6;
          }
 
 
         /* Upcoming Events - Card Layout */
         #events .events-grid {
              display: grid;
-             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-             gap: 25px;
+             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Slightly wider cards */
+             gap: 30px;
         }
         .event-card {
             background-color: var(--white-color);
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-sm);
-            padding: 25px;
-            border-top: 4px solid var(--primary-color);
+            padding: 30px;
+            border-left: 5px solid var(--primary-color); /* Border on left */
             transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column; /* Stack content vertically */
         }
          .event-card:hover {
              transform: translateY(-5px);
@@ -438,31 +495,34 @@
          }
         .event-card h4 {
             color: var(--primary-dark);
-            margin-bottom: 0.5rem;
-            font-size: 1.25rem;
+            margin-bottom: 0.6rem;
+            font-size: 1.35rem; /* Larger event title */
+            font-weight: 600;
         }
         .event-date {
-            font-weight: 600; /* Bolder date */
+            font-weight: 600;
             color: var(--dark-gray);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
             display: block;
             border-bottom: 1px dashed var(--medium-gray);
-            padding-bottom: 0.8rem;
+            padding-bottom: 1rem;
         }
          .event-date i {
-             margin-right: 8px;
+             margin-right: 10px;
              color: var(--primary-color);
          }
          .event-card p {
-             font-size: 0.95rem;
+             font-size: 1rem;
              margin-bottom: 0;
+             flex-grow: 1; /* Allow description to take space */
+             color: var(--dark-gray);
          }
 
         /* --- FAQ Section --- */
         .faq-item {
             border-bottom: 1px solid var(--medium-gray);
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
         }
          .faq-item:last-child {
              border-bottom: none;
@@ -474,10 +534,10 @@
             border: none;
             width: 100%;
             text-align: left;
-            padding: 18px 5px; /* More padding */
+            padding: 20px 10px 20px 5px; /* Adjusted padding */
             font-family: var(--font-headings);
-            font-size: 1.15rem; /* Slightly larger */
-            font-weight: 500;
+            font-size: 1.2rem; /* Larger question */
+            font-weight: 600; /* Bolder question */
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -490,54 +550,98 @@
         }
 
         .faq-toggle { /* The +/- icon using Font Awesome */
-            font-size: 1.2rem; /* Adjust size */
+            font-size: 1.3rem;
             font-weight: bold;
             color: var(--primary-color);
             transition: transform var(--transition-speed) ease;
-            width: 20px; /* Ensure space */
+            width: 25px; /* Ensure space */
             text-align: center;
+            flex-shrink: 0;
         }
 
         .faq-answer {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease-out, padding 0.4s ease-out; /* Smoother transition */
-            padding: 0 20px; /* Padding for content */
-            font-size: 1rem;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+            padding: 0 25px; /* Padding for content */
+            font-size: 1.05rem;
         }
         .faq-answer p {
-            margin-bottom: 1rem;
-            color: var(--dark-gray); /* Slightly lighter text for answer */
-            padding-top: 10px; /* Space after opening */
+            margin-bottom: 1.2rem;
+            color: var(--dark-gray);
+            padding-top: 15px; /* Space after opening */
+            line-height: 1.7;
         }
 
         /* State when FAQ item is open */
         .faq-item.active .faq-question {
             color: var(--primary-dark);
-            font-weight: 600;
         }
         .faq-item.active .faq-toggle {
-            transform: rotate(135deg); /* Makes + into a tilted x */
+            transform: rotate(45deg); /* Makes + into a 'x' */
         }
         .faq-item.active .faq-answer {
-            max-height: 400px; /* Increased max height */
-            padding: 0px 20px 20px 20px; /* Adjust padding */
+            max-height: 450px; /* Increased max height */
+            padding: 0px 25px 25px 25px; /* Adjust padding */
         }
 
+        /* --- Join Us Section --- */
+        #join h2 i.fa-solid { color: var(--accent-color); } /* Use accent for Join icon */
+        #join { border-left-color: var(--accent-color); } /* Use accent for Join border */
+
+        .google-form-embed {
+            margin-top: 2.5rem;
+            padding: 30px;
+            background-color: var(--white-color);
+            border: 1px solid var(--medium-gray);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+        }
+        .google-form-embed h4 {
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+        .google-form-embed p {
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+        }
+        .google-form-placeholder {
+            border: 2px dashed var(--medium-gray);
+            padding: 40px 20px;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            font-style: italic;
+            border-radius: var(--border-radius);
+        }
+        /* Style the actual iframe when embedded */
+        .google-form-embed iframe {
+            width: 100%;
+            min-height: 500px; /* Adjust as needed */
+            border: none;
+            border-radius: var(--border-radius);
+        }
+
+
         /* --- Contact Section --- */
+        #contact ul { padding-left: 5px; }
         #contact ul li {
-            padding-left: 40px; /* Adjust for FA icons */
-            margin-bottom: 1.2rem;
+            padding-left: 45px; /* Adjust for FA icons */
+            margin-bottom: 1.5rem; /* More spacing */
+            font-size: 1.1rem;
+            display: flex; /* Align icon and text nicely */
+            align-items: center;
         }
         #contact ul li::before {
              font-family: 'Font Awesome 6 Free';
              font-weight: 900;
              position: absolute;
              left: 5px;
-             top: 4px;
-             font-size: 1.2em;
+             top: 50%;
+             transform: translateY(-50%);
+             font-size: 1.4em; /* Larger icons */
              color: var(--primary-dark);
-             width: 25px; /* Ensure alignment */
+             width: 30px; /* Ensure alignment */
              text-align: center;
         }
         #contact ul li.email::before { content: '\f0e0'; } /* Envelope */
@@ -546,101 +650,99 @@
         #contact ul li.office::before { content: '\f1ad'; } /* Building */
         #contact ul li.social::before { content: '\f16d'; } /* Instagram */
 
-        #contact a.social-icon {
-            color: var(--primary-color);
-            font-size: 1.5rem;
-            margin: 0 10px;
-            transition: color 0.3s ease;
-        }
-        #contact a.social-icon:hover {
-            color: var(--primary-dark);
-        }
+        #contact a { word-break: break-all; } /* Prevent long links overflowing */
 
         /* Basic Contact Form Styling (Demo) */
          .contact-form-container {
-             margin-top: 2.5rem;
-             padding: 25px;
+             margin-top: 3rem;
+             padding: 30px;
              background-color: var(--white-color);
              border-radius: var(--border-radius);
              box-shadow: var(--shadow-sm);
              border: 1px solid var(--medium-gray);
          }
          .contact-form-container h4 {
-             margin-bottom: 1.5rem;
+             margin-bottom: 1.8rem;
              text-align: center;
              color: var(--primary-dark);
+             font-size: 1.4rem;
          }
          .form-group {
-             margin-bottom: 1.5rem;
+             margin-bottom: 1.8rem;
          }
          .form-group label {
              display: block;
-             margin-bottom: 0.5rem;
+             margin-bottom: 0.6rem;
              font-weight: 600;
              color: var(--dark-color);
+             font-size: 1rem;
          }
          .form-group input[type="text"],
          .form-group input[type="email"],
          .form-group textarea {
              width: 100%;
-             padding: 12px;
+             padding: 14px; /* More padding */
              border: 1px solid var(--medium-gray);
              border-radius: 4px;
              font-family: var(--font-primary);
              font-size: 1rem;
-             transition: border-color 0.3s ease;
+             transition: border-color 0.3s ease, box-shadow 0.3s ease;
+             background-color: #fdfdfd; /* Slightly off-white */
          }
          .form-group input[type="text"]:focus,
          .form-group input[type="email"]:focus,
          .form-group textarea:focus {
              border-color: var(--primary-color);
              outline: none;
-             box-shadow: 0 0 0 2px var(--primary-light);
+             box-shadow: 0 0 0 3px var(--primary-light);
+             background-color: var(--white-color);
          }
          .form-group textarea {
              resize: vertical;
-             min-height: 100px;
+             min-height: 120px;
          }
          .form-group button.cta-button {
-             background: var(--primary-color); /* Use primary color */
-             font-size: 1rem;
-             width: 100%; /* Full width button */
-             padding: 15px;
+             background: var(--primary-color);
+             font-size: 1.05rem;
+             width: 100%;
+             padding: 16px;
+             margin-top: 0.5rem; /* Adjust margin */
          }
          .form-group button.cta-button:hover {
              background: var(--primary-dark);
          }
          .form-note {
              display: block;
-             margin-top: 1rem;
+             margin-top: 1.2rem;
              text-align: center;
-             font-size: 0.9rem;
+             font-size: 0.95rem;
              color: var(--dark-gray);
          }
 
 
         /* --- Footer --- */
         footer {
-            background-color: var(--dark-color);
+            background-color: var(--dark-color); /* Dark background */
             color: var(--light-gray);
             text-align: center;
-            padding: 3rem 0; /* More padding */
-            margin-top: 60px;
-            font-size: 0.95rem;
+            padding: 3.5rem 0; /* More padding */
+            margin-top: 70px;
+            font-size: 1rem;
+            border-top: 5px solid var(--primary-dark); /* Top border */
         }
 
         footer p {
-            margin-bottom: 0.8rem; /* Increased spacing */
+            margin-bottom: 1rem;
             color: var(--medium-gray);
-            line-height: 1.6;
+            line-height: 1.7;
         }
         footer .footer-highlight {
             color: var(--white-color);
-            font-weight: 500;
+            font-weight: 600; /* Bolder highlight */
         }
 
         footer a {
-            color: var(--primary-light);
+            color: var(--primary-light); /* Light red links */
             text-decoration: underline;
         }
 
@@ -648,17 +750,19 @@
             color: var(--white-color);
         }
         .footer-social-links {
-            margin-top: 1.5rem;
+            margin-top: 1.8rem;
         }
         .footer-social-links a {
             color: var(--light-gray);
-            font-size: 1.8rem; /* Larger icons */
-            margin: 0 12px;
+            font-size: 2rem; /* Larger icons */
+            margin: 0 15px;
             text-decoration: none;
-            transition: color var(--transition-speed) ease;
+            transition: color var(--transition-speed) ease, transform 0.2s ease;
+            display: inline-block; /* Allow transform */
         }
         .footer-social-links a:hover {
             color: var(--primary-color); /* Highlight on hover */
+            transform: scale(1.15); /* Scale effect */
         }
 
 
@@ -666,46 +770,56 @@
         #scrollTopBtn {
             display: none;
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 35px;
+            right: 35px;
             z-index: 999;
             border: none;
             outline: none;
             background-color: var(--primary-color);
             color: white;
             cursor: pointer;
-            padding: 0; /* Remove padding */
-            width: 45px; /* Fixed width */
-            height: 45px; /* Fixed height */
+            padding: 0;
+            width: 50px; /* Larger button */
+            height: 50px;
             border-radius: 50%;
-            font-size: 1.5rem; /* Icon size */
-            line-height: 45px; /* Center icon vertically */
-            text-align: center; /* Center icon horizontally */
+            font-size: 1.6rem; /* Icon size */
+            line-height: 50px; /* Center icon vertically */
+            text-align: center;
             box-shadow: var(--shadow-md);
-            transition: background-color var(--transition-speed) ease, opacity var(--transition-speed) ease, transform var(--transition-speed) ease;
-            opacity: 0.8;
+            transition: all var(--transition-speed) ease;
+            opacity: 0; /* Start hidden */
+        }
+        #scrollTopBtn.visible {
+            display: block;
+            opacity: 0.85;
         }
 
         #scrollTopBtn:hover {
             background-color: var(--primary-dark);
             opacity: 1;
-            transform: scale(1.1); /* Slight scale effect */
+            transform: scale(1.1);
         }
 
 
         /* --- Responsiveness --- */
         @media (max-width: 992px) {
-            html { scroll-padding-top: 65px; }
+            html { scroll-padding-top: 70px; }
             .container { max-width: 960px; }
-            section { padding: 40px 30px; }
-            h1 { font-size: 2.8rem; }
-            h2 { font-size: 2.2rem; }
+            section { padding: 50px 35px; }
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2.5rem; }
+            .hero { padding: 110px 20px 90px 20px; min-height: 60vh;}
+            #main-nav a { padding: 0 18px; font-size: 0.95rem; }
         }
 
         @media (max-width: 768px) {
-            h1 { font-size: 2.3rem; }
-            h2 { font-size: 2rem; }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2.2rem; }
+            h3 { font-size: 1.5rem; }
+            p { font-size: 1rem; }
+            section ul li { font-size: 1rem; }
             .hero { padding: 100px 20px 80px 20px; min-height: 55vh;}
+            .hero p { font-size: 1.3rem; }
 
             /* Mobile Menu Logic */
             .menu-toggle {
@@ -716,15 +830,17 @@
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 65px; /* Position below nav bar */
+                top: 70px; /* Position below nav bar */
                 left: 0;
                 width: 100%;
-                background-color: var(--white-color); /* White background */
+                background-color: var(--white-color);
                 padding: 1rem 0;
                 box-shadow: var(--shadow-md);
                 border-top: 1px solid var(--medium-gray);
-                max-height: calc(100vh - 65px); /* Limit height */
-                overflow-y: auto; /* Allow scrolling if needed */
+                max-height: calc(100vh - 70px);
+                overflow-y: auto;
+                height: auto; /* Override fixed height */
+                border-bottom: 3px solid var(--primary-color);
             }
 
             #main-nav.active {
@@ -732,45 +848,55 @@
             }
 
             #main-nav li {
-                margin: 8px 0; /* Adjusted margin */
+                margin: 0;
                 text-align: center;
                 width: 100%;
+                height: auto; /* Override fixed height */
+                display: block; /* Stack items */
             }
             #main-nav a {
                 display: block;
-                padding: 14px 20px; /* Larger tap target */
-                width: 90%;
+                padding: 15px 20px; /* Larger tap target */
+                width: 100%;
                 margin: 0 auto;
-                color: var(--dark-color); /* Ensure text color */
+                color: var(--dark-color);
+                border-bottom: none; /* Remove bottom border */
+                height: auto; /* Override fixed height */
+                justify-content: center; /* Center text */
             }
             #main-nav a:hover,
             #main-nav a.active {
                  background-color: var(--primary-color);
                  color: var(--white-color);
+                 border-bottom: none;
             }
-             #main-nav a::after { /* Hide underline on mobile */
-                 display: none;
-             }
 
-            .content-area { padding-top: 40px; padding-bottom: 40px; }
-            section { padding: 30px 20px; margin-bottom: 40px; }
-            #about .why-pass-container { grid-template-columns: 1fr; } /* Stack cards */
-            #events .events-grid { grid-template-columns: 1fr; } /* Stack event cards */
+            .content-area { padding-top: 50px; padding-bottom: 50px; }
+            section { padding: 40px 25px; margin-bottom: 45px; }
+            #about .why-pass-container { grid-template-columns: 1fr; gap: 25px; } /* Stack cards */
+            #events .events-grid { grid-template-columns: 1fr; gap: 25px; } /* Stack event cards */
+            .image-carousel { max-width: 90%; } /* Adjust carousel width */
+            .carousel-button { font-size: 1.5rem; width: 40px; height: 40px; line-height: 25px; }
+            .prev { left: 10px; }
+            .next { right: 10px; }
         }
 
         @media (max-width: 480px) {
-            header h1 { font-size: 2rem; }
-            header p { font-size: 1rem; }
-            .hero h1 { font-size: 2.1rem; }
-            .hero p { font-size: 1.1rem; }
-            .cta-button { padding: 12px 28px; font-size: 0.9rem;}
-            section { padding: 25px 15px; }
-            h2 { font-size: 1.8rem; }
-            h3 { font-size: 1.2rem; }
-            .faq-question { font-size: 1.05rem; padding: 15px 0;}
-            #scrollTopBtn { bottom: 20px; right: 20px; width: 40px; height: 40px; font-size: 1.3rem; line-height: 40px;}
-            footer { padding: 2rem 0; }
-            .footer-social-links a { font-size: 1.6rem; margin: 0 10px;}
+            header { padding: 1.5rem 0; }
+            header h1 { font-size: 2.1rem; }
+            header p { font-size: 1.1rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1.15rem; }
+            .cta-button { padding: 14px 30px; font-size: 1rem;}
+            section { padding: 30px 20px; }
+            h2 { font-size: 2rem; margin-bottom: 1.5rem; }
+            h3 { font-size: 1.4rem; }
+            .faq-question { font-size: 1.1rem; padding: 18px 5px 18px 0;}
+            #scrollTopBtn { bottom: 25px; right: 25px; width: 45px; height: 45px; font-size: 1.4rem; line-height: 45px;}
+            footer { padding: 2.5rem 0; }
+            .footer-social-links a { font-size: 1.8rem; margin: 0 12px;}
+            .contact-form-container { padding: 25px; }
+            .google-form-embed { padding: 20px; }
         }
 
     </style>
@@ -787,7 +913,7 @@
 
     <nav>
         <div class="container">
-             <a href="#home" class="nav-brand">PASS PCEP</a>
+             <a href="#home" class="nav-brand">PASS</a> <!-- Shortened Brand for Nav -->
             <button class="menu-toggle" id="mobile-menu-button" aria-label="Toggle Menu" aria-expanded="false">
                 <i class="fa-solid fa-bars"></i> <!-- Font Awesome Burger -->
             </button>
@@ -808,95 +934,109 @@
         <!-- Hero Section -->
         <section id="home" class="hero">
             <div class="container">
-                <h1>Achieve More, Together.</h1>
-                <p>Welcome to PASS, the Progressive Academic Student Society at PCEP. We're a supportive, tight-knit community for dedicated students focused on collaboration, growth, and having fun while reaching academic goals.</p>
-                <a href="#about" class="cta-button">Discover PASS</a>
+                <h1>Your Academic Home at PCEP.</h1>
+                <p>Welcome to PASS! We're the Progressive Academic Student Society – a <span class="footer-highlight" style="color: var(--primary-dark);">tight-knit, supportive community</span> for smart, motivated students across Plymouth, Canton, and Salem High Schools. Here, we collaborate, grow, achieve our goals, and have fun doing it.</p>
+                <a href="#about" class="cta-button">Discover Our Community</a>
             </div>
         </section>
 
         <!-- Content Sections -->
         <div class="container content-area">
             <section id="about">
-                <h2><i class="fa-solid fa-circle-info"></i>About PASS</h2>
-                <p>The Progressive Academic Student Society (PASS) is a dynamic school club operating within the vibrant Plymouth-Canton Educational Park (PCEP). PCEP is a unique campus hosting Canton, Plymouth, and Salem High Schools, with a diverse population of over 6,000 students. PASS is located at Plymouth High School (8400 Beck Rd, Canton, MI).</p>
-                <p>We are more than just a study group; we are a <span class="footer-highlight">community</span>. We foster a highly supportive, engaging, and fun environment where members empower each other to enhance learning strategies, share knowledge, and confidently achieve their academic aspirations.</p>
+                <h2><i class="fa-solid fa-users-line"></i>About PASS: More Than a Club</h2>
+                <p>The Progressive Academic Student Society (PASS) is a dynamic student-led club thriving within the unique <span class="footer-highlight" style="color: var(--primary-dark);">Plymouth-Canton Educational Park (PCEP)</span>. PCEP unites Canton, Plymouth, and Salem High Schools, creating a diverse environment of over 6,000 students. PASS is proudly based at <span class="footer-highlight" style="color: var(--primary-dark);">Plymouth High School (8400 Beck Rd, Canton, MI)</span>, welcoming members from all three schools.</p>
+                <p>We're not just about grades; we're about <span class="footer-highlight" style="color: var(--primary-dark);">building connections</span>. PASS fosters a genuinely supportive, engaging, and fun atmosphere where academic students empower each other. We share learning strategies, tackle challenges together, and celebrate successes as a <span class="footer-highlight" style="color: var(--primary-dark);">true community</span>.</p>
+
+                <!-- Image Carousel -->
+                <div class="image-carousel">
+                    <div class="carousel-images">
+                        <!-- === REPLACE THESE with your actual image paths/URLs === -->
+                        <img src="image1.jpeg" alt="PASS PCEP Group Photo 1" class="active">
+                        <img src="image2.jpeg" alt="PASS PCEP Activity Photo 2">
+                        <img src="image3.jpeg" alt="PASS PCEP Meeting Photo 3">
+                        <!-- === END Image Placeholders === -->
+                    </div>
+                    <button class="carousel-button prev" aria-label="Previous Image">❮</button>
+                    <button class="carousel-button next" aria-label="Next Image">❯</button>
+                </div>
 
                 <h3>Our Mission</h3>
-                <p>To cultivate a thriving culture of collaborative learning, provide valuable academic resources, and empower every student member to excel through mutual support, dedication, and a shared sense of community.</p>
+                <p>To cultivate a thriving culture of collaborative learning, provide valuable academic resources, and empower every student member to excel through mutual support, shared knowledge, and a strong sense of belonging within the PCEP community.</p>
 
                 <h3>Why Join Our Community?</h3>
                 <div class="why-pass-container">
                     <div class="why-pass-item">
-                        <i class="fa-solid fa-users"></i>
-                        <h4>Supportive Network</h4>
-                        <p>Connect with motivated peers in a welcoming, tight-knit group.</p>
+                        <i class="fa-solid fa-heart"></i>
+                        <h4>Supportive & Homey</h4>
+                        <p>Find your place in a welcoming, tight-knit group that feels like family.</p>
+                    </div>
+                     <div class="why-pass-item">
+                        <i class="fa-solid fa-people-group"></i>
+                        <h4>Connective Network</h4>
+                        <p>Collaborate with smart, motivated peers from all three PCEP schools.</p>
                     </div>
                     <div class="why-pass-item">
                         <i class="fa-solid fa-brain"></i>
-                        <h4>Sharpen Skills</h4>
-                        <p>Improve study habits, critical thinking, and academic performance.</p>
+                        <h4>Academic Growth</h4>
+                        <p>Sharpen study habits, boost understanding, and achieve your academic potential.</p>
                     </div>
                      <div class="why-pass-item">
                         <i class="fa-solid fa-book-open-reader"></i>
-                        <h4>Shared Resources</h4>
-                        <p>Access curated study materials, tips, and peer knowledge.</p>
+                        <h4>Shared Knowledge</h4>
+                        <p>Access peer insights, study materials, and effective learning strategies.</p>
                     </div>
                     <div class="why-pass-item">
                         <i class="fa-solid fa-comments"></i>
                         <h4>Develop Skills</h4>
-                        <p>Enhance teamwork, leadership, and communication abilities.</p>
-                    </div>
-                     <div class="why-pass-item">
-                        <i class="fa-solid fa-lightbulb"></i>
-                        <h4>Mentorship</h4>
-                        <p>Benefit from peer-to-peer support and guidance systems.</p>
+                        <p>Enhance teamwork, leadership, communication, and problem-solving.</p>
                     </div>
                      <div class="why-pass-item">
                         <i class="fa-solid fa-face-laugh-beam"></i>
                         <h4>Have Fun!</h4>
-                        <p>We believe learning is better when it's enjoyable and collaborative.</p>
+                        <p>We believe learning is better together – expect engaging activities and social events.</p>
                     </div>
                 </div>
             </section>
 
             <section id="activities">
-                <h2><i class="fa-solid fa-bullseye"></i>What We Do</h2>
-                <p>PASS organizes a variety of activities designed to support our members' academic journeys and build our community:</p>
+                <h2><i class="fa-solid fa-bullseye"></i>What We Do: Collaborate & Grow</h2>
+                <p>PASS isn't just talk. We organize engaging activities designed to foster academic success and build lasting connections:</p>
                 <ul>
-                    <li><strong>Focused Study Groups:</strong> Regular sessions tackling specific courses, challenging subjects, or exam preparation in a collaborative setting.</li>
-                    <li><strong>Skill-Building Workshops:</strong> Interactive sessions on time management, effective study techniques, presentation skills, college prep, and more.</li>
-                    <li><strong>Peer Support Network:</strong> Connecting students for help with homework, understanding concepts, or preparing for tests.</li>
-                    <li><strong>Resource Sharing:</strong> Members contribute and access helpful notes, study guides, and useful academic tools.</li>
-                    <li><strong>Guest Speakers & Events:</strong> Inviting teachers, counselors, alumni, or professionals for insights and advice.</li>
-                    <li><strong>Community Building Activities:</strong> Fun, relaxed events to help members connect and de-stress.</li>
+                    <li><strong>Focused Study Groups:</strong> Regular, collaborative sessions tackling specific courses (AP, Honors, etc.), challenging subjects, or exam prep (Midterms, Finals, AP Exams).</li>
+                    <li><strong>Skill-Building Workshops:</strong> Interactive sessions led by members or guests on time management, effective note-taking, research skills, college application tips, presentation practice, and more.</li>
+                    <li><strong>Peer Support Network:</strong> A core value! Connect with fellow members for help with homework, clarifying concepts, or forming study partnerships.</li>
+                    <li><strong>Resource Hub:</strong> Members contribute and access a shared pool of helpful notes, study guides, practice problems, and useful academic tools relevant to PCEP courses.</li>
+                    <li><strong>Guest Speakers & Panels:</strong> Inviting PCEP teachers, counselors, alumni, or local professionals for valuable insights, advice, and Q&A sessions.</li>
+                    <li><strong>Community & Fun Events:</strong> Relaxed social gatherings, study breaks (with pizza!), team challenges, and activities to help members connect, de-stress, and build friendships.</li>
                 </ul>
             </section>
 
              <section id="events">
-                <h2><i class="fa-solid fa-calendar-days"></i>Upcoming Events</h2>
+                <h2><i class="fa-solid fa-calendar-days"></i>Upcoming Events & Meetings</h2>
                  <div class="events-grid">
+                    <!-- Keep existing events, update dates/times if needed -->
                     <div class="event-card">
                         <h4>Midterm Prep Workshop: Advanced Calculus</h4>
-                        <span class="event-date"><i class="fa-regular fa-clock"></i>October 25, 2023 - 6:00 PM | Library Room 301</span>
+                        <span class="event-date"><i class="fa-regular fa-clock"></i>October 25, 2024 - 6:00 PM | Plymouth Library Rm 301</span>
                         <p>Join us for strategies and practice problems to ace your Calculus midterm. Led by senior members.</p>
                     </div>
                      <div class="event-card">
-                        <h4>Guest Speaker: Dr. Evelyn Reed (Physics Dept.)</h4>
-                         <span class="event-date"><i class="fa-regular fa-clock"></i>November 5, 2023 - 7:00 PM | Science Hall Auditorium</span>
-                        <p>"From Academia to Innovation" - Dr. Reed shares her journey and tips for research success.</p>
+                        <h4>Guest Speaker: PCEP College Counselor</h4>
+                         <span class="event-date"><i class="fa-regular fa-clock"></i>November 5, 2024 - 7:00 PM | Location TBD (Check Instagram)</span>
+                        <p>"Navigating the College Application Process" - Get expert tips and ask your questions!</p>
                     </div>
                      <div class="event-card">
-                        <h4>Study Skills & Planning Session</h4>
-                         <span class="event-date"><i class="fa-regular fa-clock"></i>November 15, 2023 - 5:30 PM | Student Union Room B</span>
+                        <h4>Study Skills & Finals Planning Session</h4>
+                         <span class="event-date"><i class="fa-regular fa-clock"></i>November 15, 2024 - 5:30 PM | Plymouth Student Union Rm B</span>
                         <p>Learn effective techniques to manage your workload and create a personalized study schedule for finals.</p>
                     </div>
                      <div class="event-card">
-                        <h4>PASS Social: Pizza & Study Break</h4>
-                         <span class="event-date"><i class="fa-regular fa-clock"></i>December 1, 2023 - 5:00 PM | Cafeteria Annex</span>
-                        <p>Relax, connect with fellow members, and grab some pizza before the final push!</p>
+                        <h4>PASS Social: End-of-Semester Celebration</h4>
+                         <span class="event-date"><i class="fa-regular fa-clock"></i>December 1, 2024 - 5:00 PM | Location TBD</span>
+                        <p>Relax, connect with fellow members, celebrate the semester, and grab some food before the final push!</p>
                     </div>
                  </div>
-                <!-- Add more static events as needed -->
+                 <p style="margin-top: 2rem; text-align: center;"><i>Event details are subject to change. Follow our <a href="https://www.instagram.com/passofficialpcep/" target="_blank" rel="noopener noreferrer">Instagram</a> for the latest updates!</i></p>
             </section>
 
             <section id="faq">
@@ -907,7 +1047,16 @@
                         <span class="faq-toggle">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Membership is open to all currently enrolled students at Plymouth, Canton, or Salem High Schools (PCEP) who are committed to academic growth and contributing positively to our supportive community.</p>
+                        <p>PASS welcomes all currently enrolled students at <span class="footer-highlight" style="color: var(--primary-dark);">Plymouth, Canton, or Salem High Schools</span> within PCEP! If you're motivated to grow academically, enjoy collaborating, and want to be part of a supportive community, you'll fit right in.</p>
+                    </div>
+                </div>
+                 <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>What's the time commitment like?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>It's flexible! Attend the meetings and study sessions that fit your schedule and academic needs. We typically have general meetings 1-2 times per month, with study groups meeting more frequently, especially around exams. Participation is encouraged, but we understand you have busy schedules.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -916,86 +1065,117 @@
                         <span class="faq-toggle">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Currently, there are no mandatory membership fees. We may occasionally ask for small contributions for specific events (like pizza socials), but participation is the main requirement!</p>
+                        <p>No mandatory membership fees! Our focus is on building a strong, accessible community. We might occasionally ask for small, optional contributions for specific social events (like pizza!), but core activities are free.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question" aria-expanded="false">
-                        <span>How often do you meet?</span>
+                        <span>Where do you meet?</span>
                         <span class="faq-toggle">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>General club meetings and specific study group frequencies vary. We typically have larger meetings once or twice a month, with study groups meeting more often, especially around exams. Check our announcements or contact us for the current schedule!</p>
+                        <p>Most of our meetings and study sessions are held at <span class="footer-highlight" style="color: var(--primary-dark);">Plymouth High School</span> (8400 Beck Rd, Canton, MI). Specific room locations are announced before each event via email and Instagram. Check our announcements for the latest schedule!</p>
                     </div>
                 </div>
                  <div class="faq-item">
                     <button class="faq-question" aria-expanded="false">
-                        <span>How do I get involved?</span>
+                        <span>How is PASS different from tutoring?</span>
                         <span class="faq-toggle">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Come to a meeting! You can also follow our Instagram (<a href="https://www.instagram.com/passofficialpcep/" target="_blank" rel="noopener noreferrer">@passofficialpcep</a>) for updates, or email us. We welcome new members anytime. Leadership opportunities arise periodically.</p>
+                        <p>PASS focuses on <span class="footer-highlight" style="color: var(--primary-dark);">collaborative peer learning and community building</span>. While members definitely help each other understand concepts, it's more about working together, sharing strategies, and motivating each other, rather than a one-on-one expert-to-student model like traditional tutoring. We build study skills and connections.</p>
                     </div>
                 </div>
-                <!-- Add more FAQ items -->
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>How do I get involved or join?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Easy! You can fill out our quick application form (see the "Join Us" section below!), come to an upcoming meeting (check Instagram for dates/times), or simply reach out via email (<a href="mailto:passofficialpcep@gmail.com">passofficialpcep@gmail.com</a>). We welcome new members throughout the school year!</p>
+                    </div>
+                </div>
             </section>
 
             <section id="join" class="section-highlight">
                 <h2><i class="fa-solid fa-handshake-angle"></i>Ready to Join Our Community?</h2>
-                <p>Elevate your academic journey, make new friends, and become part of a truly supportive group! Joining PASS offers:</p>
+                <p>Become part of PASS PCEP – where academic drive meets genuine support and connection. Elevate your high school experience, make friends who get it, and thrive together!</p>
                 <ul>
-                    <li>Access to all PASS study groups, workshops, and fun events.</li>
-                    <li>A network of peers ready to help and collaborate.</li>
-                    <li>Opportunities to share your knowledge and help others.</li>
-                    <li>A chance to develop leadership skills in a friendly environment.</li>
+                    <li>Access exclusive study groups, skill workshops, and fun social events.</li>
+                    <li>Tap into a network of smart, helpful peers from across PCEP.</li>
+                    <li>Share your strengths and help others succeed.</li>
+                    <li>Develop leadership and collaboration skills in a friendly setting.</li>
+                    <li>Find your academic "home base" at PCEP.</li>
                 </ul>
-                <p>Becoming a member is simple. Attend an upcoming meeting (check announcements!), reach out via email, or follow us on Instagram to get started!</p>
-                <a href="#contact" class="cta-button">Get In Touch!</a>
+                <p>Getting started is simple. Fill out the quick application form below, or reach out if you have questions!</p>
+
+                <!-- Google Form Embed Area -->
+                <div class="google-form-embed">
+                    <h4>Membership Application</h4>
+                    <p>Tell us a bit about yourself! We're excited to welcome you.</p>
+                    <div class="google-form-placeholder">
+                        <!--
+                        *************************************************
+                        *** PASTE YOUR GOOGLE FORM EMBED CODE (IFRAME) HERE ***
+                        *************************************************
+                        It will look something like:
+                        <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true" width="640" height="XXX" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                        Replace the placeholder div above with your actual iframe code.
+                        Adjust the height in the iframe code if needed.
+                        -->
+                         <p><strong>*** Google Form Embed Placeholder ***</strong><br> Replace this area with the embed code (iframe) provided by Google Forms.</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="#contact" class="cta-button" style="background: linear-gradient(to right, var(--accent-color), var(--accent-dark));">Have Questions First? Contact Us!</a>
+                </div>
             </section>
 
             <section id="resources">
-                 <h2><i class="fa-solid fa-book"></i>Study Resources</h2>
-                <p>While PASS provides peer support and shared knowledge, here are some excellent official PCEP and external resources:</p>
+                 <h2><i class="fa-solid fa-book"></i>Helpful Academic Resources</h2>
+                <p>While PASS provides invaluable peer support, don't forget these excellent official PCEP and external resources:</p>
                 <ul>
-                    <li><a href="https://www.pccsk12.com/our-schools/plymouth-high-school/academics/media-center" target="_blank" rel="noopener noreferrer">Plymouth HS Media Center</a> - Access databases, research help, and more. (Links for Canton/Salem may differ)</li>
-                    <li><a href="https://www.pccsk12.com/departments/student-instructional-support/academic-support" target="_blank" rel="noopener noreferrer">PCEP Academic Support</a> - Information on district resources.</li>
-                    <li><a href="https://www.khanacademy.org/" target="_blank" rel="noopener noreferrer">Khan Academy</a> - Free video lessons on math, science, history, and more.</li>
-                    <li><a href="https://quizlet.com/" target="_blank" rel="noopener noreferrer">Quizlet</a> - Create and use flashcards, study sets, and practice tests.</li>
-                    <li><a href="#" target="_blank" rel="noopener noreferrer">School Counseling Department</a> - Guidance on academics, college planning, and support. (Link to specific school's page)</li>
+                    <li><a href="https://www.pccsk12.com/our-schools/plymouth-high-school/academics/media-center" target="_blank" rel="noopener noreferrer">Plymouth HS Media Center</a> (Check Canton/Salem sites for theirs) - Databases, research help, books.</li>
+                     <li><a href="https://www.pccsk12.com/our-schools/canton-high-school/academics/counseling" target="_blank" rel="noopener noreferrer">Canton HS Counseling</a> | <a href="https://www.pccsk12.com/our-schools/plymouth-high-school/academics/counseling" target="_blank" rel="noopener noreferrer">Plymouth HS Counseling</a> | <a href="https://www.pccsk12.com/our-schools/salem-high-school/academics/counseling" target="_blank" rel="noopener noreferrer">Salem HS Counseling</a> - Academic guidance, college planning, support.</li>
+                    <li><a href="https://www.pccsk12.com/departments/student-instructional-support/academic-support" target="_blank" rel="noopener noreferrer">PCEP Academic Support Programs</a> - District-level resources and initiatives.</li>
+                    <li><a href="https://www.khanacademy.org/" target="_blank" rel="noopener noreferrer">Khan Academy</a> - Free lessons and practice for Math, Science, AP courses, SAT prep, and more.</li>
+                    <li><a href="https://quizlet.com/" target="_blank" rel="noopener noreferrer">Quizlet</a> - Excellent for flashcards, study sets, and practice tests for various subjects.</li>
+                    <li><a href="https://apstudents.collegeboard.org/" target="_blank" rel="noopener noreferrer">College Board AP Students</a> - Official resources, course info, and exam prep for AP classes.</li>
                 </ul>
-                <p><em>PASS members often share specific tips and resources for PCEP classes in our meetings and communication channels.</em></p>
+                <p><em>Remember: PASS members often share specific tips, notes, and resources tailored to PCEP classes during meetings and through our communication channels!</em></p>
             </section>
 
             <section id="contact">
-                <h2><i class="fa-solid fa-envelope"></i>Contact Us</h2>
-                <p>Have questions, suggestions, or ready to join? We'd love to hear from you!</p>
+                <h2><i class="fa-solid fa-envelope-open-text"></i>Get In Touch!</h2>
+                <p>Questions? Ideas? Ready to connect? We're here to help and excited to hear from you!</p>
                 <ul>
                     <li class="email"><strong>Email:</strong> <a href="mailto:passofficialpcep@gmail.com">passofficialpcep@gmail.com</a></li>
                     <li class="phone"><strong>Phone:</strong> <a href="tel:508-343-0409">508-343-0409</a> (Text preferred for quick questions)</li>
-                    <li class="social"><strong>Instagram:</strong> <a href="https://www.instagram.com/passofficialpcep/" target="_blank" rel="noopener noreferrer">@passofficialpcep</a> - Follow us for updates!</li>
-                    <li class="meeting"><strong>Meetings:</strong> Check Instagram or email for current meeting times and locations (often at Plymouth High School).</li>
-                    <!-- <li class="office"><strong>Office Hours:</strong> [If applicable, add info here]</li> -->
+                    <li class="social"><strong>Instagram:</strong> <a href="https://www.instagram.com/passofficialpcep/" target="_blank" rel="noopener noreferrer">@passofficialpcep</a> - Follow for updates, events & announcements!</li>
+                    <li class="meeting"><strong>Meetings:</strong> Check Instagram/email for current times & locations (usually at Plymouth High School).</li>
+                    <li class="office"><strong>Location:</strong> Based at Plymouth High School, 8400 Beck Rd, Canton, MI 48187 (Serving all PCEP students).</li>
                 </ul>
 
-                 <!-- Basic Contact Form Structure (Frontend Only - Improved Styling) -->
+                 <!-- Basic Contact Form Structure (Demo) -->
                  <div class="contact-form-container">
-                     <h4>Send us a quick message (Demo)</h4>
-                     <form action="#" method="POST">
+                     <h4>Send Us a Quick Message (Demo)</h4>
+                     <form action="#" method="POST" onsubmit="alert('Note: This form is for demonstration only and does not send data.'); return false;">
                          <div class="form-group">
-                             <label for="name">Name:</label>
+                             <label for="name">Your Name:</label>
                              <input type="text" id="name" name="name" required>
                          </div>
                          <div class="form-group">
-                             <label for="email">Email:</label>
+                             <label for="email">Your Email:</label>
                              <input type="email" id="email" name="email" required>
                          </div>
                          <div class="form-group">
-                             <label for="message">Message:</label>
-                             <textarea id="message" name="message" rows="4" required></textarea>
+                             <label for="message">Your Message:</label>
+                             <textarea id="message" name="message" rows="5" required></textarea>
                          </div>
                          <div class="form-group">
                              <button type="submit" class="cta-button">Send Message</button>
-                             <small class="form-note">(Note: This form is for demonstration only and does not currently send data.)</small>
+                             <small class="form-note">(This form is for demonstration only.)</small>
                          </div>
                      </form>
                  </div>
@@ -1006,23 +1186,23 @@
 
     <footer>
         <div class="container">
-             <p><span class="footer-highlight">Progressive Academic Student Society (PASS)</span></p>
-             <p>A student club at Plymouth High School, part of the <span class="footer-highlight">Plymouth-Canton Educational Park (PCEP)</span></p>
-             <p>Serving students from Canton, Plymouth, and Salem High Schools.</p>
-             <p>8400 Beck Rd, Canton, MI 48187</p>
+             <p><span class="footer-highlight">Progressive Academic Student Society (PASS PCEP)</span></p>
+             <p>A supportive community for academic students at the <span class="footer-highlight">Plymouth-Canton Educational Park (PCEP)</span></p>
+             <p>Welcoming students from Canton, Plymouth, and Salem High Schools.</p>
+             <p>Based at Plymouth High School: 8400 Beck Rd, Canton, MI 48187</p>
              <div class="footer-social-links">
-                 <a href="https://www.instagram.com/passofficialpcep/" target="_blank" rel="noopener noreferrer" aria-label="PASS Instagram"><i class="fa-brands fa-instagram"></i></a>
-                 <a href="mailto:passofficialpcep@gmail.com" aria-label="Email PASS"><i class="fa-solid fa-envelope"></i></a>
-                 <a href="tel:508-343-0409" aria-label="Call PASS"><i class="fa-solid fa-phone"></i></a>
+                 <a href="https://www.instagram.com/passofficialpcep/" target="_blank" rel="noopener noreferrer" aria-label="PASS PCEP Instagram"><i class="fa-brands fa-instagram"></i></a>
+                 <a href="mailto:passofficialpcep@gmail.com" aria-label="Email PASS PCEP"><i class="fa-solid fa-envelope"></i></a>
+                 <a href="tel:508-343-0409" aria-label="Call PASS PCEP"><i class="fa-solid fa-phone"></i></a>
              </div>
-            <p style="margin-top: 1.5rem;">© <span id="currentYear"></span> PASS PCEP. All Rights Reserved.</p>
+            <p style="margin-top: 2rem; font-size: 0.9rem;">© <span id="currentYear"></span> PASS PCEP. All Rights Reserved.</p>
         </div>
     </footer>
 
     <!-- Scroll to Top Button -->
     <button id="scrollTopBtn" title="Go to top" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
 
-    <!-- Embedded JavaScript (No changes needed unless functionality breaks) -->
+    <!-- Embedded JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
@@ -1034,8 +1214,7 @@
 
             if (menuButton && navMenu) {
                 menuButton.addEventListener('click', () => {
-                    navMenu.classList.toggle('active');
-                    const isExpanded = navMenu.classList.contains('active');
+                    const isExpanded = navMenu.classList.toggle('active');
                     menuButton.setAttribute('aria-expanded', isExpanded);
                     menuButton.innerHTML = isExpanded ? closeIcon : burgerIcon;
                 });
@@ -1064,7 +1243,6 @@
 
             // --- FAQ Accordion ---
             const faqItems = document.querySelectorAll('.faq-item');
-
             faqItems.forEach(item => {
                 const questionButton = item.querySelector('.faq-question');
                 const answer = item.querySelector('.faq-answer');
@@ -1072,34 +1250,74 @@
 
                 if (questionButton && answer && toggleIcon) {
                     questionButton.addEventListener('click', () => {
-                        const isActive = item.classList.contains('active');
+                        const wasActive = item.classList.contains('active');
 
-                        // Close other open FAQs (optional - uncomment if desired)
+                        // Optional: Close other FAQs when one opens
                         // faqItems.forEach(otherItem => {
                         //     if (otherItem !== item && otherItem.classList.contains('active')) {
                         //         otherItem.classList.remove('active');
                         //         otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-                        //         otherItem.querySelector('.faq-toggle').textContent = '+';
+                        //         otherItem.querySelector('.faq-toggle').style.transform = 'rotate(0deg)';
                         //         const otherAnswer = otherItem.querySelector('.faq-answer');
                         //         otherAnswer.style.maxHeight = null;
-                        //         otherAnswer.style.padding = '0 20px';
+                        //         otherAnswer.style.paddingTop = '0';
+                        //         otherAnswer.style.paddingBottom = '0';
                         //     }
                         // });
 
                         item.classList.toggle('active');
-                        questionButton.setAttribute('aria-expanded', !isActive);
-                        toggleIcon.textContent = isActive ? '+' : '−'; // Use minus sign for open state
+                        questionButton.setAttribute('aria-expanded', !wasActive);
+                        toggleIcon.style.transform = item.classList.contains('active') ? 'rotate(45deg)' : 'rotate(0deg)';
 
                         if (item.classList.contains('active')) {
-                            answer.style.maxHeight = answer.scrollHeight + 40 + "px"; // Add buffer for padding
-                            answer.style.padding = '10px 20px 20px 20px'; // Apply padding when open
+                            answer.style.maxHeight = answer.scrollHeight + 40 + "px"; // Add buffer
+                            answer.style.paddingTop = '15px'; // Apply padding when open
+                            answer.style.paddingBottom = '25px';
                         } else {
                             answer.style.maxHeight = null;
-                            answer.style.padding = '0 20px'; // Reset padding when closed
+                            answer.style.paddingTop = '0'; // Reset padding when closed
+                            answer.style.paddingBottom = '0';
                         }
                     });
                 }
             });
+
+            // --- Simple Image Carousel ---
+            const carousel = document.querySelector('.image-carousel');
+            if (carousel) {
+                const images = carousel.querySelectorAll('.carousel-images img');
+                const prevButton = carousel.querySelector('.prev');
+                const nextButton = carousel.querySelector('.next');
+                let currentIndex = 0;
+
+                function showImage(index) {
+                    images.forEach((img, i) => {
+                        img.classList.remove('active');
+                        if (i === index) {
+                            img.classList.add('active');
+                        }
+                    });
+                }
+
+                if (prevButton && nextButton && images.length > 0) {
+                    prevButton.addEventListener('click', () => {
+                        currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+                        showImage(currentIndex);
+                    });
+
+                    nextButton.addEventListener('click', () => {
+                        currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+                        showImage(currentIndex);
+                    });
+
+                    // Initialize first image
+                    showImage(currentIndex);
+                } else if (images.length > 0) {
+                    // If no buttons, just show the first image
+                     showImage(0);
+                }
+            }
+
 
             // --- Scroll-to-Top Button ---
             const scrollTopBtn = document.getElementById('scrollTopBtn');
@@ -1107,12 +1325,10 @@
                 window.onscroll = function() { scrollFunction(); };
 
                 function scrollFunction() {
-                    if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) { // Show sooner
-                        scrollTopBtn.style.display = "block";
-                        scrollTopBtn.style.opacity = "0.8"; // Fade in effect could be added here
+                    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                        scrollTopBtn.classList.add('visible');
                     } else {
-                        scrollTopBtn.style.display = "none";
-                        scrollTopBtn.style.opacity = "0";
+                        scrollTopBtn.classList.remove('visible');
                     }
                 }
 
@@ -1130,49 +1346,75 @@
             // --- Active Nav Link Highlighting ---
             const sections = document.querySelectorAll('section[id]');
             const navLinks = document.querySelectorAll('#main-nav a');
-            const navHeight = document.querySelector('nav').offsetHeight; // Get nav height dynamically
+            const nav = document.querySelector('nav');
+            const navHeight = nav ? nav.offsetHeight : 70; // Fallback height
 
-            window.addEventListener('scroll', () => {
-                let current = '';
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    if (pageYOffset >= (sectionTop - navHeight - 50)) { // Adjusted offset
-                        current = section.getAttribute('id');
-                    }
-                });
-
-                 // Special case for reaching the bottom of the page
-                 if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 50) { // Check if near bottom
-                    const lastSectionId = sections[sections.length - 1]?.getAttribute('id');
-                    if (lastSectionId) current = lastSectionId; // Force highlight last section
-                 }
-
-
-                navLinks.forEach(link => {
+            const activateLink = (targetId) => {
+                 navLinks.forEach(link => {
                     link.classList.remove('active');
                     const linkHref = link.getAttribute('href');
-                    if (linkHref === `#${current}`) {
+                    if (linkHref === `#${targetId}`) {
                         link.classList.add('active');
                     }
                 });
+            };
 
-                 // Highlight home if near top and no other section is active
-                 const homeLink = document.querySelector('#main-nav a[href="#home"]');
-                 if (homeLink) {
-                     if (pageYOffset < navHeight + 100 && !current) { // Check if near top
-                         homeLink.classList.add('active');
-                     } else if (current && homeLink.classList.contains('active') && current !== 'home') {
-                         // Ensure home is not active if another section is
-                         homeLink.classList.remove('active');
-                     } else if (!current && !homeLink.classList.contains('active') && pageYOffset < navHeight + 100) {
-                         // Add active if scrolled back to top
-                         homeLink.classList.add('active');
+            const observerOptions = {
+                root: null, // relative to document viewport
+                rootMargin: `-${navHeight}px 0px -50% 0px`, // Adjust trigger point (top offset by nav height, bottom half of screen)
+                threshold: 0 // Trigger as soon as element enters the margin
+            };
+
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        activateLink(entry.target.getAttribute('id'));
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                if (section.id !== 'home') { // Don't observe hero this way
+                    sectionObserver.observe(section);
+                }
+            });
+
+             // Special handling for Home link and initial load/top scroll
+             const homeLink = document.querySelector('#main-nav a[href="#home"]');
+             window.addEventListener('scroll', () => {
+                 let currentSectionVisible = false;
+                 navLinks.forEach(link => {
+                     if(link.classList.contains('active') && link !== homeLink) {
+                         currentSectionVisible = true;
                      }
-                 }
-            }, { passive: true }); // Improve scroll performance
+                 });
 
-            // Trigger scroll event once on load to set initial active link
-            window.dispatchEvent(new Event('scroll'));
+                 if (window.pageYOffset < window.innerHeight * 0.5 && !currentSectionVisible) { // If scrolled near top and no other section active
+                     activateLink('home');
+                 } else if (window.pageYOffset >= window.innerHeight * 0.5 && homeLink && homeLink.classList.contains('active') && currentSectionVisible) {
+                     // If scrolled down and home is still active but shouldn't be
+                     // Let the observer handle removing it by activating another link
+                 }
+             }, { passive: true });
+
+             // Set initial state on load
+             setTimeout(() => { // Delay slightly to ensure layout is stable
+                 if (window.pageYOffset < window.innerHeight * 0.5) {
+                     activateLink('home');
+                 } else {
+                     // Trigger observer check manually if not at top
+                     sections.forEach(section => {
+                         const rect = section.getBoundingClientRect();
+                         const topOffset = rect.top - navHeight;
+                         const bottomOffset = rect.bottom - window.innerHeight * 0.5; // Check if bottom is above halfway point
+
+                         if (topOffset <= 0 && bottomOffset <= 0) { // Section is within the trigger zone
+                             activateLink(section.id);
+                         }
+                     });
+                 }
+             }, 100);
+
 
         }); // End DOMContentLoaded
     </script>
