@@ -8,7 +8,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -20,35 +20,33 @@
             /* --- Refined Red Theme Color Palette --- */
             --primary-color: #B71C1C; /* Deep Red */
             --primary-dark: #8a0000; /* Darker Red */
-            --primary-darker: #6d0000; /* Even Darker Red */
             --primary-light: #FFEBEE; /* Very Light Red/Pink */
-            --accent-color: #D4AF37; /* Muted Gold (Use sparingly) */
-            --accent-dark: #b38f2d;
+            --accent-color: #C09F52; /* Refined Muted Gold */
+            --accent-dark: #a1823c; /* Darker Gold */
 
             --white-color: #FFFFFF;
-            --off-white: #fdfdfd;
-            --light-gray: #f4f4f4; /* Lighter neutral background */
-            --medium-gray: #cccccc; /* Borders, subtle dividers */
-            --dark-gray: #666666;   /* Subdued text */
+            --off-white: #fcfcfc;
+            --light-gray: #f5f5f5; /* Slightly warmer light gray */
+            --medium-gray: #dcdcdc; /* Lighter medium gray for borders */
+            --dark-gray: #555555;   /* Slightly darker subdued text */
             --dark-color: #333333;   /* Main text color */
             --black-color: #1a1a1a;  /* Headings */
 
             /* Fonts */
-            --font-primary: 'Roboto', sans-serif; /* Body */
-            --font-headings: 'Montserrat', sans-serif; /* Headings */
+            --font-primary: 'Roboto', sans-serif;
+            --font-headings: 'Montserrat', sans-serif;
 
             /* UI Elements */
-            --shadow-sm: 0 3px 6px rgba(0,0,0,0.07);
-            --shadow-md: 0 7px 15px rgba(0,0,0,0.1);
-            --shadow-lg: 0 12px 30px rgba(0,0,0,0.15);
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.06);
+            --shadow-md: 0 5px 10px rgba(0,0,0,0.1);
+            --shadow-lg: 0 8px 20px rgba(0,0,0,0.12);
             --border-radius: 8px; /* Slightly more rounded */
             --transition-speed: 0.3s;
-            --transition-bezier: cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother transition */
+            --transition-ease: ease-in-out;
 
             /* Section Backgrounds */
             --section-bg-light: var(--light-gray);
             --section-bg-white: var(--white-color);
-            --section-bg-accent: var(--primary-light); /* Light red for specific sections */
         }
 
         * {
@@ -59,26 +57,28 @@
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 80px; /* Adjust based on final nav height */
+            scroll-padding-top: 70px; /* Adjust based on final nav height */
+            font-size: 16px; /* Base font size */
         }
 
         body {
             font-family: var(--font-primary);
             line-height: 1.7;
             color: var(--dark-color);
-            background-color: var(--off-white); /* Slightly off-white base */
-            /* Subtle Texture Overlay on PCEP Background */
-            background-image: linear-gradient(rgba(253, 253, 253, 0.92), rgba(253, 253, 253, 0.92)), url('https://dt5602vnjxv0c.cloudfront.net/portals/54365/images/about%20us/pcep/hs_pcep_aerial_09-13-2013.jpg');
+            background-color: var(--light-gray);
+            /* Subtle Texture Overlay on PCEP Background - slightly more transparent */
+            background-image: linear-gradient(rgba(245, 245, 245, 0.92), rgba(245, 245, 245, 0.92)), url('https://dt5602vnjxv0c.cloudfront.net/portals/54365/images/about%20us/pcep/hs_pcep_aerial_09-13-2013.jpg');
             background-size: cover;
             background-position: center center;
             background-attachment: fixed;
             background-repeat: no-repeat;
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
         a {
             color: var(--primary-color);
             text-decoration: none;
-            transition: color var(--transition-speed) ease;
+            transition: color var(--transition-speed) var(--transition-ease);
         }
 
         a:hover {
@@ -94,20 +94,23 @@
             font-family: var(--font-headings);
             font-weight: 700;
             line-height: 1.3;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
             color: var(--black-color);
         }
 
-        h1 { font-size: clamp(2.8rem, 6vw, 4rem); font-weight: 800; text-shadow: 1px 1px 3px rgba(0,0,0,0.1);}
-        h2 { font-size: clamp(2.2rem, 5vw, 3rem); color: var(--primary-dark); margin-bottom: 2.5rem; font-weight: 700; text-align: center; padding-bottom: 1rem; border-bottom: 3px solid var(--primary-light);}
-        h3 { font-size: clamp(1.5rem, 4vw, 1.9rem); font-weight: 700; margin-bottom: 1.2rem; color: var(--primary-color);}
-        h4 { font-size: clamp(1.2rem, 3.5vw, 1.4rem); font-weight: 600; color: var(--dark-color); margin-bottom: 0.8rem;}
+        h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); } /* Slightly adjusted clamp */
+        h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); color: var(--primary-dark); margin-bottom: 2.2rem; font-weight: 700;}
+        h3 { font-size: clamp(1.3rem, 3vw, 1.6rem); font-weight: 600; margin-bottom: 1rem; color: var(--primary-color);}
+        h4 { font-size: clamp(1.1rem, 2.8vw, 1.25rem); font-weight: 600; color: var(--dark-color); margin-bottom: 0.7rem;}
 
 
         p {
             margin-bottom: 1.4rem;
-            color: var(--dark-gray); /* Slightly softer text */
-            font-size: 1.1rem; /* Larger base paragraph size */
+            color: var(--dark-color);
+            font-size: 1.05rem;
+        }
+        p:last-of-type {
+            margin-bottom: 0; /* Remove margin from last paragraph in a container */
         }
 
         img {
@@ -121,106 +124,94 @@
         .container {
             max-width: 1200px; /* Wider container */
             margin: 0 auto;
-            padding: 0 30px;
-        }
-
-        .highlight {
-            color: var(--primary-dark);
-            font-weight: 600;
-            background-color: rgba(183, 28, 28, 0.08); /* Subtle red highlight background */
-            padding: 0.1em 0.3em;
-            border-radius: 4px;
-            margin: 0 0.1em;
-            white-space: nowrap; /* Prevent breaking mid-highlight */
+            padding: 0 20px; /* Slightly less padding */
         }
 
         .cta-button {
             display: inline-block;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            background: linear-gradient(110deg, var(--primary-color), var(--primary-dark)); /* Angle gradient */
             color: var(--white-color);
-            padding: 16px 45px; /* Generous padding */
+            padding: 14px 35px; /* Adjusted padding */
             border: none;
             border-radius: 50px; /* Pill shape */
             font-family: var(--font-headings);
-            font-weight: 700; /* Bolder button text */
-            font-size: 1.1rem;
+            font-weight: 600;
+            font-size: 1rem; /* Base size */
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1.3px;
             cursor: pointer;
-            transition: all var(--transition-speed) var(--transition-bezier);
+            transition: all var(--transition-speed) var(--transition-ease);
             text-decoration: none;
             margin-top: 1.5rem;
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-sm);
             text-align: center;
         }
 
         .cta-button:hover {
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary-darker));
+            background: linear-gradient(110deg, var(--primary-dark), var(--primary-color));
             text-decoration: none;
-            transform: translateY(-4px) scale(1.03); /* Enhanced hover effect */
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: var(--shadow-md);
             color: var(--white-color);
         }
 
+        /* Secondary Button Style (e.g., for less prominent CTAs) */
         .cta-button-secondary {
-             background: var(--white-color);
-             color: var(--primary-color);
-             border: 2px solid var(--primary-color);
-             padding: 14px 40px;
+            background: var(--white-color);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 12px 33px;
         }
         .cta-button-secondary:hover {
             background: var(--primary-light);
             color: var(--primary-dark);
             border-color: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
         }
 
-        .section-highlight-box {
+        /* Accent Button Style (e.g., for Join button) */
+        .cta-button-accent {
+            background: linear-gradient(110deg, var(--accent-color), var(--accent-dark));
+        }
+        .cta-button-accent:hover {
+            background: linear-gradient(110deg, var(--accent-dark), var(--accent-color));
+        }
+
+
+        .section-highlight {
              background-color: var(--primary-light);
-             border-left: 8px solid var(--primary-color);
-             padding: 50px;
+             border-left: 6px solid var(--primary-color);
+             padding: 50px 40px; /* Adjusted padding */
              border-radius: var(--border-radius);
-             margin: 50px 0;
+             margin-bottom: 60px;
              box-shadow: var(--shadow-md);
         }
 
         /* --- Header --- */
         header {
-            background: linear-gradient(135deg, var(--primary-darker) 0%, var(--primary-dark) 100%);
+            background: var(--primary-dark);
             color: var(--white-color);
-            padding: 2.5rem 0; /* More padding */
+            padding: 1.8rem 0; /* Adjusted padding */
             text-align: center;
             box-shadow: var(--shadow-md);
-            border-bottom: 4px solid var(--accent-color); /* Accent border */
-            position: relative;
-            overflow: hidden;
-        }
-        /* Subtle pattern overlay */
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: radial-gradient(var(--primary-color) 1px, transparent 1px);
-            background-size: 10px 10px;
-            opacity: 0.05;
-            pointer-events: none;
+            border-bottom: 4px solid var(--accent-color); /* Thicker Accent border */
         }
 
         header h1 {
-            font-weight: 800;
-            margin-bottom: 0.6rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
             color: var(--white-color);
-            letter-spacing: 2px;
-            font-size: clamp(2.8rem, 6vw, 4rem);
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+            letter-spacing: 1px; /* Slightly reduced */
+            font-size: clamp(2.3rem, 4.5vw, 3.2rem);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
         }
 
         header p {
-            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
             font-family: var(--font-primary);
             font-weight: 400;
-            opacity: 0.95;
+            opacity: 0.9;
             margin-bottom: 0;
             color: var(--light-gray);
         }
@@ -232,8 +223,8 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: var(--shadow-md); /* Enhanced shadow */
-            height: 75px; /* Increased height */
+            box-shadow: var(--shadow-sm);
+            height: 70px;
             display: flex;
             align-items: center;
             border-bottom: 1px solid var(--medium-gray);
@@ -249,11 +240,11 @@
         .nav-brand {
             color: var(--primary-dark);
             font-family: var(--font-headings);
-            font-size: 2rem;
-            font-weight: 800; /* Bolder brand */
+            font-size: 1.7rem; /* Slightly smaller */
+            font-weight: 700;
             text-decoration: none;
-            transition: color var(--transition-speed) ease;
-            letter-spacing: -1px;
+            transition: color var(--transition-speed) var(--transition-ease);
+            padding-left: 5px; /* Add some padding */
         }
          .nav-brand:hover {
              color: var(--primary-color);
@@ -278,62 +269,31 @@
         #main-nav a {
             color: var(--dark-color);
             font-family: var(--font-headings);
-            font-weight: 600; /* Slightly bolder nav links */
-            padding: 0 25px; /* More horizontal padding */
+            font-weight: 500;
+            padding: 0 20px; /* Adjusted padding */
             height: 100%;
             display: flex;
             align-items: center;
             border-bottom: 4px solid transparent; /* Thicker border placeholder */
-            transition: all var(--transition-speed) var(--transition-bezier);
+            transition: all var(--transition-speed) var(--transition-ease);
             text-decoration: none;
-            font-size: 1.05rem;
+            font-size: 0.95rem; /* Slightly smaller nav links */
             position: relative;
-        }
-        #main-nav a::after { /* Underline effect */
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 4px;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--primary-color);
-            transition: width var(--transition-speed) var(--transition-bezier);
+            margin-top: -1px; /* Align border better */
         }
 
-        #main-nav a:hover,
-        #main-nav a:focus {
+        #main-nav a:hover {
+            background-color: var(--primary-light);
             color: var(--primary-dark);
             text-decoration: none;
-            background-color: var(--primary-light);
+            border-bottom-color: var(--primary-color);
         }
-        #main-nav a:hover::after,
-        #main-nav a:focus::after {
-            width: 100%; /* Full underline on hover/focus */
-        }
-
         #main-nav a.active {
             color: var(--primary-dark);
-            font-weight: 700;
+            font-weight: 600;
+            border-bottom-color: var(--primary-color);
             background-color: var(--primary-light);
         }
-         #main-nav a.active::after {
-             width: 100%; /* Persistent underline for active */
-         }
-
-        /* Apply Now Button in Nav */
-        .nav-apply-button {
-            margin-left: 25px;
-            padding: 10px 25px; /* Slightly smaller than main CTAs */
-            font-size: 0.95rem;
-            letter-spacing: 1px;
-            margin-top: 0; /* Reset margin */
-            box-shadow: var(--shadow-sm);
-        }
-         .nav-apply-button:hover {
-             transform: translateY(-2px) scale(1.02);
-             box-shadow: var(--shadow-md);
-         }
 
         /* Mobile Menu Button (Burger) */
         .menu-toggle {
@@ -341,11 +301,11 @@
             background: none;
             border: none;
             color: var(--primary-dark);
-            font-size: 2.4rem; /* Larger icon */
+            font-size: 2rem; /* Adjusted size */
             cursor: pointer;
-            padding: 5px;
+            padding: 8px; /* Add padding for easier tap */
             line-height: 1;
-            z-index: 1100; /* Ensure it's above the mobile menu */
+            margin-right: 5px; /* Space from edge */
         }
 
         /* --- Main Content & Sections --- */
@@ -356,148 +316,119 @@
         .hero {
             color: var(--black-color);
             text-align: center;
-            padding: 140px 30px 120px 30px; /* Increased padding */
-            min-height: 75vh; /* Taller */
+            padding: 100px 20px 90px 20px; /* Adjusted padding */
+            min-height: 65vh; /* Adjusted height */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: none; /* Use body background */
-            position: relative;
+            background: none;
         }
-        /* Optional: Add subtle shapes or elements */
-        .hero::before {
-            content: '';
-            position: absolute;
-            bottom: 10%;
-            left: 5%;
-            width: 100px;
-            height: 100px;
-            background: var(--primary-light);
-            border-radius: 50%;
-            opacity: 0.3;
-            z-index: -1;
-            filter: blur(15px);
-        }
-         .hero::after {
-            content: '';
-            position: absolute;
-            top: 15%;
-            right: 8%;
-            width: 150px;
-            height: 150px;
-            background: var(--accent-color);
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; /* Blob shape */
-            opacity: 0.15;
-            z-index: -1;
-            filter: blur(20px);
-            animation: blobRotate 15s infinite linear;
-         }
-         @keyframes blobRotate {
-             from { transform: rotate(0deg); }
-             to { transform: rotate(360deg); }
-         }
-
 
         .hero h1 {
             color: var(--black-color);
-            margin-bottom: 2rem;
-            font-weight: 800;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
         }
 
         .hero p {
-            font-size: clamp(1.3rem, 3.5vw, 1.7rem); /* Larger hero text */
-            max-width: 900px; /* Wider text block */
-            margin-bottom: 3rem; /* More space before button */
+            font-size: clamp(1.1rem, 3vw, 1.4rem); /* Adjusted hero text size */
+            max-width: 800px; /* Adjusted width */
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 2rem; /* Space before buttons */
             color: var(--dark-color);
             font-weight: 400;
             line-height: 1.65;
         }
-
+        .hero .hero-buttons {
+            display: flex;
+            flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+            justify-content: center;
+            gap: 15px; /* Space between buttons */
+            margin-top: 1.5rem;
+        }
         .hero .cta-button {
-             margin-top: 2rem;
+             margin-top: 0; /* Remove top margin from individual buttons */
         }
 
 
         .content-area {
-            padding-top: 80px;
-            padding-bottom: 80px;
+            padding-top: 60px; /* Reduced top padding */
+            padding-bottom: 60px;
         }
 
         section {
-            margin-bottom: 70px; /* Increased spacing */
-            padding: 70px 50px; /* Increased padding */
+            margin-bottom: 50px; /* Consistent spacing */
+            padding: 50px 35px; /* Consistent padding */
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-md);
-            transition: transform var(--transition-speed) var(--transition-bezier), box-shadow var(--transition-speed) var(--transition-bezier);
+            transition: transform var(--transition-speed) var(--transition-ease), box-shadow var(--transition-speed) var(--transition-ease);
             position: relative;
-            overflow: hidden; /* Contain pseudo-elements */
+            overflow: hidden;
             background-color: var(--section-bg-white); /* Default white */
         }
         section:nth-of-type(even) { /* Alternate background */
              background-color: var(--section-bg-light);
         }
         /* Override for specific sections */
-         #home { background: none; box-shadow: none; padding: 0; margin-bottom: 0; } /* Hero is special */
-         #join { background-color: var(--primary-light); border-left: 8px solid var(--primary-color); } /* Join highlight */
-         #values, #spotlight, #testimonials { background-color: var(--off-white); } /* Unique sections slightly different */
+         #home { background: none; box-shadow: none; padding: 0; margin-bottom: 0; }
+         .section-highlight { background-color: var(--primary-light); } /* Keep highlight color */
 
 
         section:hover {
-            transform: translateY(-8px); /* More pronounced hover lift */
-            box-shadow: var(--shadow-lg); /* Enhanced hover shadow */
+            transform: translateY(-5px); /* Slightly less lift */
+            box-shadow: var(--shadow-lg);
         }
 
         section h2 {
             margin-top: 0;
-            padding-bottom: 20px;
-            border-bottom: 4px solid var(--primary-light); /* Thicker, lighter border */
-            margin-bottom: 40px; /* More space after heading */
+            padding-bottom: 15px; /* Reduced border space */
+            border-bottom: 2px solid var(--primary-light); /* Thinner border */
+            margin-bottom: 30px; /* Adjusted space */
             display: flex;
             align-items: center;
-            justify-content: center; /* Center heading */
-            gap: 20px; /* Space between icon and text */
-            text-align: center;
+            gap: 15px; /* Adjusted space */
         }
          /* Font Awesome Icons before H2 */
         section h2 i.fa-solid {
             color: var(--primary-color);
-            font-size: 2.2rem; /* Adjust icon size */
-            width: 40px; /* Ensure alignment */
+            font-size: 1.8rem; /* Adjusted icon size */
+            width: 30px;
             text-align: center;
-            flex-shrink: 0; /* Prevent icon shrinking */
-            transition: transform var(--transition-speed) ease;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
         }
         section:hover h2 i.fa-solid {
-            transform: scale(1.1) rotate(-5deg); /* Subtle icon animation on section hover */
+            transform: scale(1.1); /* Icon grows slightly on section hover */
         }
 
         section ul {
             list-style: none;
-            padding-left: 15px; /* More indent */
+            padding-left: 5px; /* Reduced indent */
         }
 
         section ul li {
-            margin-bottom: 1.2rem;
-            padding-left: 45px; /* Space for FA icon */
+            margin-bottom: 1rem; /* Adjusted spacing */
+            padding-left: 35px; /* Space for FA icon */
             position: relative;
-            font-size: 1.1rem;
+            font-size: 1.05rem; /* Consistent list item text */
         }
         /* Custom bullet point using Font Awesome */
         section ul li::before {
             content: '\f00c'; /* Font Awesome check icon */
             font-family: 'Font Awesome 6 Free';
-            font-weight: 900; /* Required for solid icons */
+            font-weight: 900;
             color: var(--primary-dark);
             position: absolute;
-            left: 10px;
-            top: 7px; /* Adjust vertical alignment */
-            font-size: 1.3em;
-            transition: transform 0.2s ease, color 0.2s ease;
+            left: 0px; /* Align with padding */
+            top: 7px; /* Fine-tune vertical alignment */
+            font-size: 1.1em;
+            transition: transform 0.2s ease;
         }
         section ul li:hover::before {
-            transform: scale(1.15); /* Enhanced hover effect on icon */
-            color: var(--primary-color);
+            transform: scale(1.15); /* Enhanced hover effect */
         }
 
         /* --- Specific Section Styling --- */
@@ -505,258 +436,101 @@
         /* Image Carousel */
         .image-carousel {
             position: relative;
-            max-width: 700px; /* Wider carousel */
-            margin: 2.5rem auto 3rem auto; /* Center and add space */
+            max-width: 550px; /* Adjusted max width */
+            margin: 2rem auto 2.5rem auto;
             overflow: hidden;
             border-radius: var(--border-radius);
-            box-shadow: var(--shadow-lg); /* More prominent shadow */
+            box-shadow: var(--shadow-md);
         }
         .carousel-images img {
             display: none;
             width: 100%;
             border-radius: 0;
             aspect-ratio: 16 / 10; /* Maintain aspect ratio */
-            object-fit: cover; /* Ensure images cover the area */
+            object-fit: cover; /* Ensure image covers area */
         }
         .carousel-images img.active {
             display: block;
-            animation: fadeIn 0.6s ease; /* Fade transition */
+            animation: fadeIn 0.5s ease-in-out; /* Add fade transition */
         }
         @keyframes fadeIn {
-            from { opacity: 0.6; }
+            from { opacity: 0.4; }
             to { opacity: 1; }
         }
         .carousel-button {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.6);
+            background-color: rgba(0, 0, 0, 0.55); /* Slightly darker */
             color: white;
             border: none;
-            font-size: 2rem;
-            padding: 10px 18px;
+            font-size: 1.6rem; /* Adjusted size */
+            padding: 6px 12px; /* Adjusted padding */
             cursor: pointer;
             border-radius: 50%;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+            transition: background-color 0.3s ease;
             z-index: 10;
-            width: 50px;
-            height: 50px;
-            line-height: 30px; /* Adjust for vertical centering */
+            width: 40px; /* Adjusted size */
+            height: 40px;
+            line-height: 28px; /* Adjust for vertical centering */
             text-align: center;
-            opacity: 0.8;
         }
         .carousel-button:hover {
-            background-color: rgba(0, 0, 0, 0.9);
-            transform: translateY(-50%) scale(1.1);
-            opacity: 1;
+            background-color: rgba(0, 0, 0, 0.8);
         }
-        .prev { left: 20px; }
-        .next { right: 20px; }
+        .prev { left: 12px; } /* Adjusted position */
+        .next { right: 12px; }
 
 
         /* Why PASS? - Card Layout */
         #about .why-pass-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 35px;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusted minmax */
+            gap: 25px; /* Adjusted gap */
+            margin-top: 2.5rem;
         }
         #about .why-pass-item {
-            background-color: var(--white-color);
-            padding: 30px;
+            background-color: var(--off-white); /* Slightly off-white cards */
+            padding: 25px 20px; /* Adjusted padding */
             border-radius: var(--border-radius);
-            box-shadow: var(--shadow-md);
-            border-bottom: 5px solid var(--primary-color); /* Thicker border */
-            transition: transform 0.3s var(--transition-bezier), box-shadow 0.3s var(--transition-bezier);
+            box-shadow: var(--shadow-sm);
+            border-bottom: 4px solid var(--primary-color);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
             text-align: center;
-            display: flex;
+            display: flex; /* Use flexbox for alignment */
             flex-direction: column;
-            align-items: center;
+            justify-content: flex-start; /* Align content top */
         }
          #about .why-pass-item:hover {
-             transform: translateY(-10px) scale(1.02); /* More lift */
-             box-shadow: var(--shadow-lg);
+             transform: translateY(-5px);
+             box-shadow: var(--shadow-md);
          }
         #about .why-pass-item i {
-            font-size: 2.8rem; /* Larger icon */
+            font-size: 2rem; /* Adjusted icon size */
             color: var(--primary-color);
-            margin-bottom: 20px;
+            margin-bottom: 12px;
             display: block;
-            transition: transform 0.3s ease;
+            line-height: 1; /* Ensure icon doesn't take extra space */
         }
-         #about .why-pass-item:hover i {
-             transform: scale(1.1);
-         }
          #about .why-pass-item h4 {
-             margin-bottom: 12px;
-             font-size: 1.3rem;
+             margin-bottom: 8px;
+             font-size: 1.15rem; /* Adjusted size */
              color: var(--primary-dark);
-             font-weight: 700;
+             font-weight: 600;
+             flex-grow: 0; /* Don't let title grow */
          }
          #about .why-pass-item p {
-             font-size: 1.05rem;
+             font-size: 0.95rem; /* Adjusted size */
              margin-bottom: 0;
              color: var(--dark-gray);
              line-height: 1.6;
-             flex-grow: 1; /* Ensure cards have similar height */
+             flex-grow: 1; /* Allow paragraph to fill space */
          }
-
-        /* --- NEW: Our Core Values Section --- */
-        #values {
-            background: linear-gradient(to bottom right, var(--white-color), var(--light-gray));
-        }
-        #values .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 2rem;
-        }
-        .value-card {
-            text-align: center;
-            padding: 25px;
-        }
-        .value-card i {
-            font-size: 3rem;
-            color: var(--primary-dark);
-            margin-bottom: 1rem;
-            display: block;
-        }
-        .value-card h4 {
-            color: var(--primary-color);
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-        .value-card p {
-            font-size: 1rem;
-            color: var(--dark-gray);
-            margin-bottom: 0;
-        }
-
-        /* --- NEW: Member Spotlight Section --- */
-        #spotlight {
-            background-color: var(--section-bg-accent); /* Light red background */
-        }
-        #spotlight .spotlight-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 2.5rem;
-        }
-        .spotlight-card {
-            background-color: var(--white-color);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-md);
-            padding: 30px;
-            text-align: center;
-            transition: transform 0.3s var(--transition-bezier), box-shadow 0.3s var(--transition-bezier);
-        }
-        .spotlight-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-        }
-        .spotlight-card img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin: 0 auto 1.5rem auto;
-            object-fit: cover;
-            border: 4px solid var(--primary-light);
-            box-shadow: var(--shadow-sm);
-        }
-        .spotlight-card h4 {
-            color: var(--primary-dark);
-            margin-bottom: 0.5rem;
-            font-size: 1.4rem;
-        }
-        .spotlight-card .member-school {
-            display: block;
-            font-weight: 600;
-            color: var(--dark-gray);
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-        }
-        .spotlight-card p {
-            font-size: 1rem;
-            font-style: italic;
-            color: var(--dark-gray);
-            margin-bottom: 0;
-            line-height: 1.6;
-        }
-        .spotlight-card p::before {
-            content: '“';
-            font-size: 1.5em;
-            color: var(--primary-color);
-            margin-right: 5px;
-            line-height: 0;
-        }
-         .spotlight-card p::after {
-            content: '”';
-            font-size: 1.5em;
-            color: var(--primary-color);
-            margin-left: 5px;
-            line-height: 0;
-        }
-
-        /* --- NEW: Testimonials Section --- */
-        #testimonials {
-             background: var(--dark-color); /* Dark background for contrast */
-             color: var(--light-gray);
-        }
-        #testimonials h2 {
-            color: var(--white-color);
-            border-bottom-color: var(--primary-dark);
-        }
-         #testimonials h2 i {
-             color: var(--accent-color); /* Use accent for icon */
-         }
-        #testimonials .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 35px;
-            margin-top: 2.5rem;
-        }
-        .testimonial-card {
-            background-color: var(--dark-gray); /* Slightly lighter than section bg */
-            padding: 35px;
-            border-radius: var(--border-radius);
-            border-left: 6px solid var(--primary-color);
-            box-shadow: var(--shadow-md);
-            position: relative;
-        }
-        .testimonial-card i.fa-quote-left {
-            position: absolute;
-            top: 15px;
-            left: 20px;
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            opacity: 0.2;
-        }
-        .testimonial-card p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-            color: var(--off-white);
-        }
-        .testimonial-author {
-            font-weight: 700;
-            color: var(--white-color);
-            font-family: var(--font-headings);
-            font-size: 1.1rem;
-        }
-        .testimonial-author span {
-            display: block;
-            font-weight: 400;
-            font-size: 0.9rem;
-            color: var(--medium-gray);
-            font-family: var(--font-primary);
-            margin-top: 3px;
-        }
-
 
         /* --- FAQ Section --- */
         .faq-item {
             border-bottom: 1px solid var(--medium-gray);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem; /* Adjusted spacing */
         }
          .faq-item:last-child {
              border-bottom: none;
@@ -768,43 +542,48 @@
             border: none;
             width: 100%;
             text-align: left;
-            padding: 22px 10px 22px 5px; /* Adjusted padding */
+            padding: 18px 5px 18px 0px; /* Adjusted padding */
             font-family: var(--font-headings);
-            font-size: 1.3rem; /* Larger question */
+            font-size: 1.15rem; /* Adjusted question size */
             font-weight: 600;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
             color: var(--dark-color);
-            transition: color var(--transition-speed) ease;
+            transition: color var(--transition-speed) var(--transition-ease);
         }
         .faq-question:hover {
             color: var(--primary-color);
         }
 
-        .faq-toggle { /* The +/- icon using Font Awesome */
-            font-size: 1.5rem; /* Larger toggle */
+        .faq-toggle { /* The +/- icon */
+            font-size: 1.4rem; /* Slightly larger */
             font-weight: bold;
             color: var(--primary-color);
-            transition: transform var(--transition-speed) var(--transition-bezier);
-            width: 30px; /* Ensure space */
+            transition: transform var(--transition-speed) cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Added bounce effect */
+            width: 25px;
             text-align: center;
             flex-shrink: 0;
+            line-height: 1; /* Ensure proper alignment */
         }
 
         .faq-answer {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s ease-out, padding 0.5s ease-out; /* Smoother transition */
-            padding: 0 30px; /* Padding for content */
-            font-size: 1.1rem;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out, opacity 0.3s ease-out; /* Added opacity transition */
+            padding: 0 20px; /* Adjusted padding */
+            font-size: 1rem; /* Adjusted answer size */
+            opacity: 0; /* Start hidden */
         }
         .faq-answer p {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             color: var(--dark-gray);
-            padding-top: 20px; /* Space after opening */
-            line-height: 1.75;
+            padding-top: 10px; /* Reduced space */
+            line-height: 1.7;
+        }
+        .faq-answer p:last-of-type {
+            margin-bottom: 0;
         }
 
         /* State when FAQ item is open */
@@ -812,60 +591,67 @@
             color: var(--primary-dark);
         }
         .faq-item.active .faq-toggle {
-            transform: rotate(135deg); /* Makes + into a 'x' more distinctly */
+            transform: rotate(135deg); /* Makes + into a tilted 'x' */
         }
         .faq-item.active .faq-answer {
-            max-height: 500px; /* Increased max height */
-            padding: 0px 30px 30px 30px; /* Adjust padding */
+            max-height: 500px; /* Generous max height */
+            padding: 0px 20px 20px 20px; /* Adjusted padding */
+            opacity: 1; /* Fade in */
         }
 
         /* --- Join Us Section --- */
-        #join h2 i.fa-solid { color: var(--primary-dark); } /* Use dark red for Join icon */
-        #join { border-left-color: var(--primary-color); } /* Use primary red for Join border */
+        #join h2 i.fa-solid { color: var(--accent-color); }
+        #join { border-left-color: var(--accent-color); }
 
         .google-form-embed {
-            margin-top: 3rem;
-            padding: 40px; /* More padding */
+            margin-top: 2rem; /* Adjusted spacing */
+            padding: 25px; /* Adjusted padding */
             background-color: var(--white-color);
             border: 1px solid var(--medium-gray);
             border-radius: var(--border-radius);
-            box-shadow: var(--shadow-md); /* Enhanced shadow */
+            box-shadow: var(--shadow-sm);
             text-align: center;
         }
         .google-form-embed h4 {
-            margin-bottom: 1.2rem;
+            margin-bottom: 0.8rem;
             color: var(--primary-dark);
-            font-size: 1.6rem; /* Larger heading */
         }
         .google-form-embed p {
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             color: var(--dark-gray);
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
-        /* Style the actual iframe when embedded */
+        /* Style the actual iframe for responsiveness */
         .google-form-embed iframe {
-            width: 100%;
-            min-height: 600px; /* Adjust as needed */
+            width: 100%; /* Make iframe responsive */
+            max-width: 100%; /* Ensure it doesn't overflow container */
+            min-height: 600px; /* Adjust initial height as needed */
             border: none;
             border-radius: var(--border-radius);
-            display: block; /* Ensure it behaves like a block element */
+            display: block; /* Remove extra space below iframe */
             margin: 0 auto; /* Center if container is wider */
         }
-        .form-mobile-note {
-            display: none; /* Hidden by default */
-            margin-top: 1rem;
-            font-size: 0.9rem;
+        /* Remove placeholder if iframe exists */
+        .google-form-embed iframe + .google-form-placeholder {
+            display: none;
+        }
+        .google-form-placeholder { /* Style for if iframe fails or isn't added */
+            border: 2px dashed var(--medium-gray);
+            padding: 40px 20px;
+            background-color: var(--light-gray);
             color: var(--dark-gray);
             font-style: italic;
+            border-radius: var(--border-radius);
+            margin-top: 1rem;
         }
 
 
         /* --- Contact Section --- */
-        #contact ul { padding-left: 10px; }
+        #contact ul { padding-left: 0; } /* Remove default padding */
         #contact ul li {
-            padding-left: 50px; /* Adjust for FA icons */
-            margin-bottom: 1.8rem; /* More spacing */
-            font-size: 1.15rem; /* Slightly larger contact text */
+            padding-left: 40px; /* Adjust for FA icons */
+            margin-bottom: 1.3rem; /* Adjusted spacing */
+            font-size: 1.05rem; /* Consistent size */
             display: flex;
             align-items: center;
             min-height: 30px; /* Ensure consistent height */
@@ -874,17 +660,13 @@
              font-family: 'Font Awesome 6 Free';
              font-weight: 900;
              position: absolute;
-             left: 10px;
+             left: 0px; /* Align with padding */
              top: 50%;
              transform: translateY(-50%);
-             font-size: 1.6em; /* Larger icons */
+             font-size: 1.3em; /* Adjusted icons size */
              color: var(--primary-dark);
-             width: 35px; /* Ensure alignment */
+             width: 30px;
              text-align: center;
-             transition: transform 0.2s ease;
-        }
-        #contact ul li:hover::before {
-            transform: translateY(-50%) scale(1.1);
         }
         #contact ul li.email::before { content: '\f0e0'; } /* Envelope */
         #contact ul li.phone::before { content: '\f095'; } /* Phone */
@@ -893,78 +675,61 @@
         #contact ul li.social::before { content: '\f16d'; } /* Instagram */
 
         #contact a { word-break: break-word; } /* Allow long links to wrap */
-        #contact a:hover { color: var(--primary-darker); }
 
 
         /* --- Footer --- */
         footer {
-            background-color: var(--black-color); /* Darker background */
+            background-color: var(--dark-color);
             color: var(--light-gray);
             text-align: center;
-            padding: 4rem 0; /* More padding */
-            margin-top: 80px;
-            font-size: 1rem;
-            border-top: 6px solid var(--primary-dark); /* Thicker Top border */
-            position: relative;
-        }
-         /* Footer pattern */
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: linear-gradient(45deg, var(--dark-color) 25%, transparent 25%), linear-gradient(-45deg, var(--dark-color) 25%, transparent 25%);
-            background-size: 20px 20px;
-            opacity: 0.05;
-            pointer-events: none;
+            padding: 3rem 0; /* Adjusted padding */
+            margin-top: 60px; /* Consistent spacing */
+            font-size: 0.95rem; /* Slightly smaller footer text */
+            border-top: 5px solid var(--primary-dark);
         }
 
         footer p {
-            margin-bottom: 1.2rem;
+            margin-bottom: 0.8rem; /* Reduced spacing */
             color: var(--medium-gray);
-            line-height: 1.8;
-            max-width: 700px; /* Constrain width */
-            margin-left: auto;
-            margin-right: auto;
+            line-height: 1.6;
         }
         footer .footer-highlight {
             color: var(--white-color);
-            font-weight: 700; /* Bolder highlight */
+            font-weight: 600;
         }
 
         footer a {
-            color: var(--primary-light); /* Light red links */
+            color: var(--primary-light);
             text-decoration: underline;
-            font-weight: 500;
         }
 
         footer a:hover {
             color: var(--white-color);
-            text-decoration: none;
         }
         .footer-social-links {
-            margin-top: 2rem;
-            margin-bottom: 2rem;
+            margin-top: 1.5rem; /* Adjusted spacing */
+            margin-bottom: 1.5rem;
         }
         .footer-social-links a {
             color: var(--light-gray);
-            font-size: 2.2rem; /* Larger icons */
-            margin: 0 18px;
+            font-size: 1.8rem; /* Adjusted icon size */
+            margin: 0 12px; /* Adjusted spacing */
             text-decoration: none;
-            transition: color var(--transition-speed) ease, transform 0.3s var(--transition-bezier);
-            display: inline-block; /* Allow transform */
+            transition: color var(--transition-speed) var(--transition-ease), transform 0.2s var(--transition-ease);
+            display: inline-block;
         }
         .footer-social-links a:hover {
-            color: var(--primary-color); /* Highlight on hover */
-            transform: scale(1.2) translateY(-3px); /* Scale effect */
+            color: var(--primary-color);
+            transform: scale(1.2); /* Slightly larger scale */
         }
 
 
         /* --- Scroll-to-Top Button --- */
         #scrollTopBtn {
-            display: none;
+            display: none; /* Hidden initially by JS */
             position: fixed;
-            bottom: 40px;
-            right: 40px;
+            bottom: 30px; /* Adjusted position */
+            right: 30px;
             z-index: 999;
             border: none;
             outline: none;
@@ -972,85 +737,77 @@
             color: white;
             cursor: pointer;
             padding: 0;
-            width: 55px; /* Larger button */
-            height: 55px;
+            width: 45px; /* Adjusted size */
+            height: 45px;
             border-radius: 50%;
-            font-size: 1.8rem; /* Icon size */
-            line-height: 55px; /* Center icon vertically */
+            font-size: 1.4rem; /* Icon size */
+            line-height: 45px; /* Center icon vertically */
             text-align: center;
-            box-shadow: var(--shadow-lg); /* More shadow */
-            transition: all var(--transition-speed) var(--transition-bezier);
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-speed) var(--transition-ease);
             opacity: 0; /* Start hidden */
         }
         #scrollTopBtn.visible {
             display: block;
-            opacity: 0.9;
+            opacity: 0.8; /* Slightly less opaque */
         }
 
         #scrollTopBtn:hover {
             background-color: var(--primary-dark);
             opacity: 1;
-            transform: scale(1.1) rotate(-5deg); /* Add rotation */
+            transform: scale(1.1);
         }
 
 
         /* --- Responsiveness --- */
         @media (max-width: 992px) {
-            html { scroll-padding-top: 75px; }
-            .container { max-width: 960px; padding: 0 25px;}
-            section { padding: 60px 40px; }
-            h1 { font-size: 3.2rem; }
-            h2 { font-size: 2.6rem; }
-            .hero { padding: 120px 25px 100px 25px; min-height: 70vh;}
-            #main-nav a { padding: 0 20px; font-size: 1rem; }
-            .nav-apply-button { margin-left: 20px; padding: 9px 20px; font-size: 0.9rem;}
-            #about .why-pass-container { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
-            #spotlight .spotlight-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-            #testimonials .testimonial-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+            html { scroll-padding-top: 70px; }
+            .container { max-width: 960px; padding: 0 25px; } /* Adjust padding for tablets */
+            section { padding: 45px 30px; }
+            h1 { font-size: clamp(2.3rem, 4.8vw, 3.3rem); }
+            h2 { font-size: clamp(1.8rem, 3.8vw, 2.4rem); }
+            .hero { padding: 90px 20px 80px 20px; min-height: 60vh;}
+            #main-nav a { padding: 0 16px; font-size: 0.9rem; }
+            .google-form-embed iframe { min-height: 550px; }
         }
 
         @media (max-width: 768px) {
-            html { scroll-padding-top: 75px; } /* Keep nav height */
-            h1 { font-size: 2.8rem; }
-            h2 { font-size: 2.3rem; margin-bottom: 2rem; }
-            h3 { font-size: 1.6rem; }
-            p { font-size: 1.05rem; }
-            section ul li { font-size: 1.05rem; }
-            .hero { padding: 100px 20px 80px 20px; min-height: 60vh;}
-            .hero p { font-size: 1.4rem; }
+            body { background-attachment: scroll; } /* Fixed background can be jerky on mobile */
+            h1 { font-size: clamp(2.1rem, 5vw, 2.8rem); }
+            h2 { font-size: clamp(1.7rem, 4.5vw, 2.2rem); }
+            h3 { font-size: 1.4rem; }
+            p { font-size: 1rem; }
+            section ul li { font-size: 1rem; padding-left: 30px; }
+            section ul li::before { left: 0; top: 6px; font-size: 1em; }
+            .hero { padding: 80px 20px 70px 20px; min-height: auto;} /* Remove min-height */
+            .hero p { font-size: 1.15rem; }
+            .hero .hero-buttons { flex-direction: column; align-items: center; gap: 12px; } /* Stack buttons */
+            .hero .cta-button { width: 80%; max-width: 300px; } /* Control button width */
 
             /* Mobile Menu Logic */
             .menu-toggle {
                 display: block;
             }
-            .nav-apply-button { display: none; } /* Hide nav button, add to mobile menu */
 
             #main-nav {
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 75px; /* Position below nav bar */
+                top: 70px;
                 left: 0;
                 width: 100%;
                 background-color: var(--white-color);
-                padding: 1.5rem 0; /* More padding */
-                box-shadow: var(--shadow-lg); /* Stronger shadow */
+                padding: 0.5rem 0; /* Reduced padding */
+                box-shadow: var(--shadow-md);
                 border-top: 1px solid var(--medium-gray);
-                max-height: calc(100vh - 75px);
+                max-height: calc(100vh - 70px);
                 overflow-y: auto;
-                height: auto; /* Override fixed height */
-                border-bottom: 4px solid var(--primary-color);
-                transform: translateY(-10px); /* Start slightly up */
-                opacity: 0;
-                transition: transform 0.4s var(--transition-bezier), opacity 0.4s ease;
-                pointer-events: none;
+                height: auto;
+                border-bottom: 3px solid var(--primary-color);
             }
 
             #main-nav.active {
                 display: flex;
-                transform: translateY(0);
-                opacity: 1;
-                pointer-events: auto;
             }
 
             #main-nav li {
@@ -1059,82 +816,59 @@
                 width: 100%;
                 height: auto;
                 display: block;
+                border-bottom: 1px solid var(--light-gray); /* Separator lines */
             }
+             #main-nav li:last-child {
+                 border-bottom: none;
+             }
             #main-nav a {
                 display: block;
-                padding: 18px 25px; /* Larger tap target */
+                padding: 16px 20px; /* Larger tap target */
                 width: 100%;
                 margin: 0 auto;
                 color: var(--dark-color);
                 border-bottom: none;
                 height: auto;
                 justify-content: center;
-                font-size: 1.1rem; /* Larger mobile font */
-                font-weight: 600;
+                font-size: 1rem; /* Ensure readable size */
             }
-             #main-nav a::after { display: none; } /* Hide underline effect on mobile */
-
             #main-nav a:hover,
             #main-nav a.active {
                  background-color: var(--primary-color);
                  color: var(--white-color);
                  border-bottom: none;
             }
-            /* Add Apply button to mobile menu */
-            #main-nav li.mobile-apply-button {
-                margin-top: 1rem;
-                padding: 0 2rem; /* Add padding around button */
-            }
-            #main-nav li.mobile-apply-button a {
-                background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-                color: var(--white-color);
-                border-radius: 50px;
-                padding: 15px 30px;
-                display: inline-block; /* Allow centering */
-                width: auto; /* Don't force full width */
-                margin: 0.5rem auto;
-                text-transform: uppercase;
-                font-weight: 700;
-                letter-spacing: 1.5px;
-            }
-             #main-nav li.mobile-apply-button a:hover {
-                 background: linear-gradient(135deg, var(--primary-dark), var(--primary-darker));
-             }
 
-
-            .content-area { padding-top: 60px; padding-bottom: 60px; }
-            section { padding: 50px 25px; margin-bottom: 50px; }
-            #about .why-pass-container { grid-template-columns: 1fr; gap: 25px; } /* Stack cards */
-            #values .values-grid { grid-template-columns: 1fr; gap: 25px; }
-            #spotlight .spotlight-grid { grid-template-columns: 1fr; gap: 30px; }
-            #testimonials .testimonial-grid { grid-template-columns: 1fr; gap: 30px; }
-            .image-carousel { max-width: 95%; } /* Adjust carousel width */
-            .carousel-button { font-size: 1.6rem; width: 45px; height: 45px; line-height: 25px; }
-            .prev { left: 15px; }
-            .next { right: 15px; }
-            .google-form-embed { padding: 30px 20px; }
-            .google-form-embed iframe { min-height: 550px; }
-            .form-mobile-note { display: block; } /* Show mobile note */
+            .content-area { padding-top: 40px; padding-bottom: 40px; }
+            section { padding: 35px 20px; margin-bottom: 40px; }
+            #about .why-pass-container { grid-template-columns: 1fr; gap: 20px; }
+            .image-carousel { max-width: 95%; }
+            .carousel-button { font-size: 1.4rem; width: 35px; height: 35px; line-height: 23px; }
+            .prev { left: 8px; }
+            .next { right: 8px; }
+            .google-form-embed iframe { min-height: 500px; }
+            #contact ul li { padding-left: 35px; }
+            #contact ul li::before { left: 0; width: 25px; font-size: 1.2em; }
         }
 
         @media (max-width: 480px) {
-            header { padding: 2rem 0; }
-            header h1 { font-size: 2.3rem; }
-            header p { font-size: 1.2rem; }
-            .hero h1 { font-size: 2.4rem; }
-            .hero p { font-size: 1.2rem; }
-            .cta-button { padding: 15px 35px; font-size: 1rem;}
-            section { padding: 40px 20px; }
-            h2 { font-size: 2.1rem; margin-bottom: 1.8rem; }
-            h3 { font-size: 1.5rem; }
-            .faq-question { font-size: 1.15rem; padding: 20px 5px 20px 0;}
-            #scrollTopBtn { bottom: 30px; right: 30px; width: 50px; height: 50px; font-size: 1.6rem; line-height: 50px;}
-            footer { padding: 3rem 0; }
-            .footer-social-links a { font-size: 2rem; margin: 0 15px;}
-            .google-form-embed { padding: 25px 15px; }
-            .google-form-embed iframe { min-height: 500px; }
-            #contact ul li { font-size: 1.1rem; padding-left: 45px; }
-            #contact ul li::before { font-size: 1.5em; width: 30px; left: 5px;}
+            .container { padding: 0 15px; }
+            header { padding: 1.5rem 0; }
+            header h1 { font-size: 1.9rem; }
+            header p { font-size: 1rem; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1.05rem; }
+            .cta-button { padding: 12px 28px; font-size: 0.95rem;}
+            section { padding: 30px 15px; }
+            h2 { font-size: 1.8rem; margin-bottom: 1.2rem; }
+            h3 { font-size: 1.3rem; }
+            .faq-question { font-size: 1.05rem; padding: 16px 5px 16px 0;}
+            #scrollTopBtn { bottom: 20px; right: 20px; width: 40px; height: 40px; font-size: 1.3rem; line-height: 40px;}
+            footer { padding: 2.5rem 0; font-size: 0.9rem; }
+            .footer-social-links a { font-size: 1.7rem; margin: 0 10px;}
+            .google-form-embed { padding: 15px; }
+            .google-form-embed iframe { min-height: 450px; }
+            #about .why-pass-item { padding: 20px 15px; }
         }
 
     </style>
@@ -1153,23 +887,17 @@
         <div class="container">
              <a href="#home" class="nav-brand">PASS</a>
             <button class="menu-toggle" id="mobile-menu-button" aria-label="Toggle Menu" aria-expanded="false">
-                <i class="fa-solid fa-bars"></i> <!-- Font Awesome Burger -->
+                <i class="fa-solid fa-bars"></i> <!-- Initial state: Burger -->
             </button>
             <ul id="main-nav">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="#about">About Us</a></li>
                 <li><a href="#activities">Activities</a></li>
-                <li><a href="#values">Values</a></li>
-                <li><a href="#spotlight">Spotlight</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
+                <!-- Removed Events Link -->
                 <li><a href="#faq">FAQ</a></li>
-                <li><a href="#join">Join</a></li>
+                <li><a href="#join">Join Us</a></li>
                 <li><a href="#resources">Resources</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <!-- Apply Button for Desktop -->
-                <li><a href="#join" class="cta-button nav-apply-button">Apply Now</a></li>
-                <!-- Apply Button Placeholder for Mobile (added via JS) -->
-                <li class="mobile-apply-button" style="display: none;"><a href="#join" class="cta-button">Apply Now</a></li>
             </ul>
         </div>
     </nav>
@@ -1178,9 +906,13 @@
         <!-- Hero Section -->
         <section id="home" class="hero">
             <div class="container">
-                <h1>Your Academic <span class="highlight">Home</span> at PCEP.</h1>
-                <p>Welcome to PASS! We're the Progressive Academic Student Society – a <span class="highlight">tight-knit</span>, <span class="highlight">supportive</span> community for <span class="highlight">smart</span>, motivated <span class="highlight">academic students</span> across Plymouth, Canton, and Salem High Schools. Here, we foster a <span class="highlight">connective</span> environment where we collaborate, grow, achieve our goals, and have fun doing it.</p>
-                <a href="#about" class="cta-button">Discover Our Community</a>
+                <h1>Your Academic Home at PCEP.</h1>
+                <p>Welcome to PASS! We're the Progressive Academic Student Society – a <span class="footer-highlight" style="color: var(--primary-dark);">tight-knit, supportive community</span> for motivated students across Plymouth, Canton, and Salem High Schools. Here, we collaborate, grow, achieve our goals, and have fun doing it.</p>
+                <!-- Added Hero Buttons Container -->
+                <div class="hero-buttons">
+                    <a href="#join" class="cta-button cta-button-accent">Apply to Join PASS</a> <!-- Direct link to form -->
+                    <a href="#about" class="cta-button cta-button-secondary">Learn More About Us</a>
+                </div>
             </div>
         </section>
 
@@ -1188,17 +920,17 @@
         <div class="container content-area">
             <section id="about">
                 <h2><i class="fa-solid fa-users-line"></i>About PASS: More Than a Club</h2>
-                <p>The Progressive Academic Student Society (PASS) is a dynamic student-led club thriving within the unique <span class="highlight">Plymouth-Canton Educational Park (PCEP)</span>. PCEP unites Canton, Plymouth, and Salem High Schools, creating a diverse environment of over 6,000 students. PASS is proudly based at <span class="highlight">Plymouth High School</span> (8400 Beck Rd, Canton, MI), welcoming members from all three schools.</p>
-                <p>We're not just about grades; we're about building <span class="highlight">connections</span>. PASS fosters a genuinely <span class="highlight">supportive</span>, engaging, and fun atmosphere where <span class="highlight">academic students</span> empower each other. We share learning strategies, tackle challenges together, and celebrate successes as a true <span class="highlight">community</span>. It's a place to feel <span class="highlight">homey</span> and connected.</p>
+                <p>The Progressive Academic Student Society (PASS) is a dynamic student-led club thriving within the unique <span class="footer-highlight" style="color: var(--primary-dark);">Plymouth-Canton Educational Park (PCEP)</span>. PCEP unites Canton, Plymouth, and Salem High Schools, creating a diverse environment of over 6,000 students. PASS is proudly based at <span class="footer-highlight" style="color: var(--primary-dark);">Plymouth High School (8400 Beck Rd, Canton, MI)</span>, welcoming members from all three schools.</p>
+                <p>We're not just about grades; we're about <span class="footer-highlight" style="color: var(--primary-dark);">building connections</span>. PASS fosters a genuinely supportive, engaging, and fun atmosphere where academic students empower each other. We share learning strategies, tackle challenges together, and celebrate successes as a <span class="footer-highlight" style="color: var(--primary-dark);">true community</span>.</p>
 
                 <!-- Image Carousel -->
                 <div class="image-carousel">
                     <div class="carousel-images">
-                        <!-- === Actual image paths === -->
-                        <img src="image1.jpeg" alt="PASS PCEP Group Collaboration" class="active">
-                        <img src="image2.jpeg" alt="PASS PCEP Study Session">
-                        <img src="image3.jpeg" alt="PASS PCEP Social Event">
-                        <!-- === END Images === -->
+                        <!-- === REPLACE THESE with your actual image paths/URLs === -->
+                        <img src="image1.jpeg" alt="PASS PCEP Group Photo 1" class="active">
+                        <img src="image2.jpeg" alt="PASS PCEP Activity Photo 2">
+                        <img src="image3.jpeg" alt="PASS PCEP Meeting Photo 3">
+                        <!-- === END Image Placeholders === -->
                     </div>
                     <button class="carousel-button prev" aria-label="Previous Image">❮</button>
                     <button class="carousel-button next" aria-label="Next Image">❯</button>
@@ -1210,18 +942,18 @@
                 <h3>Why Join Our Community?</h3>
                 <div class="why-pass-container">
                     <div class="why-pass-item">
-                        <i class="fa-solid fa-heart-circle-check"></i>
-                        <h4><span class="highlight">Supportive</span> & <span class="highlight">Homey</span></h4>
+                        <i class="fa-solid fa-heart"></i>
+                        <h4>Supportive & Homey</h4>
                         <p>Find your place in a welcoming, tight-knit group that feels like family.</p>
                     </div>
                      <div class="why-pass-item">
                         <i class="fa-solid fa-people-group"></i>
-                        <h4><span class="highlight">Connective</span> Network</h4>
-                        <p>Collaborate with <span class="highlight">smart</span>, motivated peers from all three PCEP schools.</p>
+                        <h4>Connective Network</h4>
+                        <p>Collaborate with smart, motivated peers from all three PCEP schools.</p>
                     </div>
                     <div class="why-pass-item">
                         <i class="fa-solid fa-brain"></i>
-                        <h4><span class="highlight">Academic</span> Growth</h4>
+                        <h4>Academic Growth</h4>
                         <p>Sharpen study habits, boost understanding, and achieve your academic potential.</p>
                     </div>
                      <div class="why-pass-item">
@@ -1244,106 +976,18 @@
 
             <section id="activities">
                 <h2><i class="fa-solid fa-bullseye"></i>What We Do: Collaborate & Grow</h2>
-                <p>PASS isn't just talk. We organize engaging activities designed to foster <span class="highlight">academic</span> success and build lasting <span class="highlight">connections</span>:</p>
+                <p>PASS isn't just talk. We organize engaging activities designed to foster academic success and build lasting connections:</p>
                 <ul>
                     <li><strong>Focused Study Groups:</strong> Regular, collaborative sessions tackling specific courses (AP, Honors, etc.), challenging subjects, or exam prep (Midterms, Finals, AP Exams).</li>
                     <li><strong>Skill-Building Workshops:</strong> Interactive sessions led by members or guests on time management, effective note-taking, research skills, college application tips, presentation practice, and more.</li>
-                    <li><strong>Peer <span class="highlight">Support</span> Network:</strong> A core value! Connect with fellow members for help with homework, clarifying concepts, or forming study partnerships.</li>
-                    <li><strong>Resource Hub:</strong> Members contribute and access a shared pool of helpful notes, study guides, practice problems, and useful <span class="highlight">academic</span> tools relevant to PCEP courses.</li>
+                    <li><strong>Peer Support Network:</strong> A core value! Connect with fellow members for help with homework, clarifying concepts, or forming study partnerships.</li>
+                    <li><strong>Resource Hub:</strong> Members contribute and access a shared pool of helpful notes, study guides, practice problems, and useful academic tools relevant to PCEP courses.</li>
                     <li><strong>Guest Speakers & Panels:</strong> Inviting PCEP teachers, counselors, alumni, or local professionals for valuable insights, advice, and Q&A sessions.</li>
-                    <li><strong><span class="highlight">Community</span> & Fun Events:</strong> Relaxed social gatherings, study breaks (with pizza!), team challenges, and activities to help members connect, de-stress, and build friendships in a <span class="highlight">homey</span> atmosphere.</li>
+                    <li><strong>Community & Fun Events:</strong> Relaxed social gatherings, study breaks (with pizza!), team challenges, and activities to help members connect, de-stress, and build friendships.</li>
                 </ul>
             </section>
 
-             <!-- NEW: Our Core Values Section -->
-             <section id="values">
-                <h2><i class="fa-solid fa-gem"></i>Our Core Values</h2>
-                <p>These principles guide everything we do at PASS:</p>
-                <div class="values-grid">
-                    <div class="value-card">
-                        <i class="fa-solid fa-hand-holding-heart"></i>
-                        <h4>Support & Empathy</h4>
-                        <p>We foster a <span class="highlight">homey</span> environment where everyone feels valued and understood.</p>
-                    </div>
-                    <div class="value-card">
-                        <i class="fa-solid fa-lightbulb"></i>
-                        <h4>Collaboration & Growth</h4>
-                        <p>We believe <span class="highlight">smart</span> minds working together achieve more; learning is a shared journey.</p>
-                    </div>
-                    <div class="value-card">
-                        <i class="fa-solid fa-link"></i>
-                        <h4>Connection & Community</h4>
-                        <p>Building a strong, <span class="highlight">connective</span> network across PCEP is central to our mission.</p>
-                    </div>
-                     <div class="value-card">
-                        <i class="fa-solid fa-shield-halved"></i>
-                        <h4>Integrity & Respect</h4>
-                        <p>We uphold honesty and mutual respect in all our <span class="highlight">academic</span> and social interactions.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- NEW: Member Spotlight Section -->
-            <section id="spotlight">
-                <h2><i class="fa-solid fa-star"></i>Member Spotlight</h2>
-                <p>Get to know some of the amazing <span class="highlight">students</span> who make PASS a vibrant <span class="highlight">community</span>!</p>
-                <div class="spotlight-grid">
-                    <!-- Placeholder 1 -->
-                    <div class="spotlight-card">
-                        <img src="image1.jpeg" alt="Member Photo 1"> <!-- Use one of the carousel images as placeholder -->
-                        <h4>Alex Chen</h4>
-                        <span class="member-school">Plymouth High School '25</span>
-                        <p>PASS helped me navigate tough AP classes and find friends who are just as passionate about learning.</p>
-                    </div>
-                    <!-- Placeholder 2 -->
-                    <div class="spotlight-card">
-                        <img src="image2.jpeg" alt="Member Photo 2"> <!-- Use one of the carousel images as placeholder -->
-                        <h4>Priya Sharma</h4>
-                        <span class="member-school">Canton High School '26</span>
-                        <p>The study groups are fantastic! It's so much easier to understand complex topics when you discuss them together.</p>
-                    </div>
-                    <!-- Placeholder 3 -->
-                    <div class="spotlight-card">
-                         <img src="image3.jpeg" alt="Member Photo 3"> <!-- Use one of the carousel images as placeholder -->
-                        <h4>Ben Carter</h4>
-                        <span class="member-school">Salem High School '25</span>
-                        <p>It's more than just academics; the social events are fun and a great way to de-stress. Truly <span class="highlight">supportive</span>!</p>
-                    </div>
-                </div>
-                 <p style="text-align: center; margin-top: 2rem; font-style: italic;">Want to be featured? Get involved and let us know!</p>
-            </section>
-
-            <!-- NEW: Testimonials Section -->
-            <section id="testimonials">
-                <h2><i class="fa-solid fa-comments"></i>What Members Say</h2>
-                <div class="testimonial-grid">
-                    <div class="testimonial-card">
-                         <i class="fa-solid fa-quote-left"></i>
-                        <p>Joining PASS was one of the best decisions I made at PCEP. It's incredibly <span class="highlight">supportive</span>, and I've learned so much from my peers. It really feels like an <span class="highlight">academic</span> family.</p>
-                        <div class="testimonial-author">
-                            Jessica L.
-                            <span>Canton HS Student</span>
-                        </div>
-                    </div>
-                     <div class="testimonial-card">
-                         <i class="fa-solid fa-quote-left"></i>
-                        <p>The collaborative study sessions saved me during finals week! It's amazing how <span class="highlight">connective</span> the group is, even across the three schools. Everyone is willing to help.</p>
-                         <div class="testimonial-author">
-                            Michael R.
-                            <span>Plymouth HS Student</span>
-                        </div>
-                    </div>
-                     <div class="testimonial-card">
-                         <i class="fa-solid fa-quote-left"></i>
-                        <p>I love the <span class="highlight">homey</span> vibe. It's a great place to meet other <span class="highlight">smart</span>, driven students who actually enjoy learning. Plus, the workshops are super useful.</p>
-                         <div class="testimonial-author">
-                            Samantha K.
-                            <span>Salem HS Student</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
+            <!-- Removed Events Section -->
 
             <section id="faq">
                 <h2><i class="fa-solid fa-circle-question"></i>Frequently Asked Questions</h2>
@@ -1353,7 +997,7 @@
                         <span class="faq-toggle">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>PASS welcomes all currently enrolled students at <span class="highlight">Plymouth, Canton, or Salem High Schools</span> within PCEP! If you're motivated to grow <span class="highlight">academically</span>, enjoy collaborating, and want to be part of a <span class="highlight">supportive</span>, <span class="highlight">connective</span> <span class="highlight">community</span>, you'll fit right in.</p>
+                        <p>PASS welcomes all currently enrolled students at <span class="footer-highlight" style="color: var(--primary-dark);">Plymouth, Canton, or Salem High Schools</span> within PCEP! If you're motivated to grow academically, enjoy collaborating, and want to be part of a supportive community, you'll fit right in.</p>
                     </div>
                 </div>
                  <div class="faq-item">
@@ -1362,7 +1006,7 @@
                         <span class="faq-toggle">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>It's flexible! Attend the meetings and study sessions that fit your schedule and <span class="highlight">academic</span> needs. We typically have general meetings 1-2 times per month, with study groups meeting more frequently, especially around exams. Participation is encouraged, but we understand you have busy schedules.</p>
+                        <p>It's flexible! Attend the meetings and study sessions that fit your schedule and academic needs. We typically have general meetings 1-2 times per month, with study groups meeting more frequently, especially around exams. Participation is encouraged, but we understand you have busy schedules.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1371,7 +1015,7 @@
                         <span class="faq-toggle">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>No mandatory membership fees! Our focus is on building a strong, accessible <span class="highlight">community</span>. We might occasionally ask for small, optional contributions for specific social events (like pizza!), but core activities are free.</p>
+                        <p>No mandatory membership fees! Our focus is on building a strong, accessible community. We might occasionally ask for small, optional contributions for specific social events (like pizza!), but core activities are free.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1380,7 +1024,7 @@
                         <span class="faq-toggle">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Most of our meetings and study sessions are held at <span class="highlight">Plymouth High School</span> (8400 Beck Rd, Canton, MI). Specific room locations are announced before each event via email and our Instagram (<a href="https://www.instagram.com/passofficial/" target="_blank" rel="noopener noreferrer">@passofficial</a>). Check our announcements for the latest schedule!</p>
+                        <p>Most of our meetings and study sessions are held at <span class="footer-highlight" style="color: var(--primary-dark);">Plymouth High School</span> (8400 Beck Rd, Canton, MI). Specific room locations are announced before each event via email and our Instagram. Check our announcements for the latest schedule!</p>
                     </div>
                 </div>
                  <div class="faq-item">
@@ -1389,7 +1033,7 @@
                         <span class="faq-toggle">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>PASS focuses on <span class="highlight">collaborative peer learning</span> and <span class="highlight">community building</span>. While members definitely help each other understand concepts, it's more about working together, sharing strategies, and motivating each other in a <span class="highlight">supportive</span> group setting, rather than a one-on-one expert-to-student model. We build study skills and <span class="highlight">connections</span>.</p>
+                        <p>PASS focuses on <span class="footer-highlight" style="color: var(--primary-dark);">collaborative peer learning and community building</span>. While members definitely help each other understand concepts, it's more about working together, sharing strategies, and motivating each other, rather than a one-on-one expert-to-student model like traditional tutoring. We build study skills and connections.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1398,20 +1042,20 @@
                         <span class="faq-toggle">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Easy! You can fill out our quick application form (see the "Join Us" section below!), come to an upcoming meeting (check Instagram <a href="https://www.instagram.com/passofficial/" target="_blank" rel="noopener noreferrer">@passofficial</a> for dates/times), or simply reach out via email (<a href="mailto:passofficialpcep@gmail.com">passofficialpcep@gmail.com</a>). We welcome new members throughout the school year!</p>
+                        <p>Easy! You can fill out our quick application form (see the "Join Us" section below!), come to an upcoming meeting (check Instagram for dates/times), or simply reach out via email (<a href="mailto:passofficialpcep@gmail.com">passofficialpcep@gmail.com</a>). We welcome new members throughout the school year!</p>
                     </div>
                 </div>
             </section>
 
-            <section id="join" class="section-highlight-box">
+            <section id="join" class="section-highlight">
                 <h2><i class="fa-solid fa-handshake-angle"></i>Ready to Join Our Community?</h2>
-                <p>Become part of PASS PCEP – where <span class="highlight">academic</span> drive meets genuine <span class="highlight">support</span> and <span class="highlight">connection</span>. Elevate your high school experience, make friends who get it, and thrive together!</p>
+                <p>Become part of PASS PCEP – where academic drive meets genuine support and connection. Elevate your high school experience, make friends who get it, and thrive together!</p>
                 <ul>
                     <li>Access exclusive study groups, skill workshops, and fun social events.</li>
-                    <li>Tap into a network of <span class="highlight">smart</span>, helpful peers from across PCEP.</li>
-                    <li>Share your strengths and help others succeed in a <span class="highlight">supportive</span> way.</li>
+                    <li>Tap into a network of smart, helpful peers from across PCEP.</li>
+                    <li>Share your strengths and help others succeed.</li>
                     <li>Develop leadership and collaboration skills in a friendly setting.</li>
-                    <li>Find your <span class="highlight">academic</span> "<span class="highlight">home base</span>" at PCEP.</li>
+                    <li>Find your academic "home base" at PCEP.</li>
                 </ul>
                 <p>Getting started is simple. Fill out the quick application form below, or reach out if you have questions!</p>
 
@@ -1420,41 +1064,47 @@
                     <h4>Membership Application</h4>
                     <p>Tell us a bit about yourself! We're excited to welcome you.</p>
                     <!-- === PASTE YOUR GOOGLE FORM EMBED CODE (IFRAME) HERE === -->
-                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScW7NEj9cbmK_XiKMao9xGySNB5QGAdvi-R60xWLdHgKt8kaQ/viewform?embedded=true" width="100%" height="750" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScW7NEj9cbmK_XiKMao9xGySNB5QGAdvi-R60xWLdHgKt8kaQ/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
                     <!-- === END GOOGLE FORM EMBED CODE === -->
-                     <p class="form-mobile-note">On mobile, you may need to scroll within the form area above.</p>
+
+                    <!-- Fallback message if iframe fails -->
+                    <div class="google-form-placeholder" style="display: none;"> <!-- Hidden by default, shown if iframe fails -->
+                         <p><strong>Membership form loading...</strong> If it doesn't appear, please <a href="https://docs.google.com/forms/d/e/1FAIpQLScW7NEj9cbmK_XiKMao9xGySNB5QGAdvi-R60xWLdHgKt8kaQ/viewform" target="_blank" rel="noopener noreferrer">click here to open the form in a new tab</a>.</p>
+                    </div>
                 </div>
 
-                <div style="text-align: center; margin-top: 2.5rem;">
+                <div style="text-align: center; margin-top: 2rem;">
                     <a href="#contact" class="cta-button cta-button-secondary">Have Questions First? Contact Us!</a>
                 </div>
             </section>
 
             <section id="resources">
                  <h2><i class="fa-solid fa-book"></i>Helpful Academic Resources</h2>
-                <p>While PASS provides invaluable peer <span class="highlight">support</span>, don't forget these excellent official PCEP and external resources:</p>
+                <p>While PASS provides invaluable peer support, don't forget these excellent official PCEP and external resources:</p>
                 <ul>
                     <li><a href="https://www.pccsk12.com/our-schools/plymouth-high-school/academics/media-center" target="_blank" rel="noopener noreferrer">Plymouth HS Media Center</a> (Check Canton/Salem sites for theirs) - Databases, research help, books.</li>
-                     <li><a href="https://www.pccsk12.com/our-schools/canton-high-school/academics/counseling" target="_blank" rel="noopener noreferrer">Canton HS Counseling</a> | <a href="https://www.pccsk12.com/our-schools/plymouth-high-school/academics/counseling" target="_blank" rel="noopener noreferrer">Plymouth HS Counseling</a> | <a href="https://www.pccsk12.com/our-schools/salem-high-school/academics/counseling" target="_blank" rel="noopener noreferrer">Salem HS Counseling</a> - <span class="highlight">Academic</span> guidance, college planning, support.</li>
+                     <li><a href="https://www.pccsk12.com/our-schools/canton-high-school/academics/counseling" target="_blank" rel="noopener noreferrer">Canton HS Counseling</a> | <a href="https://www.pccsk12.com/our-schools/plymouth-high-school/academics/counseling" target="_blank" rel="noopener noreferrer">Plymouth HS Counseling</a> | <a href="https://www.pccsk12.com/our-schools/salem-high-school/academics/counseling" target="_blank" rel="noopener noreferrer">Salem HS Counseling</a> - Academic guidance, college planning, support.</li>
                     <li><a href="https://www.pccsk12.com/departments/student-instructional-support/academic-support" target="_blank" rel="noopener noreferrer">PCEP Academic Support Programs</a> - District-level resources and initiatives.</li>
                     <li><a href="https://www.khanacademy.org/" target="_blank" rel="noopener noreferrer">Khan Academy</a> - Free lessons and practice for Math, Science, AP courses, SAT prep, and more.</li>
                     <li><a href="https://quizlet.com/" target="_blank" rel="noopener noreferrer">Quizlet</a> - Excellent for flashcards, study sets, and practice tests for various subjects.</li>
                     <li><a href="https://apstudents.collegeboard.org/" target="_blank" rel="noopener noreferrer">College Board AP Students</a> - Official resources, course info, and exam prep for AP classes.</li>
                 </ul>
-                <p><em>Remember: PASS members often share specific tips, notes, and resources tailored to PCEP classes during meetings and through our <span class="highlight">communication</span> channels!</em></p>
+                <p><em>Remember: PASS members often share specific tips, notes, and resources tailored to PCEP classes during meetings and through our communication channels!</em></p>
             </section>
 
             <section id="contact">
                 <h2><i class="fa-solid fa-envelope-open-text"></i>Get In Touch!</h2>
-                <p>Questions? Ideas? Ready to <span class="highlight">connect</span>? We're here to help and excited to hear from you!</p>
+                <p>Questions? Ideas? Ready to connect? We're here to help and excited to hear from you!</p>
                 <ul>
                     <li class="email"><strong>Email:</strong> <a href="mailto:passofficialpcep@gmail.com">passofficialpcep@gmail.com</a></li>
                     <li class="phone"><strong>Phone:</strong> <a href="tel:508-343-0409">508-343-0409</a> (Text preferred for quick questions)</li>
-                    <li class="social"><strong>Instagram:</strong> <a href="https://www.instagram.com/passofficial/" target="_blank" rel="noopener noreferrer">@passofficial</a> - Follow for updates, events & announcements!</li>
+                    <li class="social"><strong>Instagram:</strong> <a href="https://www.instagram.com/passofficial/" target="_blank" rel="noopener noreferrer">@passofficial</a> - Follow for updates & announcements!</li>
                     <li class="meeting"><strong>Meetings:</strong> Check Instagram/email for current times & locations (usually at Plymouth High School).</li>
                     <li class="office"><strong>Location:</strong> Based at Plymouth High School, 8400 Beck Rd, Canton, MI 48187 (Serving all PCEP students).</li>
                 </ul>
-                 <p style="text-align: center; margin-top: 3rem;">We look forward to welcoming you to the PASS <span class="highlight">community</span>!</p>
+
+                 <!-- Removed Contact Form Demo -->
+
             </section>
         </div> <!-- /.content-area -->
 
@@ -1463,7 +1113,7 @@
     <footer>
         <div class="container">
              <p><span class="footer-highlight">Progressive Academic Student Society (PASS PCEP)</span></p>
-             <p>A <span class="highlight">supportive</span> and <span class="highlight">connective</span> <span class="highlight">community</span> for <span class="highlight">academic students</span> at the <span class="highlight">Plymouth-Canton Educational Park (PCEP)</span>.</p>
+             <p>A supportive community for academic students at the <span class="footer-highlight">Plymouth-Canton Educational Park (PCEP)</span></p>
              <p>Welcoming students from Canton, Plymouth, and Salem High Schools.</p>
              <p>Based at Plymouth High School: 8400 Beck Rd, Canton, MI 48187</p>
              <div class="footer-social-links">
@@ -1471,7 +1121,7 @@
                  <a href="mailto:passofficialpcep@gmail.com" aria-label="Email PASS PCEP"><i class="fa-solid fa-envelope"></i></a>
                  <a href="tel:508-343-0409" aria-label="Call PASS PCEP"><i class="fa-solid fa-phone"></i></a>
              </div>
-            <p style="margin-top: 2rem; font-size: 0.95rem;">© <span id="currentYear"></span> PASS PCEP. All Rights Reserved.</p>
+            <p style="margin-top: 2rem; font-size: 0.9rem;">© <span id="currentYear"></span> PASS PCEP. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -1487,34 +1137,21 @@
             const navMenu = document.getElementById('main-nav');
             const burgerIcon = '<i class="fa-solid fa-bars"></i>';
             const closeIcon = '<i class="fa-solid fa-times"></i>';
-            const mobileApplyButtonLI = document.querySelector('#main-nav li.mobile-apply-button');
 
-            if (menuButton && navMenu && mobileApplyButtonLI) {
-                // Clone the desktop apply button link attributes to the mobile one
-                const desktopApplyLink = document.querySelector('.nav-apply-button');
-                const mobileApplyLink = mobileApplyButtonLI.querySelector('a');
-                if (desktopApplyLink && mobileApplyLink) {
-                    mobileApplyLink.href = desktopApplyLink.href;
-                }
-                // Ensure the mobile apply button list item is shown in the mobile menu structure
-                mobileApplyButtonLI.style.display = 'block'; // Make it visible in the flow for mobile
-
+            if (menuButton && navMenu) {
                 menuButton.addEventListener('click', () => {
                     const isExpanded = navMenu.classList.toggle('active');
                     menuButton.setAttribute('aria-expanded', isExpanded);
-                    menuButton.innerHTML = isExpanded ? closeIcon : burgerIcon;
-                    // Toggle visibility of the mobile apply button container based on menu state
-                    // mobileApplyButtonLI.style.display = isExpanded ? 'block' : 'none';
+                    menuButton.innerHTML = isExpanded ? closeIcon : burgerIcon; // Toggle icon
                 });
 
-                // Close menu when a nav link (including the mobile apply button) is clicked
+                // Close menu when a nav link is clicked
                 navMenu.querySelectorAll('a').forEach(link => {
                     link.addEventListener('click', () => {
                         if (navMenu.classList.contains('active')) {
                             navMenu.classList.remove('active');
                             menuButton.setAttribute('aria-expanded', 'false');
-                            menuButton.innerHTML = burgerIcon;
-                            // mobileApplyButtonLI.style.display = 'none'; // Hide on close
+                            menuButton.innerHTML = burgerIcon; // Reset icon
                         }
                     });
                 });
@@ -1526,14 +1163,10 @@
                     if (!isClickInsideNav && !isClickOnButton && navMenu.classList.contains('active')) {
                          navMenu.classList.remove('active');
                          menuButton.setAttribute('aria-expanded', 'false');
-                         menuButton.innerHTML = burgerIcon;
-                         // mobileApplyButtonLI.style.display = 'none'; // Hide on close
+                         menuButton.innerHTML = burgerIcon; // Reset icon
                     }
                  });
-            } else {
-                 console.error("Mobile menu elements not found.");
             }
-
 
             // --- FAQ Accordion ---
             const faqItems = document.querySelectorAll('.faq-item');
@@ -1544,32 +1177,45 @@
 
                 if (questionButton && answer && toggleIcon) {
                     questionButton.addEventListener('click', () => {
-                        const wasActive = item.classList.contains('active');
+                        const isActive = item.classList.contains('active');
 
-                        // Optional: Close other FAQs when one opens (Uncomment if desired)
+                        // Close all others (optional, uncomment if desired)
                         // faqItems.forEach(otherItem => {
                         //     if (otherItem !== item && otherItem.classList.contains('active')) {
                         //         otherItem.classList.remove('active');
                         //         otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-                        //         otherItem.querySelector('.faq-toggle').style.transform = 'rotate(0deg)';
+                        //         otherItem.querySelector('.faq-toggle').textContent = '+';
                         //         const otherAnswer = otherItem.querySelector('.faq-answer');
                         //         otherAnswer.style.maxHeight = null;
                         //         otherAnswer.style.paddingTop = '0';
                         //         otherAnswer.style.paddingBottom = '0';
+                        //         otherAnswer.style.opacity = '0';
                         //     }
                         // });
 
+                        // Toggle current item
                         item.classList.toggle('active');
-                        questionButton.setAttribute('aria-expanded', !wasActive);
-                        // toggleIcon.style.transform = item.classList.contains('active') ? 'rotate(135deg)' : 'rotate(0deg)'; // CSS handles this now
+                        questionButton.setAttribute('aria-expanded', !isActive);
+                        // toggleIcon.textContent = item.classList.contains('active') ? '−' : '+'; // Use text +/-
+                        // Keep FontAwesome icon rotation logic if preferred over text +/-
+                        toggleIcon.style.transform = item.classList.contains('active') ? 'rotate(135deg)' : 'rotate(0deg)';
+
 
                         if (item.classList.contains('active')) {
-                            // Set max-height based on scrollHeight for smooth opening
-                            answer.style.maxHeight = answer.scrollHeight + 50 + "px"; // Add buffer for padding
-                            // Padding is handled by CSS transitions now
+                            answer.style.maxHeight = answer.scrollHeight + 40 + "px"; // Add buffer for padding
+                            answer.style.paddingTop = '10px';
+                            answer.style.paddingBottom = '20px';
+                            answer.style.opacity = '1';
                         } else {
                             answer.style.maxHeight = null;
-                             // Padding is handled by CSS transitions now
+                            // Delay removing padding/opacity until transition ends for smoother closing
+                            setTimeout(() => {
+                                if (!item.classList.contains('active')) { // Check again in case it was reopened quickly
+                                    answer.style.paddingTop = '0';
+                                    answer.style.paddingBottom = '0';
+                                    answer.style.opacity = '0';
+                                }
+                            }, 400); // Match transition duration
                         }
                     });
                 }
@@ -1594,8 +1240,8 @@
                 }
 
                 function nextImage() {
-                     currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
-                     showImage(currentIndex);
+                    currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+                    showImage(currentIndex);
                 }
 
                 function prevImage() {
@@ -1605,7 +1251,9 @@
 
                 function startAutoPlay(delay = 5000) { // Auto-play every 5 seconds
                     stopAutoPlay(); // Clear existing interval
-                    intervalId = setInterval(nextImage, delay);
+                    if (images.length > 1) {
+                        intervalId = setInterval(nextImage, delay);
+                    }
                 }
 
                 function stopAutoPlay() {
@@ -1615,20 +1263,19 @@
                 if (prevButton && nextButton && images.length > 0) {
                     prevButton.addEventListener('click', () => {
                         prevImage();
-                        stopAutoPlay(); // Stop auto-play on manual interaction
+                        startAutoPlay(); // Restart timer on manual navigation
                     });
 
                     nextButton.addEventListener('click', () => {
                         nextImage();
-                        stopAutoPlay(); // Stop auto-play on manual interaction
+                        startAutoPlay(); // Restart timer on manual navigation
                     });
 
-                    // Optional: Pause auto-play on hover
+                    // Pause autoplay on hover
                     carousel.addEventListener('mouseenter', stopAutoPlay);
                     carousel.addEventListener('mouseleave', startAutoPlay);
 
-
-                    // Initialize first image and start auto-play
+                    // Initialize first image and start autoplay
                     showImage(currentIndex);
                     startAutoPlay();
 
@@ -1642,28 +1289,15 @@
             // --- Scroll-to-Top Button ---
             const scrollTopBtn = document.getElementById('scrollTopBtn');
             if (scrollTopBtn) {
-                window.onscroll = function() { scrollFunction(); };
+                const scrollThreshold = 300; // Show button after scrolling 300px
 
-                function scrollFunction() {
-                    // Show button after scrolling down 300px
-                    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                        if (!scrollTopBtn.classList.contains('visible')) {
-                             scrollTopBtn.style.display = 'block'; // Make it take space
-                             // Force reflow before adding class for transition
-                             void scrollTopBtn.offsetWidth;
-                             scrollTopBtn.classList.add('visible');
-                        }
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > scrollThreshold) {
+                        scrollTopBtn.classList.add('visible');
                     } else {
-                         if (scrollTopBtn.classList.contains('visible')) {
-                            scrollTopBtn.classList.remove('visible');
-                            // Listen for transition end to set display none
-                            scrollTopBtn.addEventListener('transitionend', function handler() {
-                                scrollTopBtn.style.display = 'none';
-                                scrollTopBtn.removeEventListener('transitionend', handler);
-                            });
-                         }
+                        scrollTopBtn.classList.remove('visible');
                     }
-                }
+                }, { passive: true }); // Use passive listener for performance
 
                 scrollTopBtn.addEventListener('click', () => {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1676,96 +1310,99 @@
                 yearSpan.textContent = new Date().getFullYear();
             }
 
-            // --- Active Nav Link Highlighting ---
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('#main-nav a:not(.nav-apply-button)'); // Exclude Apply button
+            // --- Active Nav Link Highlighting (Simplified) ---
+            const sections = document.querySelectorAll('main section[id]'); // Select only sections within main with an ID
+            const navLinks = document.querySelectorAll('#main-nav a');
             const nav = document.querySelector('nav');
-            const navHeight = nav ? nav.offsetHeight : 75; // Use updated nav height
+            const navHeight = nav ? nav.offsetHeight : 70;
 
             const activateLink = (targetId) => {
                  navLinks.forEach(link => {
                     link.classList.remove('active');
-                    const linkHref = link.getAttribute('href');
-                    // Check if href matches targetId or if targetId is home and link is home
-                    if (linkHref === `#${targetId}`) {
+                    // Check if the link's href matches the target ID (including the #)
+                    if (link.getAttribute('href') === `#${targetId}`) {
                         link.classList.add('active');
                     }
-                 });
-                 // Special case for Apply button if Join section is active
-                 const applyButton = document.querySelector('.nav-apply-button');
-                 if (applyButton) {
-                     if (targetId === 'join') {
-                         applyButton.classList.add('active'); // Maybe style differently? Or just leave it.
-                     } else {
-                         applyButton.classList.remove('active');
-                     }
-                 }
+                });
             };
 
             const observerOptions = {
                 root: null,
-                rootMargin: `-${navHeight}px 0px -40% 0px`, // Trigger when section is more centered
-                threshold: 0.1 // Need at least 10% visibility
+                rootMargin: `-${navHeight + 10}px 0px -60% 0px`, // Adjust trigger zone: slightly below nav, trigger when section is ~40% visible from top
+                threshold: 0
             };
 
-            let lastActivatedSectionId = null; // Track the last section activated by observer
+            let lastActivatedSectionId = null; // Track the last activated section
 
             const sectionObserver = new IntersectionObserver((entries, observer) => {
+                let intersectingEntry = null;
+
+                // Find the entry most visible within the trigger zone
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        const currentId = entry.target.getAttribute('id');
-                        // Only activate if it's the topmost intersecting section meeting criteria
-                        // Find the topmost visible section
-                        let topmostVisibleSectionId = null;
-                        let minTop = window.innerHeight;
-
-                        sections.forEach(sec => {
-                            const rect = sec.getBoundingClientRect();
-                            // Check if section is within the activation zone (top edge above 60% viewport height, bottom edge below nav)
-                            if (rect.top < window.innerHeight * 0.6 && rect.bottom > navHeight) {
-                                if (rect.top < minTop) {
-                                    minTop = rect.top;
-                                    topmostVisibleSectionId = sec.id;
-                                }
-                            }
-                        });
-
-                        if (topmostVisibleSectionId === currentId) {
-                             activateLink(currentId);
-                             lastActivatedSectionId = currentId;
+                        // Prioritize the entry that is further down the page if multiple are intersecting
+                        if (!intersectingEntry || entry.target.offsetTop > intersectingEntry.target.offsetTop) {
+                            intersectingEntry = entry;
                         }
                     }
                 });
-                 // Fallback for when scrolling up quickly and observer doesn't catch top section
-                 if (window.scrollY < window.innerHeight * 0.4) { // If near the top
-                     if (lastActivatedSectionId !== 'home') {
-                         activateLink('home');
-                         lastActivatedSectionId = 'home';
-                     }
-                 }
+
+                if (intersectingEntry) {
+                    const currentSectionId = intersectingEntry.target.getAttribute('id');
+                    if (currentSectionId !== lastActivatedSectionId) {
+                        activateLink(currentSectionId);
+                        lastActivatedSectionId = currentSectionId;
+                    }
+                } else if (window.scrollY < window.innerHeight * 0.4) {
+                    // If nothing is intersecting and we are near the top, activate 'home'
+                    if ('home' !== lastActivatedSectionId) {
+                        activateLink('home');
+                        lastActivatedSectionId = 'home';
+                    }
+                }
 
             }, observerOptions);
 
             sections.forEach(section => {
-                 sectionObserver.observe(section);
+                sectionObserver.observe(section);
             });
 
              // Initial check on load
              setTimeout(() => {
-                 let initialSectionId = 'home';
-                 let minTop = window.innerHeight;
-                 sections.forEach(sec => {
-                     const rect = sec.getBoundingClientRect();
-                      if (rect.top < window.innerHeight * 0.6 && rect.bottom > navHeight) {
-                           if (rect.top < minTop) {
-                               minTop = rect.top;
-                               initialSectionId = sec.id;
-                           }
-                      }
+                 let initialSectionFound = false;
+                 sections.forEach(section => {
+                     const rect = section.getBoundingClientRect();
+                     // Check if section top is within the initial viewport activation zone
+                     if (rect.top >= 0 && rect.top < window.innerHeight * 0.4) {
+                         activateLink(section.id);
+                         lastActivatedSectionId = section.id;
+                         initialSectionFound = true;
+                         return; // Activate the first one found
+                     }
                  });
-                 activateLink(initialSectionId);
-                 lastActivatedSectionId = initialSectionId;
-             }, 150); // Slightly longer delay
+                 // If no section found in the initial zone (e.g., scrolled down on refresh), activate home if at top
+                 if (!initialSectionFound && window.scrollY < window.innerHeight * 0.4) {
+                     activateLink('home');
+                     lastActivatedSectionId = 'home';
+                 } else if (!initialSectionFound) {
+                     // If scrolled down, manually check which section is most prominent
+                     let maxVisibleArea = 0;
+                     let mostVisibleSectionId = 'home'; // Default to home
+
+                     sections.forEach(sec => {
+                         const rect = sec.getBoundingClientRect();
+                         const visibleHeight = Math.max(0, Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, navHeight));
+                         const visibleArea = visibleHeight * rect.width; // Simple area calculation
+
+                         if (visibleArea > maxVisibleArea && rect.top < window.innerHeight * 0.6) { // Check if mostly visible
+                             maxVisibleArea = visibleArea;
+                             mostVisibleSectionId = sec.id;
+                         }
+                     });
+                     activateLink(mostVisibleSectionId);
+                     lastActivatedSectionId = mostVisibleSectionId;
+                 }
+             }, 100); // Short delay for layout stability
 
 
         }); // End DOMContentLoaded
