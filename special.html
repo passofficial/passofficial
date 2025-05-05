@@ -1,151 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>System Stability Test - Stage 5</title>
+    <title>Basic Freeze Test</title>
     <meta charset="UTF-8">
     <style>
-        body { margin: 0; overflow: hidden; background-color: #111; color: #eee; font-family: 'Courier New', Courier, monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; text-align: center; }
-        h1 { color: #f44; text-shadow: 0 0 8px #f00; }
-        p { color: #ff5; }
-        .status { margin-top: 20px; font-size: 0.9em; color: #999; }
-        #debugCanvas { border: 1px solid #555; margin-top: 10px; background: #222; }
+        body { font-family: sans-serif; padding: 20px; background-color: #f0f0f0; }
+        h1 { color: #cc0000; }
     </style>
 </head>
 <body>
 
-    <h1>Stability Test Initializing...</h1>
-    <p>Preparing maximum load simulation.</p>
-    <canvas id="debugCanvas" width="200" height="50"></canvas>
-    <div class="status" id="status-log">Status: Starting...</div>
+    <h1>Initiating Basic Freeze...</h1>
+    <p>If you see this, the page loaded. The script below will now attempt to freeze this tab.</p>
 
     <script>
-    // ==========================================================================
-    // REFINED FREEZE SCRIPT - Focus on Core Lock & Diagnostics
-    // ==========================================================================
+        // Log a message right before the freeze attempt
+        console.log("Attempting to enter infinite while(true) loop...");
 
-    const statusLog = document.getElementById('status-log');
-    function updateStatus(message) {
-        console.log(message); // Log to console
-        if (statusLog) {
-            statusLog.textContent = `Status: ${message}`; // Update visible status
-        }
-    }
-
-    updateStatus("Script loaded. Starting Phase 1.");
-
-    // --- Configuration (Slightly reduced initial load for debugging) ---
-    const INITIAL_MEMORY_STRINGS = 5 * 1000 * 1000;   // ~5 million strings (~5GB)
-    const INITIAL_DOM_ELEMENTS = 500 * 1000;         // 0.5 million DOM elements
-    const NUM_WORKERS_TO_SPAWN = navigator.hardwareConcurrency ? navigator.hardwareConcurrency * 2 : 8; // Still aim for more workers than cores
-
-    // --- Phase 1: Initial Resource Allocation ---
-    let initialMemoryHog = [];
-    updateStatus(`Phase 1a: Allocating ${INITIAL_MEMORY_STRINGS} initial memory strings...`);
-    try {
-        for (let i = 0; i < INITIAL_MEMORY_STRINGS; i++) {
-            initialMemoryHog.push(new Array(1000).join('M') + Math.random());
-        }
-        updateStatus("Phase 1a: Initial memory allocation complete.");
-    } catch (e) {
-        updateStatus(`Phase 1a: Error during initial memory allocation: ${e.message}`);
-        initialMemoryHog = null;
-    }
-
-    updateStatus(`Phase 1b: Creating ${INITIAL_DOM_ELEMENTS} hidden DOM elements...`);
-    const body = document.body;
-    try {
-        const fragment = document.createDocumentFragment();
-        for (let i = 0; i < INITIAL_DOM_ELEMENTS; i++) {
-            const div = document.createElement('div');
-            div.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden;';
-            fragment.appendChild(div);
-        }
-        body.appendChild(fragment);
-        updateStatus("Phase 1b: DOM element creation complete.");
-    } catch (e) {
-        updateStatus(`Phase 1b: Error during DOM creation: ${e.message}`);
-    }
-
-    // --- Phase 2: Saturate CPU Cores with Web Workers ---
-    updateStatus(`Phase 2: Spawning ${NUM_WORKERS_TO_SPAWN} Web Workers...`);
-    const workerCode = `
-        // Worker: Simple infinite loop
-        console.log('Worker thread started. Entering infinite loop.');
-        let i = 0;
-        while(true) {
-            i++;
-            // Prevent potential runaway counter issues (though unlikely needed)
-            if (i > Number.MAX_SAFE_INTEGER) i = 0;
-        }
-    `;
-    const workerBlob = new Blob([workerCode], { type: 'application/javascript' });
-    const workerUrl = URL.createObjectURL(workerBlob);
-    let workers = [];
-    let workersLaunched = 0;
-    for (let i = 0; i < NUM_WORKERS_TO_SPAWN; i++) {
-        try {
-            const worker = new Worker(workerUrl);
-            // Add error listener *before* potential freeze
-            worker.onerror = (event) => {
-                console.error(`WORKER ${i} ERROR:`, event.message, event.filename, event.lineno);
-                updateStatus(`Error in Worker ${i}: ${event.message}`);
-            };
-            workers.push(worker);
-            workersLaunched++;
-        } catch (e) {
-            updateStatus(`CRITICAL: Failed to create worker ${i}: ${e.message}`);
-            console.error(`Failed to create worker ${i}:`, e);
-        }
-    }
-    updateStatus(`Phase 2: ${workersLaunched} of ${NUM_WORKERS_TO_SPAWN} workers launched.`);
-
-    // --- Phase 3: Main Thread Infinite Loop ---
-    updateStatus("Phase 3: Preparing to enter MAIN THREAD infinite loop...");
-
-    // Add a very short delay (e.g., 10ms) JUST before the infinite loop.
-    // This gives the browser a tiny moment to process the final status update/logs
-    // and ensures worker spawning has fully initiated.
-    setTimeout(() => {
-        updateStatus("ENTERING MAIN THREAD INFINITE LOOP NOW!");
-        console.log("!!! ENTERING MAIN THREAD INFINITE LOOP NOW !!!");
-
-        // Declare variables used inside loop *outside* for clarity
-        let continuousMemory = [];
-        let historyCounter = 0;
-        let storageCounter = 0;
-        const canvas = document.getElementById('debugCanvas');
-        const ctx = canvas ? canvas.getContext('2d', { alpha: false }) : null;
-        const largeStringForStorage = new Array(1024 * 5).join('S'); // ~5KB string
-
-        // The core freeze mechanism
+        // The core infinite loop
         while (true) {
-            // Keep the continuous stress operations inside the main loop
-            // 3a: Continuous Memory
-            try { continuousMemory.push('M' + Math.random()); } catch (e) {}
-            // 3b: History Spam
-            try { history.replaceState(null, '', `#${historyCounter++}`); } catch (e) {}
-            // 3c: Storage Spam
-            try { localStorage.setItem(`stress_${storageCounter++ % 100}`, largeStringForStorage); } catch (e) {}
-            // 3d: Canvas Spam
-            try {
-                if (ctx) {
-                    ctx.fillStyle = `rgb(${historyCounter%255},${storageCounter%255},${continuousMemory.length%255})`;
-                    ctx.fillRect(Math.random() * 200, Math.random() * 50, 5, 5);
-                }
-            } catch(e) {}
-
-            // Add a simple counter increment to ensure the loop body isn't completely empty
-            historyCounter++; // Re-incrementing is fine, just adds work
+            // This loop will run indefinitely, consuming 100% CPU
+            // on the main thread and preventing any further interaction
+            // or rendering updates in this tab.
         }
 
-        // Unreachable
-        updateStatus("ERROR: Exited infinite loop (IMPOSSIBLE)");
-
-    }, 10); // 10 millisecond delay before the freeze
-
-    updateStatus("Script execution nominally complete (before final timeout).");
-
+        // This line is unreachable
+        console.log("ERROR: Exited infinite loop!");
     </script>
+
+    <!-- This paragraph will likely not render if the script above executes successfully -->
+    <p>If you can read this second paragraph, the script likely failed or was blocked.</p>
 
 </body>
 </html>
