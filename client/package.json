@@ -1,0 +1,11 @@
+{
+  "name": "passofficial-webservice-client",
+  "version": "1.0.0",
+  "description": "Frontend for passofficial.github.io",
+  "scripts": {
+    "start": "live-server client/public"
+  },
+  "dependencies": {
+    "live-server": "^1.2.2"
+  }
+}
